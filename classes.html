@@ -1490,10 +1490,34 @@
         return [1, numeric, suffix, exact];
       }
 
+      function communicationCourseSortKey(section) {
+        const exact = String(section.course || "").toUpperCase().trim();
+        if (exact === "COMM C1000") return [0, 0, ""];
+
+        const number = String(section.course_number || "").toUpperCase();
+        const numericMatch = number.match(/\d+/);
+        const numeric = numericMatch ? Number(numericMatch[0]) : 999999;
+        return [1, numeric, number];
+      }
+
       function compareCourseSections(a, b) {
         if (a.department === "English" && b.department === "English") {
           const ak = englishCourseSortKey(a);
           const bk = englishCourseSortKey(b);
+          for (let i = 0; i < ak.length; i += 1) {
+            if (typeof ak[i] === "number" && typeof bk[i] === "number") {
+              if (ak[i] !== bk[i]) return ak[i] - bk[i];
+            } else {
+              const cmp = naturalCompare(ak[i], bk[i]);
+              if (cmp) return cmp;
+            }
+          }
+          return naturalCompare(a.class_number, b.class_number);
+        }
+
+        if (a.department === "Communication Studies" && b.department === "Communication Studies") {
+          const ak = communicationCourseSortKey(a);
+          const bk = communicationCourseSortKey(b);
           for (let i = 0; i < ak.length; i += 1) {
             if (typeof ak[i] === "number" && typeof bk[i] === "number") {
               if (ak[i] !== bk[i]) return ak[i] - bk[i];
