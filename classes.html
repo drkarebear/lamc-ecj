@@ -46,8 +46,6 @@
 
       --ztc: #17633a;
       --ztc-bg: #eef8f1;
-      --low-cost: #7a4d00;
-      --low-cost-bg: #fff8e8;
       --oer: #5a3a83;
       --oer-bg: #f4f0fa;
     }
@@ -169,9 +167,9 @@
     }
 
     .hero-inner {
-      width: min(1050px, 100%);
+      width: min(1450px, 100%);
       margin: 0 auto;
-      padding: 62px 24px 58px;
+      padding: 62px clamp(24px, 3vw, 48px) 58px;
     }
 
     .eyebrow {
@@ -199,9 +197,9 @@
     }
 
     .main-wrap {
-      width: min(1100px, 100%);
+      width: min(1450px, 100%);
       margin: 0 auto;
-      padding: 44px 24px 72px;
+      padding: 44px clamp(24px, 3vw, 48px) 72px;
     }
 
     .intro-grid {
@@ -594,12 +592,10 @@
     .format-online { color: var(--format-online); background: var(--format-online-bg); }
     .format-zoom { color: var(--format-zoom); background: var(--format-zoom-bg); }
     .format-in-person-hybrid,
-    .format-zoom-hybrid,
-    .format-hyflex { color: var(--format-hybrid); background: var(--format-hybrid-bg); }
+    .format-zoom-hybrid { color: var(--format-hybrid); background: var(--format-hybrid-bg); }
     .format-in-person { color: var(--format-person); background: var(--format-person-bg); }
 
     .material-ztc { color: var(--ztc); background: var(--ztc-bg); }
-    .material-low-cost { color: var(--low-cost); background: var(--low-cost-bg); }
     .material-oer { color: var(--oer); background: var(--oer-bg); }
 
     .started-badge {
@@ -970,7 +966,7 @@
 <h2 id="how-heading">Start With What You Need</h2>
 <p>Use <strong>Open ECJ Classes</strong> when you are looking for a section that may still have space. Switch to <strong>All ECJ Classes</strong> to see the full semester schedule, including wait-listed and closed sections.</p>
 <p><strong>Sections within each course display in order of when they start, with the earliest-starting section first.</strong></p>
-<p>Each course includes a short description to help you compare options. You can also filter by class format and textbook cost. <strong>ZTC means Zero Textbook Cost:</strong> all required textbooks and readings are free. <strong>Low Textbook Cost</strong> means required textbooks cost $50 or less. A ZTC class may use OER, library materials, or other free readings.</p>
+<p>Each course includes a short description to help you compare options. You can also filter by class format and textbook cost. <strong>ZTC means Zero Textbook Cost:</strong> all required textbooks and readings are free.</p>
 <div aria-label="Class format definitions" class="format-guide">
 <strong>Class formats:</strong>
 <span><strong>In Person</strong> = meets on campus</span>
@@ -978,7 +974,6 @@
 <span><strong>Zoom</strong> = scheduled live online meetings</span>
 <span><strong>In Person Hybrid</strong> = campus + online work</span>
 <span><strong>Zoom Hybrid</strong> = online work + scheduled live Zoom meetings</span>
-<span><strong>HyFlex</strong> = choose campus or live online for scheduled meetings</span>
 </div>
 <p>Availability can change quickly, so use <strong>Section Details</strong> before enrolling.</p>
 <aside aria-label="Class data information" class="source-note">
@@ -1119,8 +1114,8 @@
       const DATA_URL = "data/classes.json";
       const SIS_URL = "https://mycollege-guest.laccd.edu/psc/classsearchguest/EMPLOYEE/HRMS/c/COMMUNITY_ACCESS.CLASS_SEARCH.GBL";
       const departmentOrder = ["English", "Communication Studies", "Journalism"];
-      const formatOrder = ["In Person", "Online", "Zoom", "In Person Hybrid", "Zoom Hybrid", "HyFlex"];
-      const materialOrder = ["ZTC", "Low Cost"];
+      const formatOrder = ["In Person", "Online", "Zoom", "In Person Hybrid", "Zoom Hybrid"];
+      const materialOrder = ["ZTC"];
 
       const ecjPrograms = [
         {
@@ -1348,8 +1343,6 @@
           section.details
         ].filter(Boolean).join(" ").toLowerCase();
 
-        if (/\bhyflex\b/.test(haystack)) return "HyFlex";
-
         const hybrid = /\bhybrid\b|\bblended\b/.test(haystack);
         const live = /\bonline live\b|\bzoom\b/.test(haystack);
         const online = /\bonline\b/.test(haystack);
@@ -1376,11 +1369,9 @@
         provided.forEach((item) => {
           const value = String(item).toLowerCase();
           if (value === "ztc" || value.includes("zero textbook")) flags.add("ZTC");
-          if (value === "low cost" || value.includes("low textbook")) flags.add("Low Cost");
         });
 
         if (/\bZTC\b|Zero\s+Textbook\s+Cost/i.test(haystack)) flags.add("ZTC");
-        if (/\b(?:LCT|LTC)\b|Low\s+Textbook\s+Cost|Low\s+Cost\s+Textbook/i.test(haystack)) flags.add("Low Cost");
 
         return materialOrder.filter((item) => flags.has(item));
       }
@@ -1389,16 +1380,14 @@
         return "format-" + String(format).toLowerCase().replace(/\s+/g, "-");
       }
 
-      function materialBadgeClass(material) {
-        if (material === "ZTC") return "material-ztc";
-        return "material-low-cost";
+      function materialBadgeClass() {
+        return "material-ztc";
       }
 
       function displayLocation(section, format) {
         if (format === "Online") return "Online";
         if (format === "Zoom") return "Zoom";
         if (format === "Zoom Hybrid") return "Online + scheduled Zoom";
-        if (format === "HyFlex") return "Campus or live online";
 
         const room = dedupeRepeatedPhrase(section.room || "");
         const match = room.match(/Mission-(?!Online\b)(.*?)(?=\s+Mission-|$)/i);
@@ -1626,13 +1615,13 @@
         materialOrder.filter((flag) => available.has(flag)).forEach((flag) => {
           const option = document.createElement("option");
           option.value = flag;
-          option.textContent = flag === "Low Cost" ? "Low Cost Textbook" : flag;
+          option.textContent = flag;
           materialsFilter.appendChild(option);
         });
 
         materialsFilter.disabled = available.size === 0;
         materialsFilter.title = available.size === 0
-          ? "No ZTC or low-cost textbook flags were detected in the current SIS feed."
+          ? "No ZTC flags were detected in the current SIS feed."
           : "";
 
         materialsFilter.value = [...materialsFilter.options].some((option) => option.value === previous) ? previous : "all";
@@ -1727,7 +1716,6 @@
         materialFlags(section).forEach((flag) => {
           const badge = element("span", "material-badge " + materialBadgeClass(flag), flag);
           if (flag === "ZTC") badge.setAttribute("aria-label", "Zero Textbook Cost");
-          if (flag === "Low Cost") badge.setAttribute("aria-label", "Low Textbook Cost");
           badges.appendChild(badge);
         });
 

@@ -590,6 +590,29 @@ textarea:focus-visible {
 }
 
 .copy-button:hover { background: #edf4fb; }
+
+.section-details-button {
+  min-height: 44px;
+  padding: 9px 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy);
+  color: var(--white);
+  border: 2px solid var(--navy);
+  border-radius: 6px;
+  font-weight: 800;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.section-details-button:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .copy-status { min-height: 1.6em; color: var(--muted); }
 
 .program-connection {
@@ -665,5 +688,13 @@ footer li + li { margin-top: 8px; }
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
+  }
+}
+
+
+@media (max-width: 560px) {
+  .course-announcement .copy-row .copy-button,
+  .course-announcement .copy-row .section-details-button {
+    width: 100%;
   }
 }
