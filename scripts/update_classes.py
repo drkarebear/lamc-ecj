@@ -1,15 +1,9 @@
 #!/usr/bin/env python3
 """Refresh ECJ class listings from the public LACCD guest class search.
 
-The site itself never contacts SIS from a student's browser. This script runs in
-GitHub Actions, reads public schedule pages, and writes a small static JSON file
-that the GitHub Pages site can safely load from its own origin.
-
-The scraper first tries one subject-only request. If the guest search does not
-return results without a course number, it falls back to ten broad "contains"
-searches (0 through 9) and de-duplicates sections by class number. LACCD course
-numbers contain digits, so the sweep covers both legacy numbers (for example,
-ENGLISH 102) and CCN numbers (for example, ENGL C1000).
+Runs in GitHub Actions. It reads only public schedule pages and writes
+``data/classes.json`` for the static ECJ website. Student browsers never send
+credentials or contact SIS through this script.
 """
 
 from __future__ import annotations
@@ -35,7 +29,6 @@ BASE_URL = (
 CAMPUS_CODE = "LAMC"
 CAMPUS_NAME = "Los Angeles Mission College"
 
-# LACCD uses both the legacy ENGLISH subject and the CCN ENGL subject.
 SUBJECTS = (
     ("ENGL", "English"),
     ("ENGLISH", "English"),
@@ -49,7 +42,7 @@ COURSE_RE = re.compile(
 CLASS_RE = re.compile(r"\b(\d{5})\b")
 SECTION_RE = re.compile(r"^[A-Z]\w*-[A-Z]+$", re.I)
 DATE_RANGE_RE = re.compile(
-    r"\b\d{2}/\d{2}/\d{4}\s*-\s*\d{2}/\d{2}/\d{4}\b"
+    r"\b(\d{2}/\d{2}/\d{4})\s*-\s*(\d{2}/\d{2}/\d{4})\b"
 )
 STATUS_RE = re.compile(r"\b(Wait List|Open|Closed)\b", re.I)
 
@@ -72,7 +65,6 @@ def normalize_title(raw: str) -> str:
     for marker in ("Collapsible section", "Class Section Days & Times"):
         if marker in title:
             title = title.split(marker, 1)[0].strip()
-    # PeopleSoft sometimes repeats the full course label in accessible text.
     repeated = COURSE_RE.search(title)
     if repeated and repeated.start() > 0:
         title = title[: repeated.start()].strip()
@@ -80,25 +72,66 @@ def normalize_title(raw: str) -> str:
 
 
 def course_from_text(text: str) -> CourseContext | None:
-    m = COURSE_RE.search(clean(text))
-    if not m:
+    match = COURSE_RE.search(clean(text))
+    if not match:
         return None
     return CourseContext(
-        subject_code=m.group(1).upper(),
-        course_number=m.group(2).upper(),
-        title=normalize_title(m.group(3)),
+        subject_code=match.group(1).upper(),
+        course_number=match.group(2).upper(),
+        title=normalize_title(match.group(3)),
     )
 
 
-def infer_format(room: str, schedule: str, row_text: str) -> str:
-    haystack = f"{room} {schedule} {row_text}".lower()
+def element_signals(element) -> str:
+    """Collect visible and accessible text without using a huge page-level scope."""
+    values = [clean(element.get_text(" ", strip=True))]
+    for node in element.find_all(True):
+        for attr in ("alt", "title", "aria-label", "data-original-title"):
+            value = clean(node.get(attr, ""))
+            if value:
+                values.append(value)
+    return clean(" ".join(values))
+
+
+def infer_materials(signals: str) -> tuple[list[str], str]:
+    flags: list[str] = []
+    matched: list[str] = []
+
+    patterns = (
+        ("ZTC", r"\bZTC\b|Zero\s+Textbook\s+Cost"),
+        ("Low Cost", r"\bLCT\b|\bLTC\b|Low\s+Textbook\s+Cost|Low\s+Cost\s+Textbook"),
+        ("OER", r"\bOER\b|Open\s+Educational\s+Resources?"),
+    )
+    for label, pattern in patterns:
+        found = re.search(pattern, signals, re.I)
+        if found:
+            flags.append(label)
+            matched.append(found.group(0))
+
+    return flags, clean("; ".join(dict.fromkeys(matched)))
+
+
+def infer_format(room: str, schedule: str, signals: str) -> str:
+    haystack = clean(f"{room} {schedule} {signals}").lower()
     if "hyflex" in haystack:
         return "HyFlex"
-    if "hybrid" in haystack:
-        return "Hybrid"
-    if "online live" in haystack:
-        return "Online Live"
-    if "online" in haystack:
+
+    hybrid = "hybrid" in haystack or "blended" in haystack
+    live = "online live" in haystack or "zoom" in haystack
+    online = "online" in haystack
+    physical = bool(re.search(r"mission-(?!online\b)[a-z0-9]", haystack, re.I))
+
+    if hybrid and live:
+        return "Zoom Hybrid"
+    if hybrid:
+        return "In Person Hybrid"
+    if live and physical:
+        return "Zoom Hybrid"
+    if live:
+        return "Zoom"
+    if online and physical:
+        return "In Person Hybrid"
+    if online:
         return "Online"
     return "In Person"
 
@@ -114,25 +147,19 @@ def normalize_status(value: str) -> str:
     return "Unknown"
 
 
-def status_from_row(row, text: str) -> str:
-    # PeopleSoft often renders status as an image whose alt text is Open,
-    # Closed, or Wait List, so normal element text alone is not enough.
-    candidates = [text]
-    for image in row.find_all("img"):
-        candidates.extend([image.get("alt", ""), image.get("title", "")])
-    for candidate in reversed(candidates):
-        match = STATUS_RE.search(clean(candidate))
-        if match:
-            return normalize_status(match.group(1))
+def status_from_row(row, signals: str) -> str:
+    matches = list(STATUS_RE.finditer(signals))
+    if matches:
+        return normalize_status(matches[-1].group(1))
     return "Unknown"
 
 
 def direct_cells(row) -> list[str]:
     cells = [clean(cell.get_text(" ", strip=True)) for cell in row.find_all("td", recursive=False)]
-    cells = [c for c in cells if c]
+    cells = [cell for cell in cells if cell]
     if cells:
         return cells
-    # Some PeopleSoft tables nest cells. This fallback is intentionally broad.
+
     cells = [clean(cell.get_text(" ", strip=True)) for cell in row.find_all("td")]
     result: list[str] = []
     for item in cells:
@@ -142,13 +169,37 @@ def direct_cells(row) -> list[str]:
 
 
 def find_index(items: list[str], predicate, start: int = 0) -> int | None:
-    for i in range(start, len(items)):
-        if predicate(items[i]):
-            return i
+    for index in range(start, len(items)):
+        if predicate(items[index]):
+            return index
     return None
 
 
-def parse_results(html: str, subject_display: str, term_id: str, term_label: str, source_url: str) -> list[dict]:
+def iso_date(value: str) -> str:
+    try:
+        return datetime.strptime(value, "%m/%d/%Y").date().isoformat()
+    except ValueError:
+        return ""
+
+
+def date_bounds(signals: str) -> tuple[str, str]:
+    ranges = DATE_RANGE_RE.findall(signals)
+    if not ranges:
+        return "", ""
+    starts = [iso_date(start) for start, _ in ranges]
+    ends = [iso_date(end) for _, end in ranges]
+    starts = [value for value in starts if value]
+    ends = [value for value in ends if value]
+    return (min(starts) if starts else "", max(ends) if ends else "")
+
+
+def parse_results(
+    html: str,
+    subject_display: str,
+    term_id: str,
+    term_label: str,
+    source_url: str,
+) -> list[dict]:
     soup = BeautifulSoup(html, "html.parser")
     sections: list[dict] = []
     current_course: CourseContext | None = None
@@ -166,14 +217,14 @@ def parse_results(html: str, subject_display: str, term_id: str, term_label: str
         if not cells:
             continue
 
-        class_idx = find_index(cells, lambda x: bool(re.fullmatch(r"\d{5}", x)))
+        class_idx = find_index(cells, lambda value: bool(re.fullmatch(r"\d{5}", value)))
         combined_match = None
         if class_idx is None:
-            for i, cell in enumerate(cells):
-                m = re.match(r"^(\d{5})\s+(.+)$", cell)
-                if m:
-                    class_idx = i
-                    combined_match = m
+            for index, cell in enumerate(cells):
+                match = re.match(r"^(\d{5})\s+(.+)$", cell)
+                if match:
+                    class_idx = index
+                    combined_match = match
                     break
         if class_idx is None:
             continue
@@ -184,24 +235,27 @@ def parse_results(html: str, subject_display: str, term_id: str, term_label: str
         else:
             class_number = cells[class_idx]
 
-        row_status = status_from_row(row, row_text)
+        signals = element_signals(row)
+        row_status = status_from_row(row, signals)
         if row_status == "Unknown":
             continue
 
-        # If the course heading lives outside the current <tr>, look backward.
         context = current_course
         if context is None:
             previous_text = row.find_previous(string=COURSE_RE)
             if previous_text:
                 context = course_from_text(str(previous_text))
         if context is None:
-            # A section without a course label is not useful enough to publish.
             continue
 
-        section_idx = find_index(cells, lambda x: bool(SECTION_RE.fullmatch(x)), (class_idx or 0) + 1)
-        date_idx = find_index(cells, lambda x: bool(DATE_RANGE_RE.search(x)), (class_idx or 0) + 1)
-        room_idx = find_index(cells, lambda x: "Mission-" in x, (section_idx or class_idx or 0) + 1)
-        status_idx = find_index(cells, lambda x: clean(x).lower() in {"open", "closed", "wait list"}, (class_idx or 0) + 1)
+        section_idx = find_index(cells, lambda value: bool(SECTION_RE.fullmatch(value)), class_idx + 1)
+        date_idx = find_index(cells, lambda value: bool(DATE_RANGE_RE.search(value)), class_idx + 1)
+        room_idx = find_index(cells, lambda value: "Mission-" in value, (section_idx or class_idx) + 1)
+        status_idx = find_index(
+            cells,
+            lambda value: clean(value).lower() in {"open", "closed", "wait list"},
+            class_idx + 1,
+        )
 
         section_code = cells[section_idx] if section_idx is not None else ""
         dates = cells[date_idx] if date_idx is not None else ""
@@ -217,41 +271,43 @@ def parse_results(html: str, subject_display: str, term_id: str, term_label: str
         if room_idx is not None and date_idx is not None and date_idx > room_idx + 1:
             instructor = clean(" ".join(cells[room_idx + 1 : date_idx]))
 
-        if not schedule or not room or not dates:
-            # Preserve the meaningful row text as a transparent fallback rather
-            # than guessing at a field split when PeopleSoft changes markup.
-            fallback_details = row_text
-        else:
-            fallback_details = ""
+        fallback_details = "" if schedule and room and dates else row_text
+        start_date, end_date = date_bounds(signals)
+        materials, materials_text = infer_materials(signals)
 
         href = ""
         for anchor in row.find_all("a", href=True):
-            if class_number in clean(anchor.get_text(" ", strip=True)) or section_code in clean(anchor.get_text(" ", strip=True)):
+            anchor_text = clean(anchor.get_text(" ", strip=True))
+            if class_number in anchor_text or (section_code and section_code in anchor_text):
                 href = urljoin(source_url, anchor["href"])
                 break
 
-        section = {
-            "term_id": term_id,
-            "term": term_label,
-            "department": subject_display,
-            "subject_code": context.subject_code,
-            "course_number": context.course_number,
-            "course": f"{context.subject_code} {context.course_number}",
-            "title": context.title,
-            "class_number": class_number,
-            "section": section_code,
-            "schedule": schedule,
-            "room": room,
-            "instructor": instructor,
-            "dates": dates,
-            "status": row_status,
-            "format": infer_format(room, schedule, row_text),
-            "details": fallback_details,
-            "sis_url": href or source_url,
-        }
-        sections.append(section)
+        sections.append(
+            {
+                "term_id": term_id,
+                "term": term_label,
+                "department": subject_display,
+                "subject_code": context.subject_code,
+                "course_number": context.course_number,
+                "course": f"{context.subject_code} {context.course_number}",
+                "title": context.title,
+                "class_number": class_number,
+                "section": section_code,
+                "schedule": schedule,
+                "room": room,
+                "instructor": instructor,
+                "dates": dates,
+                "start_date": start_date,
+                "end_date": end_date,
+                "status": row_status,
+                "format": infer_format(room, schedule, signals),
+                "materials": materials,
+                "materials_text": materials_text,
+                "details": fallback_details,
+                "sis_url": href or source_url,
+            }
+        )
 
-    # De-duplicate rows created by nested PeopleSoft tables.
     unique: dict[str, dict] = {}
     for section in sections:
         key = section["class_number"]
@@ -259,11 +315,27 @@ def parse_results(html: str, subject_display: str, term_id: str, term_label: str
         if previous is None:
             unique[key] = section
             continue
-        # Prefer the richer parse if one duplicate has more structured fields.
-        score = sum(bool(section.get(k)) for k in ("section", "schedule", "room", "instructor", "dates"))
-        old_score = sum(bool(previous.get(k)) for k in ("section", "schedule", "room", "instructor", "dates"))
+
+        score_fields = (
+            "section",
+            "schedule",
+            "room",
+            "instructor",
+            "dates",
+            "start_date",
+            "materials",
+        )
+        score = sum(bool(section.get(field)) for field in score_fields)
+        old_score = sum(bool(previous.get(field)) for field in score_fields)
         if score > old_score:
             unique[key] = section
+        elif score == old_score:
+            # Preserve any flags detected in either duplicate row.
+            merged = list(dict.fromkeys((previous.get("materials") or []) + (section.get("materials") or [])))
+            previous["materials"] = merged
+            if section.get("materials_text") and not previous.get("materials_text"):
+                previous["materials_text"] = section["materials_text"]
+
     return list(unique.values())
 
 
@@ -286,14 +358,13 @@ def fetch_html(session: requests.Session, url: str, attempts: int = 3) -> str:
             response.raise_for_status()
             text = response.text
             if "You must have cookies enabled" in text:
-                # Re-warm the guest session and retry.
                 session.get(BASE_URL, timeout=30)
                 raise RuntimeError("Guest search requested a fresh cookie session")
             return text
-        except Exception as exc:  # noqa: BLE001 - surfaced after retries
+        except Exception as exc:  # noqa: BLE001
             last_error = exc
             if attempt + 1 < attempts:
-                time.sleep(2 ** attempt)
+                time.sleep(2**attempt)
     raise RuntimeError(f"Could not fetch {url}: {last_error}")
 
 
@@ -302,7 +373,7 @@ def html_looks_like_results(html: str) -> bool:
     return (
         "class section(s) found" in text
         or "class sections found" in text
-        or "search results" in text and "class section" in text
+        or ("search results" in text and "class section" in text)
     )
 
 
@@ -313,10 +384,6 @@ def fetch_subject(
     subject_code: str,
     subject_display: str,
 ) -> list[dict]:
-    """Fetch one subject, preferring one broad request and falling back to digits."""
-
-    # Fast path: LACCD often accepts a blank course number with term, subject,
-    # and campus already supplied in the query string.
     broad_url = build_search_url(term_id, subject_code, "")
     broad_html = fetch_html(session, broad_url)
     broad_sections = parse_results(broad_html, subject_display, term_id, term_label, broad_url)
@@ -324,9 +391,6 @@ def fetch_subject(
         print(f"{term_label}: {subject_code}: {len(broad_sections)} sections from one broad search")
         return broad_sections
 
-    # Some PeopleSoft configurations return the search form instead of results
-    # when catalogid is blank. The course-number field uses "contains", so a
-    # 0-9 sweep covers every normal numeric/alphanumeric course number.
     print(f"{term_label}: {subject_code}: broad search returned no sections; trying digit sweep")
     unique: dict[str, dict] = {}
     successful_result_pages = 0
@@ -348,34 +412,59 @@ def fetch_subject(
     return list(unique.values())
 
 
+def english_course_key(section: dict) -> tuple:
+    subject = str(section.get("subject_code", "")).upper()
+    number = str(section.get("course_number", "")).upper()
+    exact = f"{subject} {number}"
+    priority = {
+        "ENGL C1000": 0,
+        "ENGL C1000E": 1,
+        "ENGL C1001": 2,
+        "ENGLISH 102": 3,
+    }
+    if exact in priority:
+        return (0, priority[exact], "", exact)
+
+    match = re.search(r"\d+", number)
+    numeric = int(match.group(0)) if match else 999999
+    suffix = re.sub(r"^\D*\d+", "", number)
+    return (1, numeric, suffix, exact)
+
+
 def natural_course_key(section: dict) -> tuple:
     dept_order = {"English": 0, "Communication Studies": 1, "Journalism": 2}
+    department = section.get("department", "")
+    class_number = str(section.get("class_number", ""))
+
+    if department == "English":
+        return (0, english_course_key(section), class_number)
+
     course = str(section.get("course_number", ""))
     pieces = re.split(r"(\d+)", course)
-
-    # Every part uses the same comparable shape so Python never has to compare
-    # an int directly with a str (for example, legacy 101 vs CCN C1000).
     normalized = tuple(
         (0, int(piece)) if piece.isdigit() else (1, piece.lower())
         for piece in pieces
-        if piece != ""
+        if piece
     )
-
-    class_number = str(section.get("class_number", ""))
-    return (
-        dept_order.get(section.get("department", ""), 9),
-        normalized,
-        class_number,
-    )
+    return (dept_order.get(department, 9), normalized, class_number)
 
 
 def count_statuses(sections: Iterable[dict]) -> dict:
-    sections = list(sections)
+    items = list(sections)
     return {
-        "all": len(sections),
-        "open": sum(s.get("status") == "Open" for s in sections),
-        "wait_list": sum(s.get("status") == "Wait List" for s in sections),
-        "closed": sum(s.get("status") == "Closed" for s in sections),
+        "all": len(items),
+        "open": sum(section.get("status") == "Open" for section in items),
+        "wait_list": sum(section.get("status") == "Wait List" for section in items),
+        "closed": sum(section.get("status") == "Closed" for section in items),
+    }
+
+
+def count_materials(sections: Iterable[dict]) -> dict:
+    items = list(sections)
+    return {
+        "ztc": sum("ZTC" in (section.get("materials") or []) for section in items),
+        "low_cost": sum("Low Cost" in (section.get("materials") or []) for section in items),
+        "oer": sum("OER" in (section.get("materials") or []) for section in items),
     }
 
 
@@ -412,14 +501,13 @@ def main() -> int:
     session.headers.update(
         {
             "User-Agent": (
-                "Mozilla/5.0 (compatible; LAMC-ECJ-Class-List/1.0; "
+                "Mozilla/5.0 (compatible; LAMC-ECJ-Class-List/1.1; "
                 "+https://www.lamc.edu/)"
             ),
             "Accept-Language": "en-US,en;q=0.9",
         }
     )
 
-    # Establish the public guest cookie before using parameterized result pages.
     try:
         warmup = session.get(BASE_URL, timeout=30)
         warmup.raise_for_status()
@@ -446,9 +534,7 @@ def main() -> int:
                 f"{term['label']}: no ECJ sections were found. Existing site data was not overwritten."
             )
 
-        # Sanity check catches a parser/site change before publishing an implausibly
-        # tiny partial list. Journalism may be small, so the threshold stays low.
-        departments = {s["department"] for s in sections}
+        departments = {section["department"] for section in sections}
         if len(sections) < 5 or "English" not in departments or "Communication Studies" not in departments:
             raise RuntimeError(
                 f"{term['label']}: only {len(sections)} sections across {sorted(departments)}; "
@@ -461,14 +547,18 @@ def main() -> int:
                 "label": str(term["label"]),
                 "sections": sections,
                 "counts": count_statuses(sections),
+                "material_counts": count_materials(sections),
             }
         )
 
     payload = {
-        "schema_version": 1,
+        "schema_version": 2,
         "campus": CAMPUS_NAME,
         "campus_code": CAMPUS_CODE,
-        "generated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+        "generated_at": datetime.now(timezone.utc)
+        .replace(microsecond=0)
+        .isoformat()
+        .replace("+00:00", "Z"),
         "source": {"name": "LACCD Public Class Search", "url": BASE_URL},
         "terms": term_payloads,
     }
@@ -480,7 +570,13 @@ def main() -> int:
 
     total = sum(term["counts"]["all"] for term in term_payloads)
     open_total = sum(term["counts"]["open"] for term in term_payloads)
-    print(f"Wrote {total} ECJ sections ({open_total} open) to {output_path}")
+    ztc_total = sum(term["material_counts"]["ztc"] for term in term_payloads)
+    low_total = sum(term["material_counts"]["low_cost"] for term in term_payloads)
+    oer_total = sum(term["material_counts"]["oer"] for term in term_payloads)
+    print(
+        f"Wrote {total} ECJ sections ({open_total} open; "
+        f"{ztc_total} ZTC; {low_total} low cost; {oer_total} OER) to {output_path}"
+    )
     return 0
 
 

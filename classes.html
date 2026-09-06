@@ -34,6 +34,22 @@
       --wait-bg: #fff8dc;
       --closed: #6c4048;
       --closed-bg: #faf1f2;
+
+      --format-online: #145da0;
+      --format-online-bg: #edf5fc;
+      --format-zoom: #6941a5;
+      --format-zoom-bg: #f3effa;
+      --format-hybrid: #006b67;
+      --format-hybrid-bg: #edf8f7;
+      --format-person: #7a4d00;
+      --format-person-bg: #fff8e8;
+
+      --ztc: #17633a;
+      --ztc-bg: #eef8f1;
+      --low-cost: #7a4d00;
+      --low-cost-bg: #fff8e8;
+      --oer: #5a3a83;
+      --oer-bg: #f4f0fa;
     }
 
     * { box-sizing: border-box; }
@@ -287,7 +303,7 @@
 
     .filters-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 16px;
       align-items: end;
     }
@@ -407,38 +423,69 @@
       line-height: 1.2;
     }
 
-    .course-group + .course-group { margin-top: 34px; }
+    .course-group + .course-group { margin-top: 28px; }
+
+    .course-panel {
+      overflow: hidden;
+      background: var(--white);
+      border: 1px solid #d7dfe7;
+      border-top: 5px solid var(--subject-accent);
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(20, 43, 67, .07);
+    }
+
+    .course-panel-header {
+      padding: 17px 20px 15px;
+      background: var(--subject-soft);
+      border-bottom: 1px solid #d7dfe7;
+    }
 
     .course-heading {
-      margin: 0 0 14px;
+      margin: 0;
       color: var(--navy);
       font-size: 1.18rem;
       line-height: 1.35;
     }
 
-    .section-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
+    .course-description {
+      max-width: 78ch;
+      margin: 6px 0 0;
+      color: #40515f;
+      font-size: .94rem;
+      line-height: 1.5;
     }
 
-    .section-card {
-      min-width: 0;
-      padding: 20px;
+    .course-count {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: .88rem;
+      font-weight: 700;
+    }
+
+    .section-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .section-row {
+      padding: 18px 20px;
       background: var(--white);
-      border: 1px solid #d7dfe7;
-      border-top: 5px solid var(--subject-accent);
-      border-radius: 11px;
-      box-shadow: 0 4px 16px rgba(20, 43, 67, .07);
     }
 
-    .section-card-header {
+    .section-row + .section-row {
+      border-top: 1px solid #dfe5eb;
+    }
+
+    .section-row:hover {
+      background: #fbfcfd;
+    }
+
+    .section-row-top {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      gap: 16px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid #e3e8ed;
+      gap: 18px;
     }
 
     .class-id-block { min-width: 0; }
@@ -446,33 +493,46 @@
     .class-id-label {
       margin: 0 0 2px;
       color: var(--muted);
-      font-size: .78rem;
-      font-weight: 700;
-      letter-spacing: .03em;
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .04em;
       text-transform: uppercase;
     }
 
-    .section-card h5 {
+    .section-row h5 {
       margin: 0;
       color: var(--navy);
       font-size: 1.12rem;
-      line-height: 1.35;
+      line-height: 1.3;
     }
 
     .section-code {
       margin: 3px 0 0;
       color: var(--muted);
-      font-size: .88rem;
+      font-size: .86rem;
     }
 
-    .status {
-      flex: 0 0 auto;
-      padding: 4px 10px;
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 7px;
+    }
+
+    .status,
+    .format-badge,
+    .material-badge,
+    .started-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 29px;
+      padding: 3px 9px;
       border: 2px solid currentColor;
       border-radius: 999px;
-      font-size: .78rem;
+      font-size: .76rem;
       font-weight: 800;
-      line-height: 1.35;
+      line-height: 1.25;
+      white-space: nowrap;
     }
 
     .status-open { color: var(--open); background: var(--open-bg); }
@@ -480,46 +540,70 @@
     .status-closed { color: var(--closed); background: var(--closed-bg); }
     .status-unknown { color: #4d5965; background: #f1f3f5; }
 
+    .format-online { color: var(--format-online); background: var(--format-online-bg); }
+    .format-zoom { color: var(--format-zoom); background: var(--format-zoom-bg); }
+    .format-in-person-hybrid,
+    .format-zoom-hybrid,
+    .format-hyflex { color: var(--format-hybrid); background: var(--format-hybrid-bg); }
+    .format-in-person { color: var(--format-person); background: var(--format-person-bg); }
+
+    .material-ztc { color: var(--ztc); background: var(--ztc-bg); }
+    .material-low-cost { color: var(--low-cost); background: var(--low-cost-bg); }
+    .material-oer { color: var(--oer); background: var(--oer-bg); }
+
+    .started-badge {
+      color: #5d4b13;
+      background: #fff8dc;
+    }
+
     .section-meta {
       margin: 15px 0 0;
       display: grid;
-      grid-template-columns: minmax(92px, .65fr) minmax(0, 1.8fr);
-      gap: 7px 12px;
-      font-size: .94rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 11px 18px;
+      font-size: .92rem;
+    }
+
+    .section-meta-item {
+      min-width: 0;
     }
 
     .section-meta dt {
-      margin: 0;
+      margin: 0 0 1px;
       color: #465563;
-      font-weight: 700;
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .025em;
+      text-transform: uppercase;
     }
 
     .section-meta dd {
       margin: 0;
       min-width: 0;
+      color: var(--text);
     }
 
     .more-details {
-      margin-top: 14px;
-      padding-top: 12px;
+      margin-top: 13px;
+      padding-top: 11px;
       border-top: 1px solid #e3e8ed;
     }
 
     .more-details summary {
       color: var(--navy);
-      font-size: .9rem;
+      font-size: .88rem;
       font-weight: 700;
       cursor: pointer;
     }
 
     .more-details p {
-      margin: 9px 0 0;
+      margin: 8px 0 0;
       color: #465463;
-      font-size: .86rem;
+      font-size: .84rem;
     }
 
     .card-actions {
-      margin-top: 17px;
+      margin-top: 14px;
       display: flex;
       flex-wrap: wrap;
       gap: 9px;
@@ -534,7 +618,7 @@
       align-items: center;
       justify-content: center;
       border-radius: 7px;
-      font-size: .9rem;
+      font-size: .88rem;
       font-weight: 700;
       line-height: 1.35;
       cursor: pointer;
@@ -565,10 +649,48 @@
     .copy-status {
       display: block;
       min-height: 1.35em;
-      margin-top: 8px;
+      margin-top: 7px;
       color: var(--open);
-      font-size: .86rem;
+      font-size: .84rem;
       font-weight: 700;
+    }
+
+    .filter-note {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .progress-toggle {
+      margin: 18px 0 0;
+      padding: 13px 15px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .progress-toggle input {
+      width: 20px;
+      height: 20px;
+      margin: 2px 0 0;
+      flex: 0 0 auto;
+    }
+
+    .progress-toggle label {
+      color: var(--text);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .progress-toggle small {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-weight: 400;
+      line-height: 1.45;
     }
 
     .registration-help {
@@ -740,9 +862,11 @@
       .filters-grid { grid-template-columns: 1fr; }
       .choice-row { display: grid; grid-template-columns: 1fr; }
       .choice-row label { width: 100%; }
-      .section-grid { grid-template-columns: 1fr; }
-      .section-meta { grid-template-columns: 1fr; gap: 2px; }
-      .section-meta dd + dt { margin-top: 7px; }
+      .section-meta { grid-template-columns: 1fr; gap: 9px; }
+      .section-row { padding: 16px; }
+      .course-panel-header { padding: 15px 16px 13px; }
+      .section-row-top { flex-direction: column; gap: 10px; }
+      .badge-row { justify-content: flex-start; }
       .registration-help { padding: 22px 16px; }
       .card-actions { display: grid; grid-template-columns: 1fr; }
       .copy-button, .sis-link { width: 100%; }
@@ -797,7 +921,7 @@
         <div>
           <h2 id="how-heading">Start With What You Need</h2>
           <p>Use <strong>Open Classes</strong> when you are looking for a section that may still have space. Switch to <strong>All Classes</strong> to see the full semester schedule, including wait-listed and closed sections.</p>
-          <p>Availability can change quickly. Use <strong>View Live Section Details</strong> before enrolling to confirm the latest official information.</p>
+          <p>Each course includes a short plain-language description to help you compare options. You can also filter by class format and, when SIS provides the designation, <strong>ZTC, Low Cost Textbook, or OER</strong>. Availability can change quickly, so use <strong>View Live Section Details</strong> before enrolling.</p>
         </div>
 
         <aside class="source-note" aria-label="Class data information">
@@ -846,10 +970,27 @@
             </div>
 
             <div class="field">
+              <label for="materials-filter">Course materials</label>
+              <select id="materials-filter" name="materials">
+                <option value="all">All materials</option>
+              </select>
+            </div>
+
+            <div class="field">
               <label for="search-filter">Search classes</label>
-              <input id="search-filter" name="search" type="search" placeholder="Course, title, instructor, class number">
+              <input id="search-filter" name="search" type="search" placeholder="Course, topic, instructor, class number">
             </div>
           </div>
+
+          <div class="progress-toggle" id="progress-toggle-wrap">
+            <input type="checkbox" id="include-in-progress" name="include-in-progress">
+            <label for="include-in-progress">
+              Include open classes already in progress
+              <small>By default, Open ECJ Classes shows sections that have not started yet. Use this option to also see open sections whose start date has passed.</small>
+            </label>
+          </div>
+
+          <p class="filter-note"><strong>Format labels:</strong> Online = asynchronous; Zoom = scheduled live online meetings; In Person Hybrid = campus + online; Zoom Hybrid = campus + live Zoom; HyFlex = choose campus or live online for scheduled meetings. <strong>Materials:</strong> ZTC = Zero Textbook Cost; Low Cost = the LACCD low-textbook-cost designation; OER = Open Educational Resources when SIS identifies the section that way.</p>
 
           <p style="margin:18px 0 0;">
             <button class="clear-button" id="clear-filters" type="button">Reset Filters</button>
@@ -871,7 +1012,7 @@
       <section class="registration-help" aria-labelledby="registration-heading">
         <p class="eyebrow" style="color:#6d3a78;">Found a class?</p>
         <h2 id="registration-heading">Ready to Register?</h2>
-        <p>Each class card shows a five-digit <strong>Class Number</strong>. That is the number you can copy and use to find the exact section in the LACCD Student Portal.</p>
+        <p>Each section shows a five-digit <strong>Class Number</strong>. That is the number you can copy and use to find the exact section in the LACCD Student Portal.</p>
 
         <ol class="register-steps">
           <li><strong>Copy the Class Number</strong> from the section you want.</li>
@@ -945,12 +1086,64 @@
       const DATA_URL = "data/classes.json";
       const SIS_URL = "https://mycollege-guest.laccd.edu/psc/classsearchguest/EMPLOYEE/HRMS/c/COMMUNITY_ACCESS.CLASS_SEARCH.GBL";
       const departmentOrder = ["English", "Communication Studies", "Journalism"];
+      const formatOrder = ["In Person", "Online", "Zoom", "In Person Hybrid", "Zoom Hybrid", "HyFlex"];
+      const materialOrder = ["ZTC", "Low Cost", "OER"];
+
+      // Concise, student-friendly descriptions based on the LAMC 2026–2027 catalog.
+      const courseDescriptions = {
+        "COMM C1000": "Build confidence speaking, researching, and persuading an audience.",
+        "COMM 100": "Explore how people communicate and why it matters.",
+        "COMM 101": "Build confidence speaking and presenting to an audience.",
+        "COMM 102": "Strengthen speaking, research, argument, and critical-thinking skills.",
+        "COMM 104": "Build and challenge arguments using evidence and logic.",
+        "COMM 109": "Create engaging social media messages for different audiences.",
+        "COMM 121": "Understand communication in personal and professional relationships.",
+        "COMM 122": "Communicate more effectively across cultures and communities.",
+        "COMM 130": "Bring stories, poetry, and drama to life.",
+        "COMM 151": "Build teamwork, leadership, problem-solving, and conflict-management skills.",
+        "COMM 190": "Create digital content while exploring today’s media.",
+        "ENGL C1000": "Build college reading, writing, research, and thinking skills.",
+        "ENGL C1000E": "Build college writing skills with extra built-in support.",
+        "ENGL C1001": "Analyze ideas and build strong, evidence-based arguments.",
+        "ENGLISH 021": "Strengthen foundational reading, writing, grammar, and essay skills.",
+        "ENGLISH 028": "Build stronger reading, essay, argument, and research skills.",
+        "ENGLISH 032": "Help edit and produce the college literary magazine.",
+        "ENGLISH 101": "Build college reading, writing, research, and thinking skills.",
+        "ENGLISH 101X": "Build college writing skills with extra support.",
+        "ENGLISH 101Y": "Complete college composition with additional writing support.",
+        "ENGLISH 101Z": "Complete college composition with more intensive built-in support.",
+        "ENGLISH 102": "Read literature and build strong analytical writing skills.",
+        "ENGLISH 103": "Analyze ideas and build evidence-based arguments.",
+        "ENGLISH 107": "Build critical thinking through literature, research, and writing.",
+        "ENGLISH 109": "Create clear, engaging writing for social media audiences.",
+        "ENGLISH 124": "Write, revise, and prepare short stories for publication.",
+        "ENGLISH 127": "Explore fiction, poetry, nonfiction, and performance writing.",
+        "ENGLISH 203": "Explore world literature from ancient to early modern times.",
+        "ENGLISH 204": "Explore world literature from the 1600s to today.",
+        "ENGLISH 205": "Explore British literature from its beginnings through the 1800s.",
+        "ENGLISH 206": "Explore British literature from the 1800s to today.",
+        "ENGLISH 208": "Explore American voices from the 1800s to today.",
+        "ENGLISH 218": "Explore children’s stories across cultures, genres, and generations.",
+        "ENGLISH 223": "Turn real experiences and subjects into compelling stories.",
+        "ENGLISH 239": "Explore women’s lives and identities through literature.",
+        "ENGLISH 240": "Compare books and stories with their film adaptations.",
+        "ENGLISH 241": "Explore how filmmakers transform literature for the screen.",
+        "ENGLISH 420": "Design research and evaluate evidence-based studies.",
+        "JOURNAL 043": "Create professional PR materials for real-world communication.",
+        "JOURNAL 100": "Explore how media influences people, culture, and society.",
+        "JOURNAL 101": "Find, report, and write accurate news stories.",
+        "JOURNAL 202": "Develop advanced reporting, feature, and editorial writing skills."
+      };
+
       const state = { data: null };
 
       const termFilter = document.getElementById("term-filter");
       const subjectFilter = document.getElementById("subject-filter");
       const formatFilter = document.getElementById("format-filter");
+      const materialsFilter = document.getElementById("materials-filter");
       const searchFilter = document.getElementById("search-filter");
+      const includeInProgress = document.getElementById("include-in-progress");
+      const progressToggleWrap = document.getElementById("progress-toggle-wrap");
       const results = document.getElementById("results");
       const summary = document.getElementById("result-summary");
       const lastUpdated = document.getElementById("last-updated");
@@ -993,6 +1186,238 @@
         return String(a).localeCompare(String(b), undefined, { numeric: true, sensitivity: "base" });
       }
 
+      function todayLocal() {
+        const now = new Date();
+        return new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      }
+
+      function parseUsDate(value) {
+        const match = String(value || "").match(/\b(\d{2})\/(\d{2})\/(\d{4})\b/);
+        if (!match) return null;
+        return new Date(Number(match[3]), Number(match[1]) - 1, Number(match[2]));
+      }
+
+      function sectionStartDate(section) {
+        if (section.start_date) {
+          const parts = String(section.start_date).split("-").map(Number);
+          if (parts.length === 3 && parts.every(Number.isFinite)) {
+            return new Date(parts[0], parts[1] - 1, parts[2]);
+          }
+        }
+        return parseUsDate(section.dates);
+      }
+
+      function hasStarted(section) {
+        const start = sectionStartDate(section);
+        if (!start) return false;
+        return start < todayLocal();
+      }
+
+      function dedupeRepeatedPhrase(value) {
+        const words = String(value || "").trim().split(/\s+/).filter(Boolean);
+        if (words.length < 2) return String(value || "").trim();
+        for (let size = 1; size <= Math.floor(words.length / 2); size += 1) {
+          if (words.length % size !== 0) continue;
+          const phrase = words.slice(0, size);
+          let repeated = true;
+          for (let i = size; i < words.length; i += size) {
+            if (words.slice(i, i + size).join(" ") !== phrase.join(" ")) {
+              repeated = false;
+              break;
+            }
+          }
+          if (repeated) return phrase.join(" ");
+        }
+        return words.join(" ");
+      }
+
+      function normalizedFormat(section) {
+        const haystack = [
+          section.format,
+          section.room,
+          section.schedule,
+          section.details
+        ].filter(Boolean).join(" ").toLowerCase();
+
+        if (/\bhyflex\b/.test(haystack)) return "HyFlex";
+
+        const hybrid = /\bhybrid\b|\bblended\b/.test(haystack);
+        const live = /\bonline live\b|\bzoom\b/.test(haystack);
+        const online = /\bonline\b/.test(haystack);
+        const physical = /mission-(?!online\b)[a-z0-9]/i.test(haystack);
+
+        if ((hybrid && live) || (live && physical)) return "Zoom Hybrid";
+        if (hybrid) return "In Person Hybrid";
+        if (live) return "Zoom";
+        if (online && !physical) return "Online";
+        if (online && physical) return "In Person Hybrid";
+        return "In Person";
+      }
+
+      function materialFlags(section) {
+        const provided = Array.isArray(section.materials) ? section.materials : [];
+        const haystack = [
+          section.materials_text,
+          section.details,
+          section.room,
+          section.schedule
+        ].filter(Boolean).join(" ");
+
+        const flags = new Set();
+        provided.forEach((item) => {
+          const value = String(item).toLowerCase();
+          if (value === "ztc" || value.includes("zero textbook")) flags.add("ZTC");
+          if (value === "low cost" || value.includes("low textbook")) flags.add("Low Cost");
+          if (value === "oer" || value.includes("open educational")) flags.add("OER");
+        });
+
+        if (/\bZTC\b|Zero\s+Textbook\s+Cost/i.test(haystack)) flags.add("ZTC");
+        if (/\b(?:LCT|LTC)\b|Low\s+Textbook\s+Cost|Low\s+Cost\s+Textbook/i.test(haystack)) flags.add("Low Cost");
+        if (/\bOER\b|Open\s+Educational\s+Resources?/i.test(haystack)) flags.add("OER");
+
+        return materialOrder.filter((item) => flags.has(item));
+      }
+
+      function formatBadgeClass(format) {
+        return "format-" + String(format).toLowerCase().replace(/\s+/g, "-");
+      }
+
+      function materialBadgeClass(material) {
+        if (material === "ZTC") return "material-ztc";
+        if (material === "Low Cost") return "material-low-cost";
+        return "material-oer";
+      }
+
+      function displayLocation(section, format) {
+        if (format === "Online") return "Online";
+        if (format === "Zoom") return "Zoom";
+        if (format === "Zoom Hybrid") return "Campus + Zoom";
+        if (format === "HyFlex") return "Campus or live online";
+
+        const room = dedupeRepeatedPhrase(section.room || "");
+        const match = room.match(/Mission-(?!Online\b)(.*?)(?=\s+Mission-|$)/i);
+        let physical = match ? match[1].trim() : room.replace(/^Mission-/i, "").trim();
+
+        if (!physical || /^Online\b/i.test(physical)) {
+          physical = format === "In Person Hybrid" ? "Campus + online" : "";
+        }
+        if (format === "In Person Hybrid" && physical && !/\bonline\b/i.test(physical)) {
+          return physical + " + online";
+        }
+        return physical;
+      }
+
+      function displayDates(section) {
+        if (section.start_date && section.end_date) {
+          const startParts = String(section.start_date).split("-").map(Number);
+          const endParts = String(section.end_date).split("-").map(Number);
+          if (startParts.length === 3 && endParts.length === 3) {
+            const start = new Date(startParts[0], startParts[1] - 1, startParts[2]);
+            const end = new Date(endParts[0], endParts[1] - 1, endParts[2]);
+            const sameYear = start.getFullYear() === end.getFullYear();
+            const dateFmt = { month: "short", day: "numeric" };
+            const startText = new Intl.DateTimeFormat("en-US", dateFmt).format(start);
+            const endText = new Intl.DateTimeFormat("en-US", {
+              month: "short",
+              day: "numeric",
+              year: "numeric"
+            }).format(end);
+            return startText + "–" + endText;
+          }
+        }
+
+        const matches = [...String(section.dates || "").matchAll(/(\d{2}\/\d{2}\/\d{4})\s*-\s*(\d{2}\/\d{2}\/\d{4})/g)];
+        if (!matches.length) return section.dates || "";
+        const starts = matches.map((m) => parseUsDate(m[1])).filter(Boolean);
+        const ends = matches.map((m) => parseUsDate(m[2])).filter(Boolean);
+        if (!starts.length || !ends.length) return matches[0][0];
+        const start = new Date(Math.min(...starts.map((d) => d.getTime())));
+        const end = new Date(Math.max(...ends.map((d) => d.getTime())));
+        const startText = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" }).format(start);
+        const endText = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" }).format(end);
+        return startText + "–" + endText;
+      }
+
+      function dayLabel(code) {
+        const labels = { Mo: "Mon", Tu: "Tue", We: "Wed", Th: "Thu", Fr: "Fri", Sa: "Sat", Su: "Sun" };
+        const parts = String(code || "").match(/Mo|Tu|We|Th|Fr|Sa|Su/g) || [];
+        return parts.map((part) => labels[part] || part).join("/");
+      }
+
+      function meetingFromDetails(section, format) {
+        let schedule = String(section.schedule || "").trim();
+        if (schedule && !looksLikeMeeting(schedule)) schedule = "";
+
+        const source = [schedule, section.details].filter(Boolean).join(" ");
+        const match = source.match(/\b((?:Mo|Tu|We|Th|Fr|Sa|Su)+)\s+(\d{1,2}:\d{2}\s*(?:AM|PM))\s*-\s*(\d{1,2}:\d{2}\s*(?:AM|PM))/i);
+        if (match) {
+          return dayLabel(match[1]) + " · " + match[2].replace(/\s+/g, " ") + "–" + match[3].replace(/\s+/g, " ");
+        }
+
+        if (format === "Online") return "No scheduled meeting time";
+        if (/\bTBA\b/i.test(source)) return "TBA";
+        return schedule;
+      }
+
+      function displayInstructor(section) {
+        let instructor = dedupeRepeatedPhrase(section.instructor || "");
+        let schedule = String(section.schedule || "").trim();
+        if (!instructor && schedule && !looksLikeMeeting(schedule)) {
+          instructor = dedupeRepeatedPhrase(schedule);
+        }
+        return instructor;
+      }
+
+      function looksLikeMeeting(value) {
+        if (!value) return false;
+        return /(TBA|\bMo\b|\bTu\b|\bWe\b|\bTh\b|\bFr\b|\bSa\b|\bSu\b|\d{1,2}:\d{2}\s*(?:AM|PM)|Zoom|Hybrid)/i.test(value);
+      }
+
+      function englishCourseSortKey(section) {
+        const subject = String(section.subject_code || "").toUpperCase();
+        const number = String(section.course_number || "").toUpperCase();
+        const exact = subject + " " + number;
+        const priority = {
+          "ENGL C1000": 0,
+          "ENGL C1000E": 1,
+          "ENGL C1001": 2,
+          "ENGLISH 102": 3
+        };
+        if (Object.prototype.hasOwnProperty.call(priority, exact)) {
+          return [0, priority[exact], "", ""];
+        }
+
+        const numericMatch = number.match(/\d+/);
+        const numeric = numericMatch ? Number(numericMatch[0]) : 999999;
+        const suffix = number.replace(/^\D*\d+/, "");
+        return [1, numeric, suffix, exact];
+      }
+
+      function compareCourseSections(a, b) {
+        if (a.department === "English" && b.department === "English") {
+          const ak = englishCourseSortKey(a);
+          const bk = englishCourseSortKey(b);
+          for (let i = 0; i < ak.length; i += 1) {
+            if (typeof ak[i] === "number" && typeof bk[i] === "number") {
+              if (ak[i] !== bk[i]) return ak[i] - bk[i];
+            } else {
+              const cmp = naturalCompare(ak[i], bk[i]);
+              if (cmp) return cmp;
+            }
+          }
+          return naturalCompare(a.class_number, b.class_number);
+        }
+
+        const number = naturalCompare(a.course_number, b.course_number);
+        if (number) return number;
+        return naturalCompare(a.class_number, b.class_number);
+      }
+
+      function friendlyCourseDescription(section) {
+        const key = String(section.course || "").toUpperCase();
+        return courseDescriptions[key] || "";
+      }
+
       function currentSections() {
         const term = selectedTerm();
         if (!term || !Array.isArray(term.sections)) return [];
@@ -1000,24 +1425,34 @@
         const view = availability();
         const subject = subjectFilter.value;
         const format = formatFilter.value;
+        const material = materialsFilter.value;
         const query = searchFilter.value.trim().toLowerCase();
+        const includeStarted = includeInProgress.checked;
 
         return term.sections.filter((section) => {
           if (view === "open" && section.status !== "Open") return false;
+          if (view === "open" && !includeStarted && hasStarted(section)) return false;
           if (subject !== "all" && section.department !== subject) return false;
-          if (format !== "all" && section.format !== format) return false;
+
+          const normalized = normalizedFormat(section);
+          if (format !== "all" && normalized !== format) return false;
+
+          const flags = materialFlags(section);
+          if (material !== "all" && !flags.includes(material)) return false;
 
           if (query) {
             const haystack = [
               section.course,
               section.course_number,
               section.title,
+              friendlyCourseDescription(section),
               section.class_number,
               section.section,
-              section.instructor,
+              displayInstructor(section),
               section.schedule,
               section.room,
-              section.format
+              normalized,
+              flags.join(" ")
             ].filter(Boolean).join(" ").toLowerCase();
             if (!haystack.includes(query)) return false;
           }
@@ -1025,7 +1460,7 @@
         }).sort((a, b) => {
           const dept = departmentOrder.indexOf(a.department) - departmentOrder.indexOf(b.department);
           if (dept) return dept;
-          const course = naturalCompare(a.course_number, b.course_number);
+          const course = compareCourseSections(a, b);
           if (course) return course;
           return naturalCompare(a.class_number, b.class_number);
         });
@@ -1045,9 +1480,11 @@
       function populateFormats() {
         const previous = formatFilter.value || "all";
         const term = selectedTerm();
-        const formats = term && Array.isArray(term.sections)
-          ? Array.from(new Set(term.sections.map((section) => section.format).filter(Boolean))).sort(naturalCompare)
-          : [];
+        const available = new Set(
+          term && Array.isArray(term.sections)
+            ? term.sections.map(normalizedFormat)
+            : []
+        );
 
         formatFilter.replaceChildren();
         const all = document.createElement("option");
@@ -1055,51 +1492,62 @@
         all.textContent = "All formats";
         formatFilter.appendChild(all);
 
-        formats.forEach((format) => {
+        formatOrder.filter((format) => available.has(format)).forEach((format) => {
           const option = document.createElement("option");
           option.value = format;
           option.textContent = format;
           formatFilter.appendChild(option);
         });
 
-        if ([...formatFilter.options].some((option) => option.value === previous)) {
-          formatFilter.value = previous;
-        }
+        formatFilter.value = [...formatFilter.options].some((option) => option.value === previous) ? previous : "all";
       }
 
-      function addMeta(dl, label, value) {
+      function populateMaterials() {
+        const previous = materialsFilter.value || "all";
+        const term = selectedTerm();
+        const available = new Set();
+
+        if (term && Array.isArray(term.sections)) {
+          term.sections.forEach((section) => materialFlags(section).forEach((flag) => available.add(flag)));
+        }
+
+        materialsFilter.replaceChildren();
+        const all = document.createElement("option");
+        all.value = "all";
+        all.textContent = "All materials";
+        materialsFilter.appendChild(all);
+
+        materialOrder.filter((flag) => available.has(flag)).forEach((flag) => {
+          const option = document.createElement("option");
+          option.value = flag;
+          option.textContent = flag === "Low Cost" ? "Low Cost Textbook" : flag;
+          materialsFilter.appendChild(option);
+        });
+
+        materialsFilter.disabled = available.size === 0;
+        materialsFilter.title = available.size === 0
+          ? "No ZTC, low-cost, or OER flags were detected in the current SIS feed."
+          : "";
+
+        materialsFilter.value = [...materialsFilter.options].some((option) => option.value === previous) ? previous : "all";
+      }
+
+      function syncProgressControl() {
+        const openOnly = availability() === "open";
+        progressToggleWrap.hidden = !openOnly;
+        includeInProgress.disabled = !openOnly;
+      }
+
+      function addMetaItem(dl, label, value) {
         if (!value) return;
-        dl.appendChild(element("dt", "", label));
-        dl.appendChild(element("dd", "", value));
+        const wrap = element("div", "section-meta-item");
+        wrap.appendChild(element("dt", "", label));
+        wrap.appendChild(element("dd", "", value));
+        dl.appendChild(wrap);
       }
 
       function statusClass(status) {
         return "status-" + String(status || "unknown").toLowerCase().replace(/\s+/g, "-");
-      }
-
-      function looksLikeMeeting(value) {
-        if (!value) return false;
-        return /(TBA|\bMo\b|\bTu\b|\bWe\b|\bTh\b|\bFr\b|\bSa\b|\bSu\b|\d{1,2}:\d{2}\s*(?:AM|PM)|Zoom|Hybrid)/i.test(value);
-      }
-
-      function displayDetails(section) {
-        let schedule = section.schedule || "";
-        let instructor = section.instructor || "";
-
-        if (schedule && instructor && schedule.trim() === instructor.trim()) {
-          schedule = "";
-        }
-
-        if (!instructor && schedule && !looksLikeMeeting(schedule)) {
-          instructor = schedule;
-          schedule = "";
-        }
-
-        if (!schedule && section.format === "Online") {
-          schedule = "TBA / see live section details";
-        }
-
-        return { schedule, instructor };
       }
 
       async function copyClassNumber(button, classNumber, statusNode) {
@@ -1146,44 +1594,65 @@
           "&";
       }
 
-      function renderSectionCard(section, courseLabel) {
-        const card = element("article", "section-card");
-        card.dataset.department = section.department || "";
+      function renderSectionRow(section, courseLabel, index) {
+        const row = element("li", "section-row");
+        const article = element("article", "");
+        article.setAttribute("aria-labelledby", "section-" + section.class_number + "-" + index);
 
-        const header = element("div", "section-card-header");
+        const top = element("div", "section-row-top");
         const idBlock = element("div", "class-id-block");
         idBlock.appendChild(element("p", "class-id-label", "Class Number"));
 
-        const cardHeading = element("h5", "", "Class " + (section.class_number || "See live details"));
-        idBlock.appendChild(cardHeading);
+        const heading = element("h5", "", section.class_number || "See live details");
+        heading.id = "section-" + section.class_number + "-" + index;
+        idBlock.appendChild(heading);
 
         if (section.section) {
           idBlock.appendChild(element("p", "section-code", "Section " + section.section));
         }
 
+        const badges = element("div", "badge-row");
         const status = element("span", "status " + statusClass(section.status), section.status || "Status unknown");
-        header.append(idBlock, status);
-        card.appendChild(header);
+        badges.appendChild(status);
 
-        const clean = displayDetails(section);
+        const format = normalizedFormat(section);
+        badges.appendChild(element("span", "format-badge " + formatBadgeClass(format), format));
+
+        materialFlags(section).forEach((flag) => {
+          const badge = element("span", "material-badge " + materialBadgeClass(flag), flag);
+          if (flag === "ZTC") badge.setAttribute("aria-label", "Zero Textbook Cost");
+          if (flag === "OER") badge.setAttribute("aria-label", "Open Educational Resources");
+          if (flag === "Low Cost") badge.setAttribute("aria-label", "Low Textbook Cost");
+          badges.appendChild(badge);
+        });
+
+        if (hasStarted(section)) {
+          const start = sectionStartDate(section);
+          const label = start
+            ? "Started " + new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" }).format(start)
+            : "In progress";
+          badges.appendChild(element("span", "started-badge", label));
+        }
+
+        top.append(idBlock, badges);
+        article.appendChild(top);
+
         const dl = element("dl", "section-meta");
-        addMeta(dl, "Format", section.format);
-        addMeta(dl, "Meets", clean.schedule);
-        addMeta(dl, "Location", section.room);
-        addMeta(dl, "Instructor", clean.instructor);
-        addMeta(dl, "Dates", section.dates);
-        card.appendChild(dl);
+        addMetaItem(dl, "Meets", meetingFromDetails(section, format));
+        addMetaItem(dl, "Location", displayLocation(section, format));
+        addMetaItem(dl, "Instructor", displayInstructor(section));
+        addMetaItem(dl, "Dates", displayDates(section));
+        article.appendChild(dl);
 
         if (section.details) {
           const details = element("details", "more-details");
           const detailsSummary = element("summary", "", "More section details");
           const detailsText = element("p", "", section.details);
           details.append(detailsSummary, detailsText);
-          card.appendChild(details);
+          article.appendChild(details);
         }
 
         const actions = element("div", "card-actions");
-
         const copy = element("button", "copy-button", "Copy Number");
         copy.type = "button";
         copy.setAttribute(
@@ -1201,24 +1670,47 @@
         );
 
         actions.append(copy, link);
-        card.appendChild(actions);
+        article.appendChild(actions);
 
         const copyStatus = element("span", "copy-status", "");
         copyStatus.setAttribute("role", "status");
         copyStatus.setAttribute("aria-live", "polite");
-        card.appendChild(copyStatus);
+        article.appendChild(copyStatus);
 
         copy.addEventListener("click", () => {
           copyClassNumber(copy, section.class_number || "", copyStatus);
         });
 
-        return card;
+        row.appendChild(article);
+        return row;
+      }
+
+      function groupCourses(departmentSections) {
+        const groups = [];
+        const map = new Map();
+
+        departmentSections.forEach((section) => {
+          const key = (section.course || "Course") + "|" + (section.title || "");
+          if (!map.has(key)) {
+            const group = { key, sections: [] };
+            map.set(key, group);
+            groups.push(group);
+          }
+          map.get(key).sections.push(section);
+        });
+
+        groups.sort((a, b) => compareCourseSections(a.sections[0], b.sections[0]));
+        groups.forEach((group) => {
+          group.sections.sort((a, b) => naturalCompare(a.class_number, b.class_number));
+        });
+        return groups;
       }
 
       function render() {
         const term = selectedTerm();
         const sections = currentSections();
         results.replaceChildren();
+        syncProgressControl();
 
         if (!term) {
           summary.textContent = "No semester data is available.";
@@ -1234,8 +1726,11 @@
           return;
         }
 
-        const viewLabel = availability() === "open" ? "open" : "matching";
-        summary.textContent = sections.length + " " + viewLabel + (sections.length === 1 ? " section" : " sections") + " found for " + term.label + ".";
+        const view = availability();
+        const descriptor = view === "open"
+          ? (includeInProgress.checked ? "open" : "upcoming open")
+          : "matching";
+        summary.textContent = sections.length + " " + descriptor + (sections.length === 1 ? " section" : " sections") + " found for " + term.label + ".";
 
         if (!Array.isArray(term.sections) || term.sections.length === 0) {
           const box = element("div", "error-state");
@@ -1253,9 +1748,9 @@
         if (sections.length === 0) {
           const box = element("div", "empty-state");
           box.appendChild(element("h3", "", "No classes match these filters"));
-          box.appendChild(element("p", "", availability() === "open"
-            ? "There may be wait-listed or closed sections. Try All ECJ Classes or clear one of the filters."
-            : "Try clearing a subject, format, or search filter."));
+          box.appendChild(element("p", "", view === "open"
+            ? "Try including classes already in progress, choosing All ECJ Classes, or clearing a filter."
+            : "Try clearing a subject, format, materials, or search filter."));
           results.appendChild(box);
           return;
         }
@@ -1277,33 +1772,39 @@
           headingWrap.appendChild(deptHeading);
           departmentGroup.appendChild(headingWrap);
 
-          const courseKeys = [];
-          const courseMap = new Map();
+          const courseGroups = groupCourses(departmentSections);
 
-          departmentSections.forEach((section) => {
-            const key = (section.course || "Course") + "|" + (section.title || "");
-            if (!courseMap.has(key)) {
-              courseMap.set(key, []);
-              courseKeys.push(key);
-            }
-            courseMap.get(key).push(section);
-          });
-
-          courseKeys.forEach((key, courseIndex) => {
-            const courseSections = courseMap.get(key);
-            const first = courseSections[0];
-            const courseGroup = element("section", "course-group");
+          courseGroups.forEach((course, courseIndex) => {
+            const first = course.sections[0];
+            const courseWrap = element("section", "course-group");
+            const panel = element("div", "course-panel");
+            const panelHeader = element("div", "course-panel-header");
             const headingText = (first.course || "Course") + (first.title ? ": " + first.title : "");
             const courseHeading = element("h4", "course-heading", headingText);
             const courseHeadingId = headingId + "-course-" + courseIndex;
             courseHeading.id = courseHeadingId;
-            courseGroup.setAttribute("aria-labelledby", courseHeadingId);
-            courseGroup.appendChild(courseHeading);
+            courseWrap.setAttribute("aria-labelledby", courseHeadingId);
+            panelHeader.appendChild(courseHeading);
+            const description = friendlyCourseDescription(first);
+            if (description) {
+              panelHeader.appendChild(element("p", "course-description", description));
+            }
+            panelHeader.appendChild(
+              element(
+                "p",
+                "course-count",
+                course.sections.length + (course.sections.length === 1 ? " matching section" : " matching sections")
+              )
+            );
+            panel.appendChild(panelHeader);
 
-            const grid = element("div", "section-grid");
-            courseSections.forEach((section) => grid.appendChild(renderSectionCard(section, headingText)));
-            courseGroup.appendChild(grid);
-            departmentGroup.appendChild(courseGroup);
+            const list = element("ul", "section-list");
+            course.sections.forEach((section, sectionIndex) => {
+              list.appendChild(renderSectionRow(section, headingText, sectionIndex));
+            });
+            panel.appendChild(list);
+            courseWrap.appendChild(panel);
+            departmentGroup.appendChild(courseWrap);
           });
 
           results.appendChild(departmentGroup);
@@ -1312,14 +1813,19 @@
 
       function resetFilters() {
         document.getElementById("view-open").checked = true;
+        includeInProgress.checked = false;
         subjectFilter.value = "all";
         formatFilter.value = "all";
+        materialsFilter.value = "all";
         searchFilter.value = "";
         render();
       }
 
       filterForm.addEventListener("change", (event) => {
-        if (event.target === termFilter) populateFormats();
+        if (event.target === termFilter) {
+          populateFormats();
+          populateMaterials();
+        }
         render();
       });
 
@@ -1336,6 +1842,7 @@
           lastUpdated.textContent = formatDate(data.generated_at);
           populateTerms();
           populateFormats();
+          populateMaterials();
           render();
         })
         .catch(() => {
