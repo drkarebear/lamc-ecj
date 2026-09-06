@@ -1,0 +1,1861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <title>Find ECJ Classes | Los Angeles Mission College</title>
+  <meta name="description" content="Browse English, Communication Studies, and Journalism classes at Los Angeles Mission College, including current open-class status from the public LACCD class search.">
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <style>
+    :root {
+      --navy: #082f5f;
+      --navy-dark: #062447;
+      --blue: #145da0;
+      --gold: #e5ad27;
+      --white: #ffffff;
+      --cream: #f8f6f1;
+      --text: #263442;
+      --muted: #566574;
+      --border: #dce2e8;
+      --focus: #ffbf00;
+
+      --english: #7a4d00;
+      --english-soft: #fff8e8;
+      --comm: #006b67;
+      --comm-soft: #edf8f7;
+      --journalism: #6d3a78;
+      --journalism-soft: #f7f0f8;
+
+      --open: #17633a;
+      --open-bg: #eef8f1;
+      --wait: #735300;
+      --wait-bg: #fff8dc;
+      --closed: #6c4048;
+      --closed-bg: #faf1f2;
+
+      --format-online: #145da0;
+      --format-online-bg: #edf5fc;
+      --format-zoom: #6941a5;
+      --format-zoom-bg: #f3effa;
+      --format-hybrid: #006b67;
+      --format-hybrid-bg: #edf8f7;
+      --format-person: #7a4d00;
+      --format-person-bg: #fff8e8;
+
+      --ztc: #17633a;
+      --ztc-bg: #eef8f1;
+      --low-cost: #7a4d00;
+      --low-cost-bg: #fff8e8;
+      --oer: #5a3a83;
+      --oer-bg: #f4f0fa;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--white);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      overflow-wrap: break-word;
+    }
+
+    a { color: var(--blue); }
+    p { max-width: 75ch; }
+    button, input, select { font: inherit; }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 9999;
+      padding: 12px 18px;
+      background: var(--gold);
+      color: #132a3d;
+      border-radius: 0 0 5px 5px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .skip-link:focus { left: 12px; }
+
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    .site-header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      width: min(1200px, 100%);
+      margin: 0 auto;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .college-name {
+      display: inline-block;
+      color: var(--navy);
+      text-decoration: none;
+    }
+
+    .college-name-main {
+      display: block;
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.65rem;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .department-name {
+      display: block;
+      margin-top: 5px;
+      color: var(--navy);
+      font-size: .86rem;
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: .045em;
+      text-transform: uppercase;
+    }
+
+    .top-nav ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px 22px;
+      list-style: none;
+    }
+
+    .top-nav a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      color: var(--navy);
+      font-size: .95rem;
+      font-weight: 700;
+      line-height: 1.25;
+      text-decoration: none;
+      border-bottom: 3px solid transparent;
+    }
+
+    .top-nav a:hover,
+    .top-nav a[aria-current="page"] {
+      border-bottom-color: var(--gold);
+    }
+
+    .hero {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .hero-inner {
+      width: min(1050px, 100%);
+      margin: 0 auto;
+      padding: 62px 24px 58px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: #ffdf86;
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 760px;
+      margin: 0 0 16px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      line-height: 1.08;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0;
+      color: #eef4fa;
+      font-size: 1.1rem;
+    }
+
+    .main-wrap {
+      width: min(1100px, 100%);
+      margin: 0 auto;
+      padding: 44px 24px 72px;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+      gap: 28px;
+      align-items: start;
+      margin-bottom: 30px;
+    }
+
+    .intro-grid h2,
+    .registration-help h2 {
+      margin: 0 0 10px;
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .intro-grid p { margin: 0 0 12px; }
+
+    .source-note {
+      padding: 18px;
+      background: #f3f7fa;
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--blue);
+      border-radius: 8px;
+    }
+
+    .source-note p {
+      margin: 0;
+      font-size: .92rem;
+      line-height: 1.5;
+    }
+
+    .source-note p + p { margin-top: 8px; }
+
+    .filter-panel {
+      margin-bottom: 34px;
+      padding: 24px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .filter-panel h2 {
+      margin: 0 0 18px;
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.55rem;
+    }
+
+    .availability-fieldset {
+      margin: 0 0 22px;
+      padding: 0;
+      border: 0;
+    }
+
+    .availability-fieldset legend {
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .choice-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .choice-row input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .choice-row label {
+      min-height: 48px;
+      padding: 10px 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--white);
+      color: var(--navy);
+      border: 2px solid var(--navy);
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .choice-row input:checked + label {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .choice-row input:focus-visible + label {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    .filters-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
+      align-items: end;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .field select,
+    .field input[type="search"] {
+      width: 100%;
+      min-height: 48px;
+      padding: 9px 11px;
+      background: var(--white);
+      color: var(--text);
+      border: 2px solid #8d9aa6;
+      border-radius: 7px;
+    }
+
+    .clear-button {
+      min-height: 48px;
+      padding: 9px 14px;
+      background: var(--white);
+      color: var(--navy);
+      border: 2px solid var(--navy);
+      border-radius: 7px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .clear-button:hover { background: #edf3f8; }
+
+    .results-toolbar {
+      margin: 0 0 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .results-toolbar h2 {
+      margin: 0;
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.8rem;
+    }
+
+    .result-summary {
+      margin: 0;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .loading,
+    .empty-state,
+    .error-state {
+      padding: 26px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #f7f9fb;
+    }
+
+    .empty-state h3,
+    .error-state h3 {
+      margin-top: 0;
+      color: var(--navy);
+    }
+
+    .department-group {
+      --subject-accent: var(--navy);
+      --subject-soft: #f3f7fa;
+    }
+
+    .department-group[data-department="English"] {
+      --subject-accent: var(--english);
+      --subject-soft: var(--english-soft);
+    }
+
+    .department-group[data-department="Communication Studies"] {
+      --subject-accent: var(--comm);
+      --subject-soft: var(--comm-soft);
+    }
+
+    .department-group[data-department="Journalism"] {
+      --subject-accent: var(--journalism);
+      --subject-soft: var(--journalism-soft);
+    }
+
+    .department-group + .department-group { margin-top: 54px; }
+
+    .department-heading-wrap {
+      margin: 0 0 22px;
+      padding: 15px 18px;
+      background: var(--subject-soft);
+      border-left: 6px solid var(--subject-accent);
+      border-radius: 0 10px 10px 0;
+    }
+
+    .department-kicker {
+      margin: 0 0 2px;
+      color: var(--subject-accent);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .075em;
+      text-transform: uppercase;
+    }
+
+    .department-heading {
+      margin: 0;
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.8rem;
+      line-height: 1.2;
+    }
+
+    .course-group + .course-group { margin-top: 28px; }
+
+    .course-panel {
+      overflow: hidden;
+      background: var(--white);
+      border: 1px solid #d7dfe7;
+      border-top: 5px solid var(--subject-accent);
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(20, 43, 67, .07);
+    }
+
+    .course-panel-header {
+      padding: 17px 20px 15px;
+      background: var(--subject-soft);
+      border-bottom: 1px solid #d7dfe7;
+    }
+
+    .course-heading {
+      margin: 0;
+      color: var(--navy);
+      font-size: 1.18rem;
+      line-height: 1.35;
+    }
+
+    .course-description {
+      max-width: 78ch;
+      margin: 6px 0 0;
+      color: #40515f;
+      font-size: .94rem;
+      line-height: 1.5;
+    }
+
+    .course-count {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: .88rem;
+      font-weight: 700;
+    }
+
+    .section-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .section-row {
+      padding: 18px 20px;
+      background: var(--white);
+    }
+
+    .section-row + .section-row {
+      border-top: 1px solid #dfe5eb;
+    }
+
+    .section-row:hover {
+      background: #fbfcfd;
+    }
+
+    .section-row-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .class-id-block { min-width: 0; }
+
+    .class-id-label {
+      margin: 0 0 2px;
+      color: var(--muted);
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .section-row h5 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 1.12rem;
+      line-height: 1.3;
+    }
+
+    .section-code {
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: .86rem;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 7px;
+    }
+
+    .status,
+    .format-badge,
+    .material-badge,
+    .started-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 29px;
+      padding: 3px 9px;
+      border: 2px solid currentColor;
+      border-radius: 999px;
+      font-size: .76rem;
+      font-weight: 800;
+      line-height: 1.25;
+      white-space: nowrap;
+    }
+
+    .status-open { color: var(--open); background: var(--open-bg); }
+    .status-wait-list { color: var(--wait); background: var(--wait-bg); }
+    .status-closed { color: var(--closed); background: var(--closed-bg); }
+    .status-unknown { color: #4d5965; background: #f1f3f5; }
+
+    .format-online { color: var(--format-online); background: var(--format-online-bg); }
+    .format-zoom { color: var(--format-zoom); background: var(--format-zoom-bg); }
+    .format-in-person-hybrid,
+    .format-zoom-hybrid,
+    .format-hyflex { color: var(--format-hybrid); background: var(--format-hybrid-bg); }
+    .format-in-person { color: var(--format-person); background: var(--format-person-bg); }
+
+    .material-ztc { color: var(--ztc); background: var(--ztc-bg); }
+    .material-low-cost { color: var(--low-cost); background: var(--low-cost-bg); }
+    .material-oer { color: var(--oer); background: var(--oer-bg); }
+
+    .started-badge {
+      color: #5d4b13;
+      background: #fff8dc;
+    }
+
+    .section-meta {
+      margin: 15px 0 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 11px 18px;
+      font-size: .92rem;
+    }
+
+    .section-meta-item {
+      min-width: 0;
+    }
+
+    .section-meta dt {
+      margin: 0 0 1px;
+      color: #465563;
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .025em;
+      text-transform: uppercase;
+    }
+
+    .section-meta dd {
+      margin: 0;
+      min-width: 0;
+      color: var(--text);
+    }
+
+    .more-details {
+      margin-top: 13px;
+      padding-top: 11px;
+      border-top: 1px solid #e3e8ed;
+    }
+
+    .more-details summary {
+      color: var(--navy);
+      font-size: .88rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .more-details p {
+      margin: 8px 0 0;
+      color: #465463;
+      font-size: .84rem;
+    }
+
+    .card-actions {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      align-items: center;
+    }
+
+    .copy-button,
+    .sis-link {
+      min-height: 44px;
+      padding: 8px 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 7px;
+      font-size: .88rem;
+      font-weight: 700;
+      line-height: 1.35;
+      cursor: pointer;
+    }
+
+    .copy-button {
+      background: var(--white);
+      color: var(--navy);
+      border: 2px solid var(--navy);
+    }
+
+    .copy-button:hover { background: #edf3f8; }
+
+    .sis-link {
+      background: var(--navy);
+      color: var(--white);
+      border: 2px solid var(--navy);
+      text-decoration: none;
+    }
+
+    .sis-link:hover {
+      background: var(--blue);
+      border-color: var(--blue);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .copy-status {
+      display: block;
+      min-height: 1.35em;
+      margin-top: 7px;
+      color: var(--open);
+      font-size: .84rem;
+      font-weight: 700;
+    }
+
+    .filter-note {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .progress-toggle {
+      margin: 18px 0 0;
+      padding: 13px 15px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .progress-toggle input {
+      width: 20px;
+      height: 20px;
+      margin: 2px 0 0;
+      flex: 0 0 auto;
+    }
+
+    .progress-toggle label {
+      color: var(--text);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .progress-toggle small {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-weight: 400;
+      line-height: 1.45;
+    }
+
+    .registration-help {
+      margin-top: 56px;
+      padding: 30px;
+      background: #f5f8fb;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    .registration-help > p { margin: 0 0 18px; }
+
+    .register-steps {
+      margin: 0 0 24px;
+      padding: 18px 22px 18px 42px;
+      background: var(--white);
+      border: 1px solid #d7e1ea;
+      border-radius: 10px;
+    }
+
+    .register-steps li { padding: 3px 0; }
+    .register-steps strong { color: var(--navy); }
+
+    .registration-options {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .registration-option {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: 20px;
+      background: var(--white);
+      border: 1px solid #cfd9e2;
+      border-radius: 10px;
+    }
+
+    .registration-option h3 {
+      margin: 0 0 7px;
+      color: var(--navy);
+      font-size: 1.12rem;
+    }
+
+    .registration-option p {
+      margin: 0 0 15px;
+      font-size: .94rem;
+    }
+
+    .help-button {
+      min-height: 46px;
+      margin-top: auto;
+      padding: 9px 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--navy);
+      color: var(--white);
+      border: 2px solid var(--navy);
+      border-radius: 7px;
+      font-weight: 700;
+      line-height: 1.35;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .help-button:hover {
+      background: var(--blue);
+      border-color: var(--blue);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .registration-tip {
+      margin: 20px 0 0;
+      padding: 15px 17px;
+      background: #fff8df;
+      border-left: 5px solid #9a6a00;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .registration-tip p { margin: 0; }
+
+    .official-strip {
+      margin-top: 28px;
+      padding: 22px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    .official-strip h2 {
+      margin: 0 0 7px;
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.35rem;
+    }
+
+    .official-strip p { margin: 0 0 9px; }
+    .official-strip a { font-weight: 700; }
+
+    footer {
+      background: var(--navy-dark);
+      color: var(--white);
+    }
+
+    .footer-inner {
+      width: min(1050px, 100%);
+      margin: 0 auto;
+      padding: 38px 24px;
+    }
+
+    footer h2 {
+      margin: 0 0 8px;
+      color: var(--white);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.4rem;
+    }
+
+    footer p { margin: 4px 0; color: var(--white); }
+    footer a { color: var(--white); }
+
+    .site-disclaimer {
+      width: min(1050px, 100%);
+      margin: 0 auto;
+      padding: 17px 24px 24px;
+      border-top: 1px solid rgba(255,255,255,.18);
+      color: #cbd6e0;
+      font-size: .75rem;
+      line-height: 1.55;
+    }
+
+    .site-disclaimer p {
+      max-width: 950px;
+      margin: 0;
+      color: #cbd6e0;
+    }
+
+    .site-disclaimer p + p { margin-top: 7px; }
+    .site-disclaimer strong,
+    .site-disclaimer a { color: var(--white); }
+
+    @media (max-width: 900px) {
+      .header-inner { align-items: flex-start; flex-direction: column; gap: 14px; }
+      .top-nav { width: 100%; }
+      .top-nav ul { justify-content: flex-start; }
+      .intro-grid { grid-template-columns: 1fr; }
+      .filters-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .registration-options { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .header-inner { padding: 17px 18px; }
+      .college-name-main { font-size: 1.42rem; }
+      .top-nav ul {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 4px 10px;
+      }
+      .top-nav a {
+        width: 100%;
+        min-height: 46px;
+        padding: 6px 0;
+      }
+      .hero-inner { padding: 44px 18px 42px; }
+      .main-wrap { padding: 34px 18px 58px; }
+      .filter-panel { padding: 20px 16px; }
+      .filters-grid { grid-template-columns: 1fr; }
+      .choice-row { display: grid; grid-template-columns: 1fr; }
+      .choice-row label { width: 100%; }
+      .section-meta { grid-template-columns: 1fr; gap: 9px; }
+      .section-row { padding: 16px; }
+      .course-panel-header { padding: 15px 16px 13px; }
+      .section-row-top { flex-direction: column; gap: 10px; }
+      .badge-row { justify-content: flex-start; }
+      .registration-help { padding: 22px 16px; }
+      .card-actions { display: grid; grid-template-columns: 1fr; }
+      .copy-button, .sis-link { width: 100%; }
+      .footer-inner { padding: 30px 18px; }
+      .site-disclaimer { padding: 15px 18px 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body id="top">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="college-name" href="https://www.lamc.edu/" aria-label="Los Angeles Mission College homepage">
+        <span class="college-name-main">Los Angeles Mission College</span>
+        <span class="department-name">English, Communication Studies &amp; Journalism</span>
+      </a>
+
+      <nav class="top-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#programs">Degrees &amp; Certificates</a></li>
+          <li><a href="classes.html" aria-current="page">Find Classes</a></li>
+          <li><a href="student-resources.html">Student Resources</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-inner">
+        <p class="eyebrow">ECJ Class Finder</p>
+        <h1 id="page-title">Find an ECJ Class</h1>
+        <p>Browse English, Communication Studies, and Journalism classes at Los Angeles Mission College. Find an open section, copy its five-digit Class Number, and use that number when you register.</p>
+      </div>
+    </section>
+
+    <div class="main-wrap">
+      <section class="intro-grid" aria-labelledby="how-heading">
+        <div>
+          <h2 id="how-heading">Start With What You Need</h2>
+          <p>Use <strong>Open Classes</strong> when you are looking for a section that may still have space. Switch to <strong>All Classes</strong> to see the full semester schedule, including wait-listed and closed sections.</p>
+          <p>Each course includes a short plain-language description to help you compare options. You can also filter by class format and textbook cost when SIS provides a <strong>ZTC</strong> or <strong>Low Textbook Cost</strong> designation. Availability can change quickly, so use <strong>View Live Section Details</strong> before enrolling.</p>
+        </div>
+
+        <aside class="source-note" aria-label="Class data information">
+          <p><strong>Public schedule data</strong></p>
+          <p id="last-updated">Checking the latest saved class-list update...</p>
+          <p>This page reads a saved copy of public schedule information. It does not ask for or collect student login information.</p>
+        </aside>
+      </section>
+
+      <section class="filter-panel" aria-labelledby="filter-heading">
+        <h2 id="filter-heading">Choose Your Classes</h2>
+
+        <form id="class-filters">
+          <fieldset class="availability-fieldset">
+            <legend>What would you like to see?</legend>
+            <div class="choice-row">
+              <input type="radio" id="view-open" name="availability" value="open" checked>
+              <label for="view-open">Open ECJ Classes</label>
+
+              <input type="radio" id="view-all" name="availability" value="all">
+              <label for="view-all">All ECJ Classes</label>
+            </div>
+          </fieldset>
+
+          <div class="filters-grid">
+            <div class="field">
+              <label for="term-filter">Semester</label>
+              <select id="term-filter" name="term"></select>
+            </div>
+
+            <div class="field">
+              <label for="subject-filter">Subject</label>
+              <select id="subject-filter" name="subject">
+                <option value="all">All ECJ subjects</option>
+                <option value="English">English</option>
+                <option value="Communication Studies">Communication Studies</option>
+                <option value="Journalism">Journalism</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="format-filter">Class format</label>
+              <select id="format-filter" name="format">
+                <option value="all">All formats</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="materials-filter">Textbook cost</label>
+              <select id="materials-filter" name="materials">
+                <option value="all">All materials</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="search-filter">Search classes</label>
+              <input id="search-filter" name="search" type="search" placeholder="Course, topic, instructor, class number">
+            </div>
+          </div>
+
+          <div class="progress-toggle" id="progress-toggle-wrap">
+            <input type="checkbox" id="include-in-progress" name="include-in-progress">
+            <label for="include-in-progress">
+              Include open classes already in progress
+              <small>By default, Open ECJ Classes shows sections that have not started yet. Use this option to also see open sections whose start date has passed.</small>
+            </label>
+          </div>
+
+          <p class="filter-note"><strong>Format labels:</strong> Online = asynchronous; Zoom = scheduled live online meetings; In Person Hybrid = campus + online; Zoom Hybrid = campus + live Zoom; HyFlex = choose campus or live online for scheduled meetings. <strong>Textbook cost:</strong> ZTC = Zero Textbook Cost; Low Cost = required textbooks are under the LACCD low-cost threshold. A ZTC section may use OER, library materials, or other free readings.</p>
+
+          <p style="margin:18px 0 0;">
+            <button class="clear-button" id="clear-filters" type="button">Reset Filters</button>
+          </p>
+        </form>
+      </section>
+
+      <section aria-labelledby="results-heading">
+        <div class="results-toolbar">
+          <h2 id="results-heading">Class Results</h2>
+          <p class="result-summary" id="result-summary" aria-live="polite">Loading class information...</p>
+        </div>
+
+        <div id="results">
+          <p class="loading">Loading the saved ECJ class list...</p>
+        </div>
+      </section>
+
+      <section class="registration-help" aria-labelledby="registration-heading">
+        <p class="eyebrow" style="color:#6d3a78;">Found a class?</p>
+        <h2 id="registration-heading">Ready to Register?</h2>
+        <p>Each section shows a five-digit <strong>Class Number</strong>. That is the number you can copy and use to find the exact section in the LACCD Student Portal.</p>
+
+        <ol class="register-steps">
+          <li><strong>Copy the Class Number</strong> from the section you want.</li>
+          <li><strong>Open the LACCD Student Portal</strong> and sign in.</li>
+          <li>Choose <strong>Manage Classes</strong>, then <strong>Class Search and Enroll</strong>.</li>
+          <li>Use the Class Number to locate the exact section, review the details, and complete enrollment.</li>
+        </ol>
+
+        <div class="registration-options">
+          <article class="registration-option">
+            <h3>Current Students</h3>
+            <p>Already have an LACCD student account? Go directly to the Student Portal to search and enroll.</p>
+            <a class="help-button" href="https://sso.laccd.edu/adfs/ls/idpinitiatedsignon.aspx?loginToRp=csprd.laccd.edu" target="_blank" rel="noopener">Open the LACCD Student Portal</a>
+          </article>
+
+          <article class="registration-option">
+            <h3>New to Mission College?</h3>
+            <p>Start with the Mission College application. After you receive your student ID, you can use the Student Portal to register.</p>
+            <a class="help-button" href="https://www.lamc.edu/apply" target="_blank" rel="noopener">Apply to Mission College</a>
+          </article>
+
+          <article class="registration-option">
+            <h3>Need Registration Help?</h3>
+            <p>The Eagles Help Desk can assist with applications, registration, Student Portal access, and other enrollment questions.</p>
+            <a class="help-button" href="https://www.lamc.edu/student-services/welcome-center" target="_blank" rel="noopener">Visit the Eagles Help Desk</a>
+          </article>
+        </div>
+
+        <div class="registration-tip">
+          <p><strong>Tip:</strong> If a section is open now, it can still fill. Copy the Class Number and confirm the live section details before you enroll.</p>
+        </div>
+      </section>
+
+      <section class="official-strip" aria-labelledby="official-heading">
+        <h2 id="official-heading">Official Enrollment Information</h2>
+        <p>The LACCD Student Information System is the official source for enrollment status, prerequisites, permission requirements, and final class details. Each <strong>View Live Section Details</strong> button opens the Mission College listing for that exact Class Number and semester.</p>
+        <p><a href="https://mycollege-guest.laccd.edu/psc/classsearchguest/EMPLOYEE/HRMS/c/COMMUNITY_ACCESS.CLASS_SEARCH.GBL" target="_blank" rel="noopener">Open the official LACCD public Class Search</a></p>
+      </section>
+
+      <noscript>
+        <section class="error-state" aria-labelledby="javascript-heading">
+          <h2 id="javascript-heading">JavaScript Is Needed for the Class Filters</h2>
+          <p>You can still use the <a href="https://mycollege-guest.laccd.edu/psc/classsearchguest/EMPLOYEE/HRMS/c/COMMUNITY_ACCESS.CLASS_SEARCH.GBL">official LACCD public Class Search</a>.</p>
+        </section>
+      </noscript>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <h2>Los Angeles Mission College</h2>
+      <p>English, Communication Studies &amp; Journalism</p>
+      <p>13356 Eldridge Avenue · Sylmar, CA 91342</p>
+      <p><a href="https://www.lamc.edu/">Visit the Los Angeles Mission College website</a></p>
+      <p><a href="privacy.html">Privacy</a></p>
+      <p><a href="accessibility.html">Accessibility</a></p>
+      <p><a href="license.html">License &amp; Reuse</a></p>
+      <p><a href="https://www.lamc.edu/student-services" target="_blank" rel="noopener">Official LAMC Student Services</a></p>
+    </div>
+
+    <div class="site-disclaimer">
+      <p><strong>About This Site:</strong> This website is maintained by faculty in the Los Angeles Mission College English, Communication Studies &amp; Journalism Department as a resource for students and the community. It is not an official Los Angeles Mission College or Los Angeles Community College District website. Class information may change. For official enrollment information, consult the LACCD Student Information System.</p>
+      <p><strong>See something that needs updating?</strong> <a href="https://www.lamc.edu/academics/pathways/scc/english-dept">Contact the ECJ Department.</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      "use strict";
+
+      const DATA_URL = "data/classes.json";
+      const SIS_URL = "https://mycollege-guest.laccd.edu/psc/classsearchguest/EMPLOYEE/HRMS/c/COMMUNITY_ACCESS.CLASS_SEARCH.GBL";
+      const departmentOrder = ["English", "Communication Studies", "Journalism"];
+      const formatOrder = ["In Person", "Online", "Zoom", "In Person Hybrid", "Zoom Hybrid", "HyFlex"];
+      const materialOrder = ["ZTC", "Low Cost"];
+
+      // Concise, student-friendly descriptions based on the LAMC 2026–2027 catalog.
+      const courseDescriptions = {
+        "COMM C1000": "Build confidence speaking, researching, and persuading an audience.",
+        "COMM 100": "Explore how people communicate and why it matters.",
+        "COMM 101": "Build confidence speaking and presenting to an audience.",
+        "COMM 102": "Strengthen speaking, research, argument, and critical-thinking skills.",
+        "COMM 104": "Build and challenge arguments using evidence and logic.",
+        "COMM 109": "Create engaging social media messages for different audiences.",
+        "COMM 121": "Understand communication in personal and professional relationships.",
+        "COMM 122": "Communicate more effectively across cultures and communities.",
+        "COMM 130": "Bring stories, poetry, and drama to life.",
+        "COMM 151": "Build teamwork, leadership, problem-solving, and conflict-management skills.",
+        "COMM 190": "Create digital content while exploring today’s media.",
+        "ENGL C1000": "Build college reading, writing, research, and thinking skills.",
+        "ENGL C1000E": "Build college writing skills with extra built-in support.",
+        "ENGL C1001": "Analyze ideas and build strong, evidence-based arguments.",
+        "ENGLISH 021": "Strengthen foundational reading, writing, grammar, and essay skills.",
+        "ENGLISH 028": "Build stronger reading, essay, argument, and research skills.",
+        "ENGLISH 032": "Help edit and produce the college literary magazine.",
+        "ENGLISH 101": "Build college reading, writing, research, and thinking skills.",
+        "ENGLISH 101X": "Build college writing skills with extra support.",
+        "ENGLISH 101Y": "Complete college composition with additional writing support.",
+        "ENGLISH 101Z": "Complete college composition with more intensive built-in support.",
+        "ENGLISH 102": "Read literature and build strong analytical writing skills.",
+        "ENGLISH 103": "Analyze ideas and build evidence-based arguments.",
+        "ENGLISH 107": "Build critical thinking through literature, research, and writing.",
+        "ENGLISH 109": "Create clear, engaging writing for social media audiences.",
+        "ENGLISH 124": "Write, revise, and prepare short stories for publication.",
+        "ENGLISH 127": "Explore fiction, poetry, nonfiction, and performance writing.",
+        "ENGLISH 203": "Explore world literature from ancient to early modern times.",
+        "ENGLISH 204": "Explore world literature from the 1600s to today.",
+        "ENGLISH 205": "Explore British literature from its beginnings through the 1800s.",
+        "ENGLISH 206": "Explore British literature from the 1800s to today.",
+        "ENGLISH 208": "Explore American voices from the 1800s to today.",
+        "ENGLISH 218": "Explore children’s stories across cultures, genres, and generations.",
+        "ENGLISH 223": "Turn real experiences and subjects into compelling stories.",
+        "ENGLISH 239": "Explore women’s lives and identities through literature.",
+        "ENGLISH 240": "Compare books and stories with their film adaptations.",
+        "ENGLISH 241": "Explore how filmmakers transform literature for the screen.",
+        "ENGLISH 420": "Design research and evaluate evidence-based studies.",
+        "JOURNAL 043": "Create professional PR materials for real-world communication.",
+        "JOURNAL 100": "Explore how media influences people, culture, and society.",
+        "JOURNAL 101": "Find, report, and write accurate news stories.",
+        "JOURNAL 202": "Develop advanced reporting, feature, and editorial writing skills."
+      };
+
+      const state = { data: null };
+
+      const termFilter = document.getElementById("term-filter");
+      const subjectFilter = document.getElementById("subject-filter");
+      const formatFilter = document.getElementById("format-filter");
+      const materialsFilter = document.getElementById("materials-filter");
+      const searchFilter = document.getElementById("search-filter");
+      const includeInProgress = document.getElementById("include-in-progress");
+      const progressToggleWrap = document.getElementById("progress-toggle-wrap");
+      const results = document.getElementById("results");
+      const summary = document.getElementById("result-summary");
+      const lastUpdated = document.getElementById("last-updated");
+      const clearButton = document.getElementById("clear-filters");
+      const filterForm = document.getElementById("class-filters");
+
+      function element(tag, className, text) {
+        const node = document.createElement(tag);
+        if (className) node.className = className;
+        if (typeof text === "string") node.textContent = text;
+        return node;
+      }
+
+      function availability() {
+        const checked = filterForm.querySelector('input[name="availability"]:checked');
+        return checked ? checked.value : "open";
+      }
+
+      function selectedTerm() {
+        if (!state.data || !Array.isArray(state.data.terms)) return null;
+        return state.data.terms.find((term) => term.id === termFilter.value) || state.data.terms[0] || null;
+      }
+
+      function formatDate(value) {
+        if (!value) return "The automated refresh has not run yet.";
+        const date = new Date(value);
+        if (Number.isNaN(date.getTime())) return value;
+        return "Last refreshed " + new Intl.DateTimeFormat("en-US", {
+          timeZone: "America/Los_Angeles",
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+          hour: "numeric",
+          minute: "2-digit",
+          timeZoneName: "short"
+        }).format(date) + ".";
+      }
+
+      function naturalCompare(a, b) {
+        return String(a).localeCompare(String(b), undefined, { numeric: true, sensitivity: "base" });
+      }
+
+      function todayLocal() {
+        const now = new Date();
+        return new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      }
+
+      function parseUsDate(value) {
+        const match = String(value || "").match(/\b(\d{2})\/(\d{2})\/(\d{4})\b/);
+        if (!match) return null;
+        return new Date(Number(match[3]), Number(match[1]) - 1, Number(match[2]));
+      }
+
+      function sectionStartDate(section) {
+        if (section.start_date) {
+          const parts = String(section.start_date).split("-").map(Number);
+          if (parts.length === 3 && parts.every(Number.isFinite)) {
+            return new Date(parts[0], parts[1] - 1, parts[2]);
+          }
+        }
+        return parseUsDate(section.dates);
+      }
+
+      function hasStarted(section) {
+        const start = sectionStartDate(section);
+        if (!start) return false;
+        return start < todayLocal();
+      }
+
+      function dedupeRepeatedPhrase(value) {
+        const words = String(value || "").trim().split(/\s+/).filter(Boolean);
+        if (words.length < 2) return String(value || "").trim();
+        for (let size = 1; size <= Math.floor(words.length / 2); size += 1) {
+          if (words.length % size !== 0) continue;
+          const phrase = words.slice(0, size);
+          let repeated = true;
+          for (let i = size; i < words.length; i += size) {
+            if (words.slice(i, i + size).join(" ") !== phrase.join(" ")) {
+              repeated = false;
+              break;
+            }
+          }
+          if (repeated) return phrase.join(" ");
+        }
+        return words.join(" ");
+      }
+
+      function normalizedFormat(section) {
+        const haystack = [
+          section.format,
+          section.room,
+          section.schedule,
+          section.details
+        ].filter(Boolean).join(" ").toLowerCase();
+
+        if (/\bhyflex\b/.test(haystack)) return "HyFlex";
+
+        const hybrid = /\bhybrid\b|\bblended\b/.test(haystack);
+        const live = /\bonline live\b|\bzoom\b/.test(haystack);
+        const online = /\bonline\b/.test(haystack);
+        const physical = /mission-(?!online\b)[a-z0-9]/i.test(haystack);
+
+        if ((hybrid && live) || (live && physical)) return "Zoom Hybrid";
+        if (hybrid) return "In Person Hybrid";
+        if (live) return "Zoom";
+        if (online && !physical) return "Online";
+        if (online && physical) return "In Person Hybrid";
+        return "In Person";
+      }
+
+      function materialFlags(section) {
+        const provided = Array.isArray(section.materials) ? section.materials : [];
+        const haystack = [
+          section.materials_text,
+          section.details,
+          section.room,
+          section.schedule
+        ].filter(Boolean).join(" ");
+
+        const flags = new Set();
+        provided.forEach((item) => {
+          const value = String(item).toLowerCase();
+          if (value === "ztc" || value.includes("zero textbook")) flags.add("ZTC");
+          if (value === "low cost" || value.includes("low textbook")) flags.add("Low Cost");
+        });
+
+        if (/\bZTC\b|Zero\s+Textbook\s+Cost/i.test(haystack)) flags.add("ZTC");
+        if (/\b(?:LCT|LTC)\b|Low\s+Textbook\s+Cost|Low\s+Cost\s+Textbook/i.test(haystack)) flags.add("Low Cost");
+
+        return materialOrder.filter((item) => flags.has(item));
+      }
+
+      function formatBadgeClass(format) {
+        return "format-" + String(format).toLowerCase().replace(/\s+/g, "-");
+      }
+
+      function materialBadgeClass(material) {
+        if (material === "ZTC") return "material-ztc";
+        return "material-low-cost";
+      }
+
+      function displayLocation(section, format) {
+        if (format === "Online") return "Online";
+        if (format === "Zoom") return "Zoom";
+        if (format === "Zoom Hybrid") return "Campus + Zoom";
+        if (format === "HyFlex") return "Campus or live online";
+
+        const room = dedupeRepeatedPhrase(section.room || "");
+        const match = room.match(/Mission-(?!Online\b)(.*?)(?=\s+Mission-|$)/i);
+        let physical = match ? match[1].trim() : room.replace(/^Mission-/i, "").trim();
+
+        if (!physical || /^Online\b/i.test(physical)) {
+          physical = format === "In Person Hybrid" ? "Campus + online" : "";
+        }
+        if (format === "In Person Hybrid" && physical && !/\bonline\b/i.test(physical)) {
+          return physical + " + online";
+        }
+        return physical;
+      }
+
+      function displayDates(section) {
+        if (section.start_date && section.end_date) {
+          const startParts = String(section.start_date).split("-").map(Number);
+          const endParts = String(section.end_date).split("-").map(Number);
+          if (startParts.length === 3 && endParts.length === 3) {
+            const start = new Date(startParts[0], startParts[1] - 1, startParts[2]);
+            const end = new Date(endParts[0], endParts[1] - 1, endParts[2]);
+            const sameYear = start.getFullYear() === end.getFullYear();
+            const dateFmt = { month: "short", day: "numeric" };
+            const startText = new Intl.DateTimeFormat("en-US", dateFmt).format(start);
+            const endText = new Intl.DateTimeFormat("en-US", {
+              month: "short",
+              day: "numeric",
+              year: "numeric"
+            }).format(end);
+            return startText + "–" + endText;
+          }
+        }
+
+        const matches = [...String(section.dates || "").matchAll(/(\d{2}\/\d{2}\/\d{4})\s*-\s*(\d{2}\/\d{2}\/\d{4})/g)];
+        if (!matches.length) return section.dates || "";
+        const starts = matches.map((m) => parseUsDate(m[1])).filter(Boolean);
+        const ends = matches.map((m) => parseUsDate(m[2])).filter(Boolean);
+        if (!starts.length || !ends.length) return matches[0][0];
+        const start = new Date(Math.min(...starts.map((d) => d.getTime())));
+        const end = new Date(Math.max(...ends.map((d) => d.getTime())));
+        const startText = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" }).format(start);
+        const endText = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" }).format(end);
+        return startText + "–" + endText;
+      }
+
+      function dayLabel(code) {
+        const labels = { Mo: "Mon", Tu: "Tue", We: "Wed", Th: "Thu", Fr: "Fri", Sa: "Sat", Su: "Sun" };
+        const parts = String(code || "").match(/Mo|Tu|We|Th|Fr|Sa|Su/g) || [];
+        return parts.map((part) => labels[part] || part).join("/");
+      }
+
+      function meetingFromDetails(section, format) {
+        let schedule = String(section.schedule || "").trim();
+        if (schedule && !looksLikeMeeting(schedule)) schedule = "";
+
+        const source = [schedule, section.details].filter(Boolean).join(" ");
+        const match = source.match(/\b((?:Mo|Tu|We|Th|Fr|Sa|Su)+)\s+(\d{1,2}:\d{2}\s*(?:AM|PM))\s*-\s*(\d{1,2}:\d{2}\s*(?:AM|PM))/i);
+        if (match) {
+          return dayLabel(match[1]) + " · " + match[2].replace(/\s+/g, " ") + "–" + match[3].replace(/\s+/g, " ");
+        }
+
+        if (format === "Online") return "No scheduled meeting time";
+        if (/\bTBA\b/i.test(source)) return "TBA";
+        return schedule;
+      }
+
+      function displayInstructor(section) {
+        let instructor = dedupeRepeatedPhrase(section.instructor || "");
+        let schedule = String(section.schedule || "").trim();
+        if (!instructor && schedule && !looksLikeMeeting(schedule)) {
+          instructor = dedupeRepeatedPhrase(schedule);
+        }
+        return instructor;
+      }
+
+      function looksLikeMeeting(value) {
+        if (!value) return false;
+        return /(TBA|\bMo\b|\bTu\b|\bWe\b|\bTh\b|\bFr\b|\bSa\b|\bSu\b|\d{1,2}:\d{2}\s*(?:AM|PM)|Zoom|Hybrid)/i.test(value);
+      }
+
+      function englishCourseSortKey(section) {
+        const subject = String(section.subject_code || "").toUpperCase();
+        const number = String(section.course_number || "").toUpperCase();
+        const exact = subject + " " + number;
+        const priority = {
+          "ENGL C1000": 0,
+          "ENGL C1000E": 1,
+          "ENGL C1001": 2,
+          "ENGLISH 102": 3
+        };
+        if (Object.prototype.hasOwnProperty.call(priority, exact)) {
+          return [0, priority[exact], "", ""];
+        }
+
+        const numericMatch = number.match(/\d+/);
+        const numeric = numericMatch ? Number(numericMatch[0]) : 999999;
+        const suffix = number.replace(/^\D*\d+/, "");
+        return [1, numeric, suffix, exact];
+      }
+
+      function compareCourseSections(a, b) {
+        if (a.department === "English" && b.department === "English") {
+          const ak = englishCourseSortKey(a);
+          const bk = englishCourseSortKey(b);
+          for (let i = 0; i < ak.length; i += 1) {
+            if (typeof ak[i] === "number" && typeof bk[i] === "number") {
+              if (ak[i] !== bk[i]) return ak[i] - bk[i];
+            } else {
+              const cmp = naturalCompare(ak[i], bk[i]);
+              if (cmp) return cmp;
+            }
+          }
+          return naturalCompare(a.class_number, b.class_number);
+        }
+
+        const number = naturalCompare(a.course_number, b.course_number);
+        if (number) return number;
+        return naturalCompare(a.class_number, b.class_number);
+      }
+
+      function friendlyCourseDescription(section) {
+        const key = String(section.course || "").toUpperCase();
+        return courseDescriptions[key] || "";
+      }
+
+      function currentSections() {
+        const term = selectedTerm();
+        if (!term || !Array.isArray(term.sections)) return [];
+
+        const view = availability();
+        const subject = subjectFilter.value;
+        const format = formatFilter.value;
+        const material = materialsFilter.value;
+        const query = searchFilter.value.trim().toLowerCase();
+        const includeStarted = includeInProgress.checked;
+
+        return term.sections.filter((section) => {
+          if (view === "open" && section.status !== "Open") return false;
+          if (view === "open" && !includeStarted && hasStarted(section)) return false;
+          if (subject !== "all" && section.department !== subject) return false;
+
+          const normalized = normalizedFormat(section);
+          if (format !== "all" && normalized !== format) return false;
+
+          const flags = materialFlags(section);
+          if (material !== "all" && !flags.includes(material)) return false;
+
+          if (query) {
+            const haystack = [
+              section.course,
+              section.course_number,
+              section.title,
+              friendlyCourseDescription(section),
+              section.class_number,
+              section.section,
+              displayInstructor(section),
+              section.schedule,
+              section.room,
+              normalized,
+              flags.join(" ")
+            ].filter(Boolean).join(" ").toLowerCase();
+            if (!haystack.includes(query)) return false;
+          }
+          return true;
+        }).sort((a, b) => {
+          const dept = departmentOrder.indexOf(a.department) - departmentOrder.indexOf(b.department);
+          if (dept) return dept;
+          const course = compareCourseSections(a, b);
+          if (course) return course;
+          return naturalCompare(a.class_number, b.class_number);
+        });
+      }
+
+      function populateTerms() {
+        termFilter.replaceChildren();
+        const terms = state.data && Array.isArray(state.data.terms) ? state.data.terms : [];
+        terms.forEach((term) => {
+          const option = document.createElement("option");
+          option.value = term.id;
+          option.textContent = term.label;
+          termFilter.appendChild(option);
+        });
+      }
+
+      function populateFormats() {
+        const previous = formatFilter.value || "all";
+        const term = selectedTerm();
+        const available = new Set(
+          term && Array.isArray(term.sections)
+            ? term.sections.map(normalizedFormat)
+            : []
+        );
+
+        formatFilter.replaceChildren();
+        const all = document.createElement("option");
+        all.value = "all";
+        all.textContent = "All formats";
+        formatFilter.appendChild(all);
+
+        formatOrder.filter((format) => available.has(format)).forEach((format) => {
+          const option = document.createElement("option");
+          option.value = format;
+          option.textContent = format;
+          formatFilter.appendChild(option);
+        });
+
+        formatFilter.value = [...formatFilter.options].some((option) => option.value === previous) ? previous : "all";
+      }
+
+      function populateMaterials() {
+        const previous = materialsFilter.value || "all";
+        const term = selectedTerm();
+        const available = new Set();
+
+        if (term && Array.isArray(term.sections)) {
+          term.sections.forEach((section) => materialFlags(section).forEach((flag) => available.add(flag)));
+        }
+
+        materialsFilter.replaceChildren();
+        const all = document.createElement("option");
+        all.value = "all";
+        all.textContent = "All materials";
+        materialsFilter.appendChild(all);
+
+        materialOrder.filter((flag) => available.has(flag)).forEach((flag) => {
+          const option = document.createElement("option");
+          option.value = flag;
+          option.textContent = flag === "Low Cost" ? "Low Cost Textbook" : flag;
+          materialsFilter.appendChild(option);
+        });
+
+        materialsFilter.disabled = available.size === 0;
+        materialsFilter.title = available.size === 0
+          ? "No ZTC or low-cost textbook flags were detected in the current SIS feed."
+          : "";
+
+        materialsFilter.value = [...materialsFilter.options].some((option) => option.value === previous) ? previous : "all";
+      }
+
+      function syncProgressControl() {
+        const openOnly = availability() === "open";
+        progressToggleWrap.hidden = !openOnly;
+        includeInProgress.disabled = !openOnly;
+      }
+
+      function addMetaItem(dl, label, value) {
+        if (!value) return;
+        const wrap = element("div", "section-meta-item");
+        wrap.appendChild(element("dt", "", label));
+        wrap.appendChild(element("dd", "", value));
+        dl.appendChild(wrap);
+      }
+
+      function statusClass(status) {
+        return "status-" + String(status || "unknown").toLowerCase().replace(/\s+/g, "-");
+      }
+
+      async function copyClassNumber(button, classNumber, statusNode) {
+        if (!classNumber) {
+          statusNode.textContent = "No Class Number is available to copy.";
+          return;
+        }
+
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(classNumber);
+          } else {
+            const textarea = document.createElement("textarea");
+            textarea.value = classNumber;
+            textarea.setAttribute("readonly", "");
+            textarea.style.position = "fixed";
+            textarea.style.opacity = "0";
+            document.body.appendChild(textarea);
+            textarea.select();
+            const copied = document.execCommand("copy");
+            textarea.remove();
+            if (!copied) throw new Error("Copy command failed.");
+          }
+
+          const original = button.textContent;
+          button.textContent = "Copied!";
+          statusNode.textContent = "Class Number " + classNumber + " copied to your clipboard.";
+          window.setTimeout(() => {
+            button.textContent = original;
+            statusNode.textContent = "";
+          }, 2600);
+        } catch (error) {
+          statusNode.textContent = "Could not copy automatically. Class Number: " + classNumber + ".";
+        }
+      }
+
+      function liveSectionUrl(section) {
+        const term = selectedTerm();
+        if (!section || !section.class_number || !term || !term.id) return SIS_URL;
+        return SIS_URL +
+          "?Campus=LAMC" +
+          "&strm=" + encodeURIComponent(term.id) +
+          "&classnum=" + encodeURIComponent(section.class_number) +
+          "&";
+      }
+
+      function renderSectionRow(section, courseLabel, index) {
+        const row = element("li", "section-row");
+        const article = element("article", "");
+        article.setAttribute("aria-labelledby", "section-" + section.class_number + "-" + index);
+
+        const top = element("div", "section-row-top");
+        const idBlock = element("div", "class-id-block");
+        idBlock.appendChild(element("p", "class-id-label", "Class Number"));
+
+        const heading = element("h5", "", section.class_number || "See live details");
+        heading.id = "section-" + section.class_number + "-" + index;
+        idBlock.appendChild(heading);
+
+        if (section.section) {
+          idBlock.appendChild(element("p", "section-code", "Section " + section.section));
+        }
+
+        const badges = element("div", "badge-row");
+        const status = element("span", "status " + statusClass(section.status), section.status || "Status unknown");
+        badges.appendChild(status);
+
+        const format = normalizedFormat(section);
+        badges.appendChild(element("span", "format-badge " + formatBadgeClass(format), format));
+
+        materialFlags(section).forEach((flag) => {
+          const badge = element("span", "material-badge " + materialBadgeClass(flag), flag);
+          if (flag === "ZTC") badge.setAttribute("aria-label", "Zero Textbook Cost");
+          if (flag === "Low Cost") badge.setAttribute("aria-label", "Low Textbook Cost");
+          badges.appendChild(badge);
+        });
+
+        if (hasStarted(section)) {
+          const start = sectionStartDate(section);
+          const label = start
+            ? "Started " + new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" }).format(start)
+            : "In progress";
+          badges.appendChild(element("span", "started-badge", label));
+        }
+
+        top.append(idBlock, badges);
+        article.appendChild(top);
+
+        const dl = element("dl", "section-meta");
+        addMetaItem(dl, "Meets", meetingFromDetails(section, format));
+        addMetaItem(dl, "Location", displayLocation(section, format));
+        addMetaItem(dl, "Instructor", displayInstructor(section));
+        addMetaItem(dl, "Dates", displayDates(section));
+        article.appendChild(dl);
+
+        if (section.details) {
+          const details = element("details", "more-details");
+          const detailsSummary = element("summary", "", "More section details");
+          const detailsText = element("p", "", section.details);
+          details.append(detailsSummary, detailsText);
+          article.appendChild(details);
+        }
+
+        const actions = element("div", "card-actions");
+        const copy = element("button", "copy-button", "Copy Number");
+        copy.type = "button";
+        copy.setAttribute(
+          "aria-label",
+          "Copy class number " + (section.class_number || "") + (courseLabel ? " for " + courseLabel : "")
+        );
+
+        const link = element("a", "sis-link", "View Live Section Details");
+        link.href = liveSectionUrl(section);
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.setAttribute(
+          "aria-label",
+          "View live section details for " + (courseLabel || "this course") + ", class " + (section.class_number || "")
+        );
+
+        actions.append(copy, link);
+        article.appendChild(actions);
+
+        const copyStatus = element("span", "copy-status", "");
+        copyStatus.setAttribute("role", "status");
+        copyStatus.setAttribute("aria-live", "polite");
+        article.appendChild(copyStatus);
+
+        copy.addEventListener("click", () => {
+          copyClassNumber(copy, section.class_number || "", copyStatus);
+        });
+
+        row.appendChild(article);
+        return row;
+      }
+
+      function groupCourses(departmentSections) {
+        const groups = [];
+        const map = new Map();
+
+        departmentSections.forEach((section) => {
+          const key = (section.course || "Course") + "|" + (section.title || "");
+          if (!map.has(key)) {
+            const group = { key, sections: [] };
+            map.set(key, group);
+            groups.push(group);
+          }
+          map.get(key).sections.push(section);
+        });
+
+        groups.sort((a, b) => compareCourseSections(a.sections[0], b.sections[0]));
+        groups.forEach((group) => {
+          group.sections.sort((a, b) => naturalCompare(a.class_number, b.class_number));
+        });
+        return groups;
+      }
+
+      function render() {
+        const term = selectedTerm();
+        const sections = currentSections();
+        results.replaceChildren();
+        syncProgressControl();
+
+        if (!term) {
+          summary.textContent = "No semester data is available.";
+          const box = element("div", "error-state");
+          box.appendChild(element("h3", "", "Class data is not available yet"));
+          box.appendChild(element("p", "", "Use the official LACCD public Class Search while this page is being set up."));
+          const link = element("a", "", "Open the official LACCD public Class Search");
+          link.href = SIS_URL;
+          link.target = "_blank";
+          link.rel = "noopener";
+          box.appendChild(link);
+          results.appendChild(box);
+          return;
+        }
+
+        const view = availability();
+        const descriptor = view === "open"
+          ? (includeInProgress.checked ? "open" : "upcoming open")
+          : "matching";
+        summary.textContent = sections.length + " " + descriptor + (sections.length === 1 ? " section" : " sections") + " found for " + term.label + ".";
+
+        if (!Array.isArray(term.sections) || term.sections.length === 0) {
+          const box = element("div", "error-state");
+          box.appendChild(element("h3", "", "The automated class feed has not populated yet"));
+          box.appendChild(element("p", "", "After the GitHub Action runs for the first time, this page will fill with ECJ sections automatically. Until then, use the official LACCD public Class Search."));
+          const link = element("a", "", "Open the official LACCD public Class Search");
+          link.href = SIS_URL;
+          link.target = "_blank";
+          link.rel = "noopener";
+          box.appendChild(link);
+          results.appendChild(box);
+          return;
+        }
+
+        if (sections.length === 0) {
+          const box = element("div", "empty-state");
+          box.appendChild(element("h3", "", "No classes match these filters"));
+          box.appendChild(element("p", "", view === "open"
+            ? "Try including classes already in progress, choosing All ECJ Classes, or clearing a filter."
+            : "Try clearing a subject, format, materials, or search filter."));
+          results.appendChild(box);
+          return;
+        }
+
+        departmentOrder.forEach((department) => {
+          const departmentSections = sections.filter((section) => section.department === department);
+          if (!departmentSections.length) return;
+
+          const departmentGroup = element("section", "department-group");
+          departmentGroup.dataset.department = department;
+
+          const headingId = "department-" + department.toLowerCase().replace(/\s+/g, "-");
+          departmentGroup.setAttribute("aria-labelledby", headingId);
+
+          const headingWrap = element("div", "department-heading-wrap");
+          headingWrap.appendChild(element("p", "department-kicker", "ECJ Subject"));
+          const deptHeading = element("h3", "department-heading", department);
+          deptHeading.id = headingId;
+          headingWrap.appendChild(deptHeading);
+          departmentGroup.appendChild(headingWrap);
+
+          const courseGroups = groupCourses(departmentSections);
+
+          courseGroups.forEach((course, courseIndex) => {
+            const first = course.sections[0];
+            const courseWrap = element("section", "course-group");
+            const panel = element("div", "course-panel");
+            const panelHeader = element("div", "course-panel-header");
+            const headingText = (first.course || "Course") + (first.title ? ": " + first.title : "");
+            const courseHeading = element("h4", "course-heading", headingText);
+            const courseHeadingId = headingId + "-course-" + courseIndex;
+            courseHeading.id = courseHeadingId;
+            courseWrap.setAttribute("aria-labelledby", courseHeadingId);
+            panelHeader.appendChild(courseHeading);
+            const description = friendlyCourseDescription(first);
+            if (description) {
+              panelHeader.appendChild(element("p", "course-description", description));
+            }
+            panelHeader.appendChild(
+              element(
+                "p",
+                "course-count",
+                course.sections.length + (course.sections.length === 1 ? " matching section" : " matching sections")
+              )
+            );
+            panel.appendChild(panelHeader);
+
+            const list = element("ul", "section-list");
+            course.sections.forEach((section, sectionIndex) => {
+              list.appendChild(renderSectionRow(section, headingText, sectionIndex));
+            });
+            panel.appendChild(list);
+            courseWrap.appendChild(panel);
+            departmentGroup.appendChild(courseWrap);
+          });
+
+          results.appendChild(departmentGroup);
+        });
+      }
+
+      function resetFilters() {
+        document.getElementById("view-open").checked = true;
+        includeInProgress.checked = false;
+        subjectFilter.value = "all";
+        formatFilter.value = "all";
+        materialsFilter.value = "all";
+        searchFilter.value = "";
+        render();
+      }
+
+      filterForm.addEventListener("change", (event) => {
+        if (event.target === termFilter) {
+          populateFormats();
+          populateMaterials();
+        }
+        render();
+      });
+
+      searchFilter.addEventListener("input", render);
+      clearButton.addEventListener("click", resetFilters);
+
+      fetch(DATA_URL, { cache: "no-store" })
+        .then((response) => {
+          if (!response.ok) throw new Error("Class data could not be loaded.");
+          return response.json();
+        })
+        .then((data) => {
+          state.data = data;
+          lastUpdated.textContent = formatDate(data.generated_at);
+          populateTerms();
+          populateFormats();
+          populateMaterials();
+          render();
+        })
+        .catch(() => {
+          summary.textContent = "Class data could not be loaded.";
+          lastUpdated.textContent = "The saved class list could not be loaded.";
+          results.replaceChildren();
+          const box = element("div", "error-state");
+          box.appendChild(element("h3", "", "Use the official class search for now"));
+          box.appendChild(element("p", "", "The ECJ class feed is temporarily unavailable. The official LACCD public Class Search remains available."));
+          const link = element("a", "", "Open the official LACCD public Class Search");
+          link.href = SIS_URL;
+          link.target = "_blank";
+          link.rel = "noopener";
+          box.appendChild(link);
+          results.appendChild(box);
+        });
+    }());
+  </script>
+</body>
+</html>
