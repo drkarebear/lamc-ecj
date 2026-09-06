@@ -20,17 +20,19 @@
       --muted: #566574;
       --border: #dce2e8;
       --focus: #ffbf00;
-      --english: #8a5b00;
-      --english-bg: #fff9ec;
-      --comm: #2467a9;
-      --comm-bg: #f2f7fc;
-      --journalism: #9a4310;
-      --journalism-bg: #fff6ef;
+
+      --english: #7a4d00;
+      --english-soft: #fff8e8;
+      --comm: #006b67;
+      --comm-soft: #edf8f7;
+      --journalism: #6d3a78;
+      --journalism-soft: #f7f0f8;
+
       --open: #17633a;
       --open-bg: #eef8f1;
-      --wait: #7a5700;
+      --wait: #735300;
       --wait-bg: #fff8dc;
-      --closed: #6c4b50;
+      --closed: #6c4048;
       --closed-bg: #faf1f2;
     }
 
@@ -194,7 +196,8 @@
       margin-bottom: 30px;
     }
 
-    .intro-grid h2 {
+    .intro-grid h2,
+    .registration-help h2 {
       margin: 0 0 10px;
       color: var(--navy);
       font-family: Georgia, "Times New Roman", serif;
@@ -221,11 +224,11 @@
     .source-note p + p { margin-top: 8px; }
 
     .filter-panel {
-      margin-bottom: 30px;
+      margin-bottom: 34px;
       padding: 24px;
       background: var(--cream);
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 12px;
     }
 
     .filter-panel h2 {
@@ -267,7 +270,7 @@
       background: var(--white);
       color: var(--navy);
       border: 2px solid var(--navy);
-      border-radius: 6px;
+      border-radius: 8px;
       font-weight: 700;
       cursor: pointer;
     }
@@ -303,8 +306,8 @@
       padding: 9px 11px;
       background: var(--white);
       color: var(--text);
-      border: 2px solid #9ba8b4;
-      border-radius: 5px;
+      border: 2px solid #8d9aa6;
+      border-radius: 7px;
     }
 
     .clear-button {
@@ -313,14 +316,12 @@
       background: var(--white);
       color: var(--navy);
       border: 2px solid var(--navy);
-      border-radius: 5px;
+      border-radius: 7px;
       font-weight: 700;
       cursor: pointer;
     }
 
-    .clear-button:hover {
-      background: #edf3f8;
-    }
+    .clear-button:hover { background: #edf3f8; }
 
     .results-toolbar {
       margin: 0 0 22px;
@@ -349,7 +350,7 @@
     .error-state {
       padding: 26px;
       border: 1px solid var(--border);
-      border-radius: 9px;
+      border-radius: 10px;
       background: #f7f9fb;
     }
 
@@ -359,21 +360,57 @@
       color: var(--navy);
     }
 
-    .department-group + .department-group { margin-top: 46px; }
+    .department-group {
+      --subject-accent: var(--navy);
+      --subject-soft: #f3f7fa;
+    }
+
+    .department-group[data-department="English"] {
+      --subject-accent: var(--english);
+      --subject-soft: var(--english-soft);
+    }
+
+    .department-group[data-department="Communication Studies"] {
+      --subject-accent: var(--comm);
+      --subject-soft: var(--comm-soft);
+    }
+
+    .department-group[data-department="Journalism"] {
+      --subject-accent: var(--journalism);
+      --subject-soft: var(--journalism-soft);
+    }
+
+    .department-group + .department-group { margin-top: 54px; }
+
+    .department-heading-wrap {
+      margin: 0 0 22px;
+      padding: 15px 18px;
+      background: var(--subject-soft);
+      border-left: 6px solid var(--subject-accent);
+      border-radius: 0 10px 10px 0;
+    }
+
+    .department-kicker {
+      margin: 0 0 2px;
+      color: var(--subject-accent);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .075em;
+      text-transform: uppercase;
+    }
 
     .department-heading {
-      margin: 0 0 20px;
-      padding-bottom: 8px;
+      margin: 0;
       color: var(--navy);
       font-family: Georgia, "Times New Roman", serif;
       font-size: 1.8rem;
-      border-bottom: 3px solid var(--gold);
+      line-height: 1.2;
     }
 
-    .course-group + .course-group { margin-top: 30px; }
+    .course-group + .course-group { margin-top: 34px; }
 
     .course-heading {
-      margin: 0 0 13px;
+      margin: 0 0 14px;
       color: var(--navy);
       font-size: 1.18rem;
       line-height: 1.35;
@@ -382,55 +419,59 @@
     .section-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
+      gap: 18px;
     }
 
     .section-card {
       min-width: 0;
-      padding: 19px;
+      padding: 20px;
       background: var(--white);
-      border: 1px solid var(--border);
-      border-top: 5px solid var(--navy);
-      border-radius: 8px;
-      box-shadow: 0 4px 14px rgba(20, 43, 67, .06);
-    }
-
-    .section-card[data-department="English"] {
-      background: var(--english-bg);
-      border-top-color: var(--english);
-    }
-
-    .section-card[data-department="Communication Studies"] {
-      background: var(--comm-bg);
-      border-top-color: var(--comm);
-    }
-
-    .section-card[data-department="Journalism"] {
-      background: var(--journalism-bg);
-      border-top-color: var(--journalism);
+      border: 1px solid #d7dfe7;
+      border-top: 5px solid var(--subject-accent);
+      border-radius: 11px;
+      box-shadow: 0 4px 16px rgba(20, 43, 67, .07);
     }
 
     .section-card-header {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      gap: 14px;
+      gap: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #e3e8ed;
+    }
+
+    .class-id-block { min-width: 0; }
+
+    .class-id-label {
+      margin: 0 0 2px;
+      color: var(--muted);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .03em;
+      text-transform: uppercase;
     }
 
     .section-card h5 {
       margin: 0;
       color: var(--navy);
-      font-size: 1rem;
-      line-height: 1.4;
+      font-size: 1.12rem;
+      line-height: 1.35;
+    }
+
+    .section-code {
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: .88rem;
     }
 
     .status {
       flex: 0 0 auto;
-      padding: 4px 9px;
-      border: 1px solid currentColor;
+      padding: 4px 10px;
+      border: 2px solid currentColor;
       border-radius: 999px;
       font-size: .78rem;
-      font-weight: 700;
+      font-weight: 800;
       line-height: 1.35;
     }
 
@@ -442,14 +483,14 @@
     .section-meta {
       margin: 15px 0 0;
       display: grid;
-      grid-template-columns: minmax(110px, .7fr) minmax(0, 1.7fr);
-      gap: 6px 12px;
-      font-size: .92rem;
+      grid-template-columns: minmax(92px, .65fr) minmax(0, 1.8fr);
+      gap: 7px 12px;
+      font-size: .94rem;
     }
 
     .section-meta dt {
       margin: 0;
-      color: #4c5966;
+      color: #465563;
       font-weight: 700;
     }
 
@@ -458,51 +499,176 @@
       min-width: 0;
     }
 
-    .fallback-details {
-      margin: 13px 0 0;
-      color: #465463;
-      font-size: .88rem;
+    .more-details {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid #e3e8ed;
     }
 
+    .more-details summary {
+      color: var(--navy);
+      font-size: .9rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .more-details p {
+      margin: 9px 0 0;
+      color: #465463;
+      font-size: .86rem;
+    }
+
+    .card-actions {
+      margin-top: 17px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      align-items: center;
+    }
+
+    .copy-button,
     .sis-link {
-      margin-top: 16px;
       min-height: 44px;
       padding: 8px 12px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: var(--navy);
-      color: var(--white);
-      border-radius: 5px;
+      border-radius: 7px;
       font-size: .9rem;
       font-weight: 700;
       line-height: 1.35;
+      cursor: pointer;
+    }
+
+    .copy-button {
+      background: var(--white);
+      color: var(--navy);
+      border: 2px solid var(--navy);
+    }
+
+    .copy-button:hover { background: #edf3f8; }
+
+    .sis-link {
+      background: var(--navy);
+      color: var(--white);
+      border: 2px solid var(--navy);
       text-decoration: none;
     }
 
     .sis-link:hover {
       background: var(--blue);
+      border-color: var(--blue);
       text-decoration: underline;
       text-underline-offset: 3px;
     }
 
-    .official-strip {
-      margin-top: 46px;
-      padding: 24px;
-      background: #f3f7fa;
+    .copy-status {
+      display: block;
+      min-height: 1.35em;
+      margin-top: 8px;
+      color: var(--open);
+      font-size: .86rem;
+      font-weight: 700;
+    }
+
+    .registration-help {
+      margin-top: 56px;
+      padding: 30px;
+      background: #f5f8fb;
       border: 1px solid var(--border);
-      border-radius: 9px;
+      border-radius: 14px;
+    }
+
+    .registration-help > p { margin: 0 0 18px; }
+
+    .register-steps {
+      margin: 0 0 24px;
+      padding: 18px 22px 18px 42px;
+      background: var(--white);
+      border: 1px solid #d7e1ea;
+      border-radius: 10px;
+    }
+
+    .register-steps li { padding: 3px 0; }
+    .register-steps strong { color: var(--navy); }
+
+    .registration-options {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .registration-option {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: 20px;
+      background: var(--white);
+      border: 1px solid #cfd9e2;
+      border-radius: 10px;
+    }
+
+    .registration-option h3 {
+      margin: 0 0 7px;
+      color: var(--navy);
+      font-size: 1.12rem;
+    }
+
+    .registration-option p {
+      margin: 0 0 15px;
+      font-size: .94rem;
+    }
+
+    .help-button {
+      min-height: 46px;
+      margin-top: auto;
+      padding: 9px 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--navy);
+      color: var(--white);
+      border: 2px solid var(--navy);
+      border-radius: 7px;
+      font-weight: 700;
+      line-height: 1.35;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .help-button:hover {
+      background: var(--blue);
+      border-color: var(--blue);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .registration-tip {
+      margin: 20px 0 0;
+      padding: 15px 17px;
+      background: #fff8df;
+      border-left: 5px solid #9a6a00;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .registration-tip p { margin: 0; }
+
+    .official-strip {
+      margin-top: 28px;
+      padding: 22px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
     }
 
     .official-strip h2 {
       margin: 0 0 7px;
       color: var(--navy);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.45rem;
+      font-size: 1.35rem;
     }
 
-    .official-strip p { margin: 0 0 11px; }
-
+    .official-strip p { margin: 0 0 9px; }
     .official-strip a { font-weight: 700; }
 
     footer {
@@ -543,7 +709,8 @@
     }
 
     .site-disclaimer p + p { margin-top: 7px; }
-    .site-disclaimer strong, .site-disclaimer a { color: var(--white); }
+    .site-disclaimer strong,
+    .site-disclaimer a { color: var(--white); }
 
     @media (max-width: 900px) {
       .header-inner { align-items: flex-start; flex-direction: column; gap: 14px; }
@@ -551,6 +718,7 @@
       .top-nav ul { justify-content: flex-start; }
       .intro-grid { grid-template-columns: 1fr; }
       .filters-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .registration-options { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 680px) {
@@ -575,6 +743,9 @@
       .section-grid { grid-template-columns: 1fr; }
       .section-meta { grid-template-columns: 1fr; gap: 2px; }
       .section-meta dd + dt { margin-top: 7px; }
+      .registration-help { padding: 22px 16px; }
+      .card-actions { display: grid; grid-template-columns: 1fr; }
+      .copy-button, .sis-link { width: 100%; }
       .footer-inner { padding: 30px 18px; }
       .site-disclaimer { padding: 15px 18px 20px; }
     }
@@ -617,7 +788,7 @@
       <div class="hero-inner">
         <p class="eyebrow">ECJ Class Finder</p>
         <h1 id="page-title">Find an ECJ Class</h1>
-        <p>Browse English, Communication Studies, and Journalism sections at Los Angeles Mission College. Choose all classes or narrow the list to sections currently marked open in the public LACCD class search.</p>
+        <p>Browse English, Communication Studies, and Journalism classes at Los Angeles Mission College. Find an open section, copy its five-digit Class Number, and use that number when you register.</p>
       </div>
     </section>
 
@@ -625,8 +796,8 @@
       <section class="intro-grid" aria-labelledby="how-heading">
         <div>
           <h2 id="how-heading">Start With What You Need</h2>
-          <p>Use <strong>Open Classes</strong> when you are looking for a section that may still have space. Switch to <strong>All Classes</strong> when you want to see the full semester schedule, including wait-listed and closed sections.</p>
-          <p>Class availability can change quickly. Always use the official LACCD Student Information System before making an enrollment decision.</p>
+          <p>Use <strong>Open Classes</strong> when you are looking for a section that may still have space. Switch to <strong>All Classes</strong> to see the full semester schedule, including wait-listed and closed sections.</p>
+          <p>Availability can change quickly. Use <strong>View Live Section Details</strong> before enrolling to confirm the latest official information.</p>
         </div>
 
         <aside class="source-note" aria-label="Class data information">
@@ -676,7 +847,7 @@
 
             <div class="field">
               <label for="search-filter">Search classes</label>
-              <input id="search-filter" name="search" type="search" placeholder="Course, title, instructor...">
+              <input id="search-filter" name="search" type="search" placeholder="Course, title, instructor, class number">
             </div>
           </div>
 
@@ -697,8 +868,45 @@
         </div>
       </section>
 
+      <section class="registration-help" aria-labelledby="registration-heading">
+        <p class="eyebrow" style="color:#6d3a78;">Found a class?</p>
+        <h2 id="registration-heading">Ready to Register?</h2>
+        <p>Each class card shows a five-digit <strong>Class Number</strong>. That is the number you can copy and use to find the exact section in the LACCD Student Portal.</p>
+
+        <ol class="register-steps">
+          <li><strong>Copy the Class Number</strong> from the section you want.</li>
+          <li><strong>Open the LACCD Student Portal</strong> and sign in.</li>
+          <li>Choose <strong>Manage Classes</strong>, then <strong>Class Search and Enroll</strong>.</li>
+          <li>Use the Class Number to locate the exact section, review the details, and complete enrollment.</li>
+        </ol>
+
+        <div class="registration-options">
+          <article class="registration-option">
+            <h3>Current Students</h3>
+            <p>Already have an LACCD student account? Go directly to the Student Portal to search and enroll.</p>
+            <a class="help-button" href="https://mycollege.laccd.edu/" target="_blank" rel="noopener">Open the LACCD Student Portal</a>
+          </article>
+
+          <article class="registration-option">
+            <h3>New to Mission College?</h3>
+            <p>Start with the Mission College application. After you receive your student ID, you can use the Student Portal to register.</p>
+            <a class="help-button" href="https://www.lamc.edu/admissions/how-to-apply" target="_blank" rel="noopener">View Steps for New Students</a>
+          </article>
+
+          <article class="registration-option">
+            <h3>Need Registration Help?</h3>
+            <p>The Eagles Help Desk can assist with applications, registration, Student Portal access, and other enrollment questions.</p>
+            <a class="help-button" href="https://www.lamc.edu/student-services/welcome-center" target="_blank" rel="noopener">Visit the Eagles Help Desk</a>
+          </article>
+        </div>
+
+        <div class="registration-tip">
+          <p><strong>Tip:</strong> If a section is open now, it can still fill. Copy the Class Number and confirm the live section details before you enroll.</p>
+        </div>
+      </section>
+
       <section class="official-strip" aria-labelledby="official-heading">
-        <h2 id="official-heading">Before You Enroll</h2>
+        <h2 id="official-heading">Official Enrollment Information</h2>
         <p>The LACCD Student Information System is the official source for enrollment status, prerequisites, permission requirements, and final class details.</p>
         <p><a href="https://mycollege-guest.laccd.edu/psc/classsearchguest/EMPLOYEE/HRMS/c/COMMUNITY_ACCESS.CLASS_SEARCH.GBL" target="_blank" rel="noopener">Open the official LACCD public Class Search</a></p>
       </section>
@@ -869,34 +1077,131 @@
         return "status-" + String(status || "unknown").toLowerCase().replace(/\s+/g, "-");
       }
 
-      function renderSectionCard(section) {
+      function looksLikeMeeting(value) {
+        if (!value) return false;
+        return /(TBA|\bMo\b|\bTu\b|\bWe\b|\bTh\b|\bFr\b|\bSa\b|\bSu\b|\d{1,2}:\d{2}\s*(?:AM|PM)|Zoom|Hybrid)/i.test(value);
+      }
+
+      function displayDetails(section) {
+        let schedule = section.schedule || "";
+        let instructor = section.instructor || "";
+
+        if (schedule && instructor && schedule.trim() === instructor.trim()) {
+          schedule = "";
+        }
+
+        if (!instructor && schedule && !looksLikeMeeting(schedule)) {
+          instructor = schedule;
+          schedule = "";
+        }
+
+        if (!schedule && section.format === "Online") {
+          schedule = "TBA / see live section details";
+        }
+
+        return { schedule, instructor };
+      }
+
+      async function copyClassNumber(button, classNumber, statusNode) {
+        if (!classNumber) {
+          statusNode.textContent = "No Class Number is available to copy.";
+          return;
+        }
+
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(classNumber);
+          } else {
+            const textarea = document.createElement("textarea");
+            textarea.value = classNumber;
+            textarea.setAttribute("readonly", "");
+            textarea.style.position = "fixed";
+            textarea.style.opacity = "0";
+            document.body.appendChild(textarea);
+            textarea.select();
+            const copied = document.execCommand("copy");
+            textarea.remove();
+            if (!copied) throw new Error("Copy command failed.");
+          }
+
+          const original = button.textContent;
+          button.textContent = "Copied!";
+          statusNode.textContent = "Class Number " + classNumber + " copied to your clipboard.";
+          window.setTimeout(() => {
+            button.textContent = original;
+            statusNode.textContent = "";
+          }, 2600);
+        } catch (error) {
+          statusNode.textContent = "Could not copy automatically. Class Number: " + classNumber + ".";
+        }
+      }
+
+      function renderSectionCard(section, courseLabel) {
         const card = element("article", "section-card");
         card.dataset.department = section.department || "";
 
         const header = element("div", "section-card-header");
-        const heading = element("h5", "", "Class " + (section.class_number || "See SIS") + (section.section ? " · " + section.section : ""));
+        const idBlock = element("div", "class-id-block");
+        idBlock.appendChild(element("p", "class-id-label", "Class Number"));
+
+        const cardHeading = element("h5", "", "Class " + (section.class_number || "See live details"));
+        idBlock.appendChild(cardHeading);
+
+        if (section.section) {
+          idBlock.appendChild(element("p", "section-code", "Section " + section.section));
+        }
+
         const status = element("span", "status " + statusClass(section.status), section.status || "Status unknown");
-        header.append(heading, status);
+        header.append(idBlock, status);
         card.appendChild(header);
 
+        const clean = displayDetails(section);
         const dl = element("dl", "section-meta");
         addMeta(dl, "Format", section.format);
-        addMeta(dl, "Schedule", section.schedule);
+        addMeta(dl, "Meets", clean.schedule);
         addMeta(dl, "Location", section.room);
-        addMeta(dl, "Instructor", section.instructor);
+        addMeta(dl, "Instructor", clean.instructor);
         addMeta(dl, "Dates", section.dates);
         card.appendChild(dl);
 
         if (section.details) {
-          const details = element("p", "fallback-details", section.details);
+          const details = element("details", "more-details");
+          const detailsSummary = element("summary", "", "More section details");
+          const detailsText = element("p", "", section.details);
+          details.append(detailsSummary, detailsText);
           card.appendChild(details);
         }
 
-        const link = element("a", "sis-link", "Check This Section in Official SIS");
+        const actions = element("div", "card-actions");
+
+        const copy = element("button", "copy-button", "Copy Number");
+        copy.type = "button";
+        copy.setAttribute(
+          "aria-label",
+          "Copy class number " + (section.class_number || "") + (courseLabel ? " for " + courseLabel : "")
+        );
+
+        const link = element("a", "sis-link", "View Live Section Details");
         link.href = section.sis_url || SIS_URL;
         link.target = "_blank";
         link.rel = "noopener";
-        card.appendChild(link);
+        link.setAttribute(
+          "aria-label",
+          "View live section details for " + (courseLabel || "this course") + ", class " + (section.class_number || "")
+        );
+
+        actions.append(copy, link);
+        card.appendChild(actions);
+
+        const copyStatus = element("span", "copy-status", "");
+        copyStatus.setAttribute("role", "status");
+        copyStatus.setAttribute("aria-live", "polite");
+        card.appendChild(copyStatus);
+
+        copy.addEventListener("click", () => {
+          copyClassNumber(copy, section.class_number || "", copyStatus);
+        });
+
         return card;
       }
 
@@ -950,11 +1255,21 @@
           if (!departmentSections.length) return;
 
           const departmentGroup = element("section", "department-group");
+          departmentGroup.dataset.department = department;
+
+          const headingId = "department-" + department.toLowerCase().replace(/\s+/g, "-");
+          departmentGroup.setAttribute("aria-labelledby", headingId);
+
+          const headingWrap = element("div", "department-heading-wrap");
+          headingWrap.appendChild(element("p", "department-kicker", "ECJ Subject"));
           const deptHeading = element("h3", "department-heading", department);
-          departmentGroup.appendChild(deptHeading);
+          deptHeading.id = headingId;
+          headingWrap.appendChild(deptHeading);
+          departmentGroup.appendChild(headingWrap);
 
           const courseKeys = [];
           const courseMap = new Map();
+
           departmentSections.forEach((section) => {
             const key = (section.course || "Course") + "|" + (section.title || "");
             if (!courseMap.has(key)) {
@@ -964,15 +1279,19 @@
             courseMap.get(key).push(section);
           });
 
-          courseKeys.forEach((key) => {
+          courseKeys.forEach((key, courseIndex) => {
             const courseSections = courseMap.get(key);
             const first = courseSections[0];
             const courseGroup = element("section", "course-group");
             const headingText = (first.course || "Course") + (first.title ? ": " + first.title : "");
-            courseGroup.appendChild(element("h4", "course-heading", headingText));
+            const courseHeading = element("h4", "course-heading", headingText);
+            const courseHeadingId = headingId + "-course-" + courseIndex;
+            courseHeading.id = courseHeadingId;
+            courseGroup.setAttribute("aria-labelledby", courseHeadingId);
+            courseGroup.appendChild(courseHeading);
 
             const grid = element("div", "section-grid");
-            courseSections.forEach((section) => grid.appendChild(renderSectionCard(section)));
+            courseSections.forEach((section) => grid.appendChild(renderSectionCard(section, headingText)));
             courseGroup.appendChild(grid);
             departmentGroup.appendChild(courseGroup);
           });
@@ -993,6 +1312,7 @@
         if (event.target === termFilter) populateFormats();
         render();
       });
+
       searchFilter.addEventListener("input", render);
       clearButton.addEventListener("click", resetFilters);
 
