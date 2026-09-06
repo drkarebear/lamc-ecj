@@ -372,6 +372,15 @@ textarea:focus-visible {
 .clean-list { padding-left: 1.3rem; }
 .clean-list li + li { margin-top: 8px; }
 
+.card-link-list {
+  margin: 12px 0 0;
+}
+
+.card-link-list .text-link {
+  display: inline-flex;
+  margin-top: 0;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
