@@ -1,0 +1,13 @@
+
+/* Literary journal submission call to action */
+.journal-submit-action {
+  margin: 20px 0 2px;
+}
+.journal-submit-action .button {
+  min-width: 220px;
+}
+@media (max-width: 560px) {
+  .journal-submit-action .button {
+    width: 100%;
+  }
+}

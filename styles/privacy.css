@@ -1,0 +1,64 @@
+:root {
+      --navy: #082f5f;
+      --navy-dark: #062447;
+      --blue: #145da0;
+      --gold: #e5ad27;
+      --white: #ffffff;
+      --text: #263442;
+      --muted: #5b6773;
+      --border: #dce2e8;
+      --soft-gray: #f7f9fb;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--text); line-height: 1.65; background: var(--white); }
+    a { color: var(--blue); }
+    a:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+    .skip-link { position: absolute; left: -9999px; top: auto; }
+    .skip-link:focus { left: 16px; top: 16px; z-index: 1000; padding: 10px 14px; background: var(--white); color: var(--navy); border: 2px solid var(--navy); }
+    .site-header { background: var(--white); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: 1200px; margin: 0 auto; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; gap: 30px; }
+    .college-name { text-decoration: none; }
+    .college-name-main { display: block; color: var(--navy); font-family: Georgia, "Times New Roman", serif; font-size: 1.65rem; font-weight: bold; }
+    .department-name { display: block; color: var(--navy); margin-top: 3px; font-size: .9rem; font-weight: bold; letter-spacing: .04em; text-transform: uppercase; }
+    .top-nav ul { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 0; padding: 0; list-style: none; }
+    .top-nav a { min-height: 44px; display: inline-flex; align-items: center; color: var(--navy); font-size: .95rem; font-weight: bold; text-decoration: none; }
+    .top-nav a:hover { text-decoration: underline; text-underline-offset: 5px; }
+    .hero { background: linear-gradient(115deg, rgba(6,36,71,.99), rgba(8,47,95,.94)); color: var(--white); }
+    .hero-inner { max-width: 900px; margin: 0 auto; padding: 54px 24px 58px; }
+    .hero h1 { margin: 0 0 12px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.08; }
+    .hero p { margin: 0; max-width: 720px; font-size: 1.08rem; }
+    .content { max-width: 900px; margin: 0 auto; padding: 48px 24px 64px; }
+    .content h2 { color: var(--navy); margin-top: 34px; }
+    .notice { padding: 20px 22px; background: var(--soft-gray); border-left: 5px solid var(--blue); border-radius: 4px; }
+    footer { background: var(--navy-dark); color: var(--white); }
+    .footer-inner { max-width: 900px; margin: 0 auto; padding: 34px 24px; }
+    footer h2 { color: var(--white); margin: 0 0 8px; font-size: 1.4rem; }
+    footer p { margin: 5px 0; }
+    footer a { color: var(--white); }
+    @media (max-width: 760px) {
+      .header-inner { padding: 14px 17px 13px; flex-direction: column; align-items: stretch; gap: 11px; }
+      .college-name-main { font-size: 1.38rem; }
+      .department-name { font-size: .72rem; }
+      .top-nav { padding-top: 10px; border-top: 1px solid var(--border); }
+      .top-nav ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; width: 100%; }
+      .top-nav a { width: 100%; min-height: 48px; padding: 9px 10px; justify-content: center; background: #f5f8fb; border: 1px solid #d9e2ea; border-radius: 6px; font-size: .81rem; line-height: 1.2; text-align: center; }
+    }
+  
+    /* Keep an odd final navigation item full-width on small screens. */
+    @media (max-width: 760px) {
+      .top-nav li:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+      }
+    }
+
+  
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }

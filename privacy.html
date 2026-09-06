@@ -5,76 +5,11 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="no-referrer" name="referrer"/>
+<meta content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self'; script-src-attr 'none'; style-src 'self'; style-src-attr 'none'; img-src 'self'; font-src 'self'; connect-src 'self'; media-src 'none'; worker-src 'none'; form-action 'none'; frame-src 'none'; upgrade-insecure-requests" http-equiv="Content-Security-Policy"/>
 <title>Privacy Statement | ECJ | Los Angeles Mission College</title>
 <meta content="Privacy information for the faculty-maintained ECJ website." name="description"/>
 <link href="favicon.png" rel="icon" type="image/png"/>
-<style>
-    :root {
-      --navy: #082f5f;
-      --navy-dark: #062447;
-      --blue: #145da0;
-      --gold: #e5ad27;
-      --white: #ffffff;
-      --text: #263442;
-      --muted: #5b6773;
-      --border: #dce2e8;
-      --soft-gray: #f7f9fb;
-    }
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--text); line-height: 1.65; background: var(--white); }
-    a { color: var(--blue); }
-    a:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
-    .skip-link { position: absolute; left: -9999px; top: auto; }
-    .skip-link:focus { left: 16px; top: 16px; z-index: 1000; padding: 10px 14px; background: var(--white); color: var(--navy); border: 2px solid var(--navy); }
-    .site-header { background: var(--white); border-bottom: 1px solid var(--border); }
-    .header-inner { max-width: 1200px; margin: 0 auto; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; gap: 30px; }
-    .college-name { text-decoration: none; }
-    .college-name-main { display: block; color: var(--navy); font-family: Georgia, "Times New Roman", serif; font-size: 1.65rem; font-weight: bold; }
-    .department-name { display: block; color: var(--navy); margin-top: 3px; font-size: .9rem; font-weight: bold; letter-spacing: .04em; text-transform: uppercase; }
-    .top-nav ul { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 0; padding: 0; list-style: none; }
-    .top-nav a { min-height: 44px; display: inline-flex; align-items: center; color: var(--navy); font-size: .95rem; font-weight: bold; text-decoration: none; }
-    .top-nav a:hover { text-decoration: underline; text-underline-offset: 5px; }
-    .hero { background: linear-gradient(115deg, rgba(6,36,71,.99), rgba(8,47,95,.94)); color: var(--white); }
-    .hero-inner { max-width: 900px; margin: 0 auto; padding: 54px 24px 58px; }
-    .hero h1 { margin: 0 0 12px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.08; }
-    .hero p { margin: 0; max-width: 720px; font-size: 1.08rem; }
-    .content { max-width: 900px; margin: 0 auto; padding: 48px 24px 64px; }
-    .content h2 { color: var(--navy); margin-top: 34px; }
-    .notice { padding: 20px 22px; background: var(--soft-gray); border-left: 5px solid var(--blue); border-radius: 4px; }
-    footer { background: var(--navy-dark); color: var(--white); }
-    .footer-inner { max-width: 900px; margin: 0 auto; padding: 34px 24px; }
-    footer h2 { color: var(--white); margin: 0 0 8px; font-size: 1.4rem; }
-    footer p { margin: 5px 0; }
-    footer a { color: var(--white); }
-    @media (max-width: 760px) {
-      .header-inner { padding: 14px 17px 13px; flex-direction: column; align-items: stretch; gap: 11px; }
-      .college-name-main { font-size: 1.38rem; }
-      .department-name { font-size: .72rem; }
-      .top-nav { padding-top: 10px; border-top: 1px solid var(--border); }
-      .top-nav ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; width: 100%; }
-      .top-nav a { width: 100%; min-height: 48px; padding: 9px 10px; justify-content: center; background: #f5f8fb; border: 1px solid #d9e2ea; border-radius: 6px; font-size: .81rem; line-height: 1.2; text-align: center; }
-    }
-  
-    /* Keep an odd final navigation item full-width on small screens. */
-    @media (max-width: 760px) {
-      .top-nav li:last-child:nth-child(odd) {
-        grid-column: 1 / -1;
-      }
-    }
-
-  
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after {
-        scroll-behavior: auto !important;
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
-
-  </style>
+<link href="styles/privacy.css" rel="stylesheet"/>
 <link href="ecj-accessibility.css" rel="stylesheet"/>
 </head>
 <body>
@@ -110,22 +45,25 @@
       </div>
 <h2>About This Website</h2>
 <p>This website is maintained by faculty in the Los Angeles Mission College English, Communication Studies &amp; Journalism Department as a resource for students and the community. It is not an official Los Angeles Mission College or Los Angeles Community College District website.</p>
-<p>The website itself does not provide user accounts, host first-party submission forms, serve advertising, or use first-party analytics, and it does not ask visitors to submit student records directly through this site.</p>
+<p>The website itself does not provide user accounts, host first-party submission forms, serve advertising, or load third-party analytics or advertising scripts, and it does not ask visitors to submit student records directly through this site.</p>
+<p>On an ordinary page view, the site loads its HTML, styles, scripts, images, and class data from the same GitHub Pages site. Google Forms, Microsoft Forms, Instagram, Heyzine, PlayLab, and official LAMC/LACCD services are contacted only after you choose a link or, for the optional PlayLab tools, choose the load button.</p>
 <h2>ECJ Class Finder</h2>
 <p>The <a href="classes.html">ECJ Class Finder</a> reads a static copy of public LACCD class-schedule information stored with this website. The class-finder page does not ask for a student login, student ID, or other enrollment credentials. When you choose a link to check a section in the official Student Information System, you leave this website and the destination site follows its own privacy practices.</p>
 <h2 id="feedback-form-privacy">ECJ Department Feedback Form</h2>
-<p>The optional <a href="https://forms.cloud.microsoft/r/ttxscpH2Z3" target="_blank" rel="noopener">ECJ Department Feedback or Encouragement Form</a> is hosted in Microsoft Forms and requires an LACCD sign-in. The form is configured so your name is not recorded in the response unless you choose to provide it. You can also choose whether to provide contact information and whether ECJ may share your comment as a quotation.</p>
+<p>The optional <a href="https://forms.cloud.microsoft/r/ttxscpH2Z3" rel="noopener noreferrer">ECJ Department Feedback or Encouragement Form</a> is hosted in Microsoft Forms and requires an LACCD sign-in. The form is configured so your name is not recorded in the response unless you choose to provide it. You can also choose whether to provide contact information and whether ECJ may share your comment as a quotation.</p>
 <p>Sign-in is handled through LACCD and Microsoft systems. Those services may process account and technical information needed for authentication under their own privacy practices. This ECJ website does not receive your LACCD password or login credentials.</p>
 <h2>Website Hosting</h2>
-<p>This site is hosted using GitHub Pages. Like other web-hosting providers, GitHub may process technical information needed to deliver and secure the site. GitHub states that visitor IP addresses are logged and stored for security purposes when a GitHub Pages site is visited. See <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages" rel="noopener noreferrer" target="_blank">GitHub’s information about GitHub Pages</a> for details.</p>
+<p>This site is hosted using GitHub Pages. Like other web-hosting providers, GitHub may process technical information needed to deliver and secure the site. GitHub states that visitor IP addresses are logged and stored for security purposes when a GitHub Pages site is visited. See <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages" rel="noopener noreferrer">GitHub’s information about GitHub Pages</a> for details.</p>
 <h2>Optional PlayLab Interactive Guides</h2>
 <p>The Program Finder and Interactive Support Guide use PlayLab, an external AI service. These tools are optional. They are set to load only after you choose the load button, so you can read this site and use its ordinary links without loading a PlayLab guide.</p>
 <p>When you choose to load a PlayLab guide, your browser connects to PlayLab. PlayLab may receive technical information such as your IP address, browser or device information, and usage information, and it may use cookies or analytics technologies according to its own practices. Anything you type into a PlayLab guide is sent to PlayLab and may be stored or made available according to the service’s settings and privacy practices.</p>
 <p><strong>Keep information general.</strong> Do not enter your name, student ID number, password, Social Security number, contact information, medical or disability information, financial account information, immigration information, or other sensitive personal details. For the Support Guide, a broad request such as “tutoring,” “food assistance,” “counseling,” “financial aid,” or “help choosing classes” is enough.</p>
-<p>For more information, review <a href="https://www.playlab.ai/policies/privacy" rel="noopener noreferrer" target="_blank">PlayLab’s Privacy Policy</a>.</p>
+<p>For more information, review <a href="https://www.playlab.ai/policies/privacy" rel="noopener noreferrer">PlayLab’s Privacy Policy</a>.</p>
 <h2>External Links</h2>
-<p>This site also links to official LAMC and LACCD pages and to other outside resources. When you follow an external link, the destination site handles the information associated with that visit under its own privacy practices.</p>
-<h2>Official College Services</h2>
+<p>This site also links to official LAMC and LACCD pages and to other outside resources. The site uses a no-referrer policy so ordinary outbound links do not send the ECJ page address as a referrer. When you follow an external link, the destination site still receives the technical information needed for your direct connection and handles that visit under its own privacy practices.</p>
+<h2>Browser Security Protections</h2>
+<p>The site uses a restrictive Content Security Policy to limit scripts, styles, images, network requests, frames, and other active content to the sources each page needs. Inline scripts and inline styles are blocked. Third-party frames are blocked site-wide except on the two optional PlayLab pages, where the frame is still created only after you choose to load it.</p>
+<h2>Accessibility Barrier Reports</h2><p>The <a href="accessibility.html">Accessibility page</a> offers an email link to the faculty site maintainer. The ECJ website itself does not collect or store the contents of that message. If you choose to email, your message and email address are handled by your email provider and the college email system. Share only the information needed to describe the barrier; you do not need to disclose a disability, diagnosis, or medical information.</p><h2>Official College Services</h2>
 <p>For official college records, services, policies, or matters involving private student information, use official Los Angeles Mission College systems and offices rather than an interactive guide on this site.</p>
 <p><a href="student-resources.html">Return to Student Resources</a></p>
 </div>
@@ -136,9 +74,9 @@
 <p>English, Communication Studies &amp; Journalism</p>
 <p>13356 Eldridge Avenue · Sylmar, CA 91342</p>
 <p><a href="https://www.lamc.edu/">Visit the Los Angeles Mission College website</a></p>
-<p><a href="https://www.lamc.edu/student-services" rel="noopener" target="_blank">Official LAMC Student Services</a></p>
+<p><a href="https://www.lamc.edu/student-services" rel="noopener noreferrer">Official LAMC Student Services</a></p>
 <p><a aria-current="page" href="privacy.html">Privacy Statement</a></p>
-<p><a href="accessibility.html">Accessibility</a></p>
+<p><a href="accessibility.html">Accessibility &amp; Report a Barrier</a></p>
 <p><a href="license.html">License &amp; Reuse</a></p>
 </div>
 </footer>

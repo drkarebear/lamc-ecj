@@ -5,1226 +5,13 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="no-referrer" name="referrer"/>
+<meta content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self'; script-src-attr 'none'; style-src 'self'; style-src-attr 'none'; img-src 'self'; font-src 'self'; connect-src 'self'; media-src 'none'; worker-src 'none'; form-action 'none'; frame-src 'none'; upgrade-insecure-requests" http-equiv="Content-Security-Policy"/>
 <title>Student Resources | ECJ | Los Angeles Mission College</title>
-<meta content="Find Los Angeles Mission College resources for tutoring, basic needs, financial aid, health, counseling, transfer, career planning, athletics, student communities, safety, and more." name="description"/>
+<meta content="Find Los Angeles Mission College resources for tutoring, basic needs, financial aid, health, counseling, transfer, career planning, athletics, student communities, safety, and more." name="description">
 <link href="favicon.png" rel="icon" type="image/png"/>
-<style>
-
-    /* =========================================================
-       DESIGN SYSTEM
-       ========================================================= */
-
-    :root {
-      --navy: #082f5f;
-      --navy-dark: #062447;
-      --blue: #145da0;
-
-      --gold: #e5ad27;
-      --gold-light: #ffd25d;
-
-      --white: #ffffff;
-      --cream: #fff9e6;
-
-      --text: #263442;
-      --muted: #566574;
-      --border: #dce2e8;
-
-      --school: #4d84ae;
-      --school-bg: #edf6fc;
-
-      --money: #a87912;
-      --money-bg: #fff9e6;
-
-      --life: #765a96;
-      --life-bg: #f7f3fa;
-
-      --future: #4f8060;
-      --future-bg: #f1f8f3;
-
-      --community: #9b5967;
-      --community-bg: #fff5f6;
-
-      --unsure: #397a76;
-      --unsure-bg: #f0f8f7;
-
-      --focus: #ffbf00;
-    }
-
-
-    /* =========================================================
-       BASE
-       ========================================================= */
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      -webkit-text-size-adjust: 100%;
-    }
-
-    body {
-      margin: 0;
-      min-width: 320px;
-
-      background: var(--white);
-      color: var(--text);
-
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 1rem;
-      line-height: 1.6;
-
-      overflow-wrap: break-word;
-    }
-
-    a {
-      color: var(--blue);
-    }
-
-    p {
-      max-width: 75ch;
-    }
-
-
-    /* =========================================================
-       ACCESSIBILITY
-       ========================================================= */
-
-    .skip-link {
-      position: absolute;
-      left: -9999px;
-      top: 0;
-      z-index: 9999;
-
-      padding: 12px 18px;
-
-      background: var(--gold);
-      color: #132a3d;
-
-      border-radius: 0 0 5px 5px;
-
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .skip-link:focus {
-      left: 12px;
-      top: 0;
-    }
-
-    a:focus-visible {
-      outline: 3px solid var(--focus);
-      outline-offset: 4px;
-      border-radius: 3px;
-    }
-
-    .resource-section {
-      scroll-margin-top: 24px;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
-      }
-
-    }
-
-
-    /* =========================================================
-       HEADER
-       ========================================================= */
-
-    .site-header {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .header-inner {
-      width: min(1200px, 100%);
-      margin: 0 auto;
-
-      padding: 20px 24px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 30px;
-    }
-
-    .college-name {
-      color: var(--navy);
-      text-decoration: none;
-    }
-
-    .college-name-main {
-      display: block;
-
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.65rem;
-      font-weight: 700;
-      line-height: 1.15;
-    }
-
-    .department-name {
-      display: block;
-
-      margin-top: 5px;
-
-      font-size: .86rem;
-      font-weight: 700;
-      line-height: 1.4;
-      letter-spacing: .045em;
-      text-transform: uppercase;
-    }
-
-
-    /* =========================================================
-       NAVIGATION
-       ========================================================= */
-
-    .top-nav ul {
-      margin: 0;
-      padding: 0;
-
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-
-      gap: 8px 22px;
-
-      list-style: none;
-    }
-
-    .top-nav a {
-      min-height: 44px;
-
-      display: inline-flex;
-      align-items: center;
-
-      color: var(--navy);
-
-      font-size: .95rem;
-      font-weight: 700;
-
-      text-decoration: none;
-    }
-
-    .top-nav a:hover {
-      text-decoration: underline;
-      text-decoration-thickness: 2px;
-      text-underline-offset: 5px;
-    }
-
-
-    /* =========================================================
-       HERO
-       ========================================================= */
-
-    .hero {
-      background:
-        linear-gradient(
-          115deg,
-          #062447 0%,
-          #082f5f 100%
-        );
-
-      color: var(--white);
-    }
-
-    .hero-inner {
-      width: min(1050px, 100%);
-      margin: 0 auto;
-
-      padding: 58px 24px 62px;
-    }
-
-    .breadcrumb {
-      margin: 0 0 18px;
-
-      color: #d9ebff;
-
-      font-size: .94rem;
-    }
-
-    .breadcrumb a {
-      color: #d9ebff;
-    }
-
-    .eyebrow {
-      margin: 0 0 9px;
-
-      color: var(--gold-light);
-
-      font-size: .9rem;
-      font-weight: 700;
-      letter-spacing: .07em;
-      text-transform: uppercase;
-    }
-
-    .hero h1 {
-      max-width: 800px;
-
-      margin: 0 0 16px;
-
-      color: var(--white);
-
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2.6rem, 6vw, 4.2rem);
-      line-height: 1.05;
-
-      text-wrap: balance;
-    }
-
-    .hero-description {
-      max-width: 760px;
-
-      margin: 0;
-
-      color: var(--white);
-
-      font-size: 1.12rem;
-      line-height: 1.65;
-    }
-
-
-    /* =========================================================
-       MAIN CONTENT
-       ========================================================= */
-
-    .content {
-      width: min(1050px, 100%);
-      margin: 0 auto;
-
-      padding: 46px 24px 70px;
-    }
-
-
-    /* =========================================================
-       INTRO
-       ========================================================= */
-
-    .intro {
-      max-width: 850px;
-
-      margin: 0 auto 34px;
-    }
-
-    .intro h2 {
-      margin: 0 0 10px;
-
-      color: var(--navy);
-
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.9rem;
-      line-height: 1.25;
-    }
-
-    .intro p {
-      margin: 0 0 10px;
-    }
-
-
-    /* =========================================================
-       RESOURCE NAVIGATOR CALLOUT
-       ========================================================= */
-
-    .navigator-callout {
-      margin: 32px 0 42px;
-      padding: 24px 25px;
-
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-
-      gap: 26px;
-
-      background: var(--unsure-bg);
-
-      border: 2px solid var(--unsure);
-      border-radius: 10px;
-    }
-
-    .navigator-callout h2 {
-      margin: 0 0 7px;
-
-      color: var(--navy);
-
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.5rem;
-      line-height: 1.25;
-    }
-
-    .navigator-callout p {
-      max-width: 680px;
-
-      margin: 0;
-
-      color: #3f4e5c;
-    }
-
-    .navigator-note {
-      margin-top: 7px !important;
-
-      color: #5a6874 !important;
-
-      font-size: .86rem;
-    }
-
-    .guide-badge {
-      width: fit-content;
-      margin: 0 0 9px !important;
-      padding: 5px 9px;
-
-      background: var(--navy);
-      color: var(--white) !important;
-
-      border-radius: 999px;
-
-      font-size: .72rem;
-      font-weight: 700;
-      line-height: 1.2;
-      letter-spacing: .07em;
-      text-transform: uppercase;
-    }
-
-    .guide-examples {
-      margin: 14px 0 12px;
-
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-    }
-
-    .guide-examples span {
-      padding: 6px 9px;
-
-      background: rgba(255,255,255,.82);
-      color: #3f4e5c;
-
-      border: 1px solid rgba(57,122,118,.25);
-      border-radius: 6px;
-
-      font-size: .82rem;
-      line-height: 1.35;
-    }
-
-    .privacy-reminder {
-      margin-top: 12px !important;
-      padding: 10px 12px;
-
-      background: rgba(255,255,255,.72);
-      color: #465463 !important;
-
-      border-left: 4px solid var(--gold);
-      border-radius: 5px;
-
-      font-size: .8rem;
-      line-height: 1.45;
-    }
-
-
-    .navigator-button {
-      min-height: 50px;
-
-      padding: 12px 20px;
-
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
-      background: var(--navy);
-      color: var(--white);
-
-      border: 2px solid var(--navy);
-      border-radius: 6px;
-
-      font-weight: 700;
-      line-height: 1.3;
-      text-align: center;
-      text-decoration: none;
-    }
-
-    .navigator-button:hover {
-      background: var(--blue);
-      border-color: var(--blue);
-
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-
-    /* =========================================================
-       QUICK NAVIGATION
-       ========================================================= */
-
-    .quick-nav {
-      margin: 36px 0 48px;
-    }
-
-    .quick-nav h2 {
-      margin: 0 0 7px;
-
-      color: var(--navy);
-
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.9rem;
-      line-height: 1.25;
-    }
-
-    .quick-nav-intro {
-      margin: 0 0 20px;
-
-      color: var(--muted);
-    }
-
-    .choice-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
-      gap: 13px;
-    }
-
-    .choice-card {
-      min-height: 100px;
-
-      padding: 17px 18px;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      border: 2px solid var(--border);
-      border-radius: 9px;
-
-      color: var(--navy);
-
-      text-decoration: none;
-    }
-
-    .choice-card strong {
-      display: block;
-
-      margin-bottom: 3px;
-
-      font-size: 1.03rem;
-      line-height: 1.35;
-    }
-
-    .choice-card span {
-      color: #465463;
-
-      font-size: .9rem;
-      line-height: 1.45;
-    }
-
-    .choice-card:hover strong {
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    .choice-grid .choice-card:last-child:nth-child(odd) {
-      grid-column: 1 / -1;
-    }
-
-    .choice-school {
-      background: var(--school-bg);
-      border-color: var(--school);
-    }
-
-    .choice-money {
-      background: var(--money-bg);
-      border-color: var(--money);
-    }
-
-    .choice-life {
-      background: var(--life-bg);
-      border-color: var(--life);
-    }
-
-    .choice-future {
-      background: var(--future-bg);
-      border-color: var(--future);
-    }
-
-    .choice-community {
-      background: var(--community-bg);
-      border-color: var(--community);
-    }
-
-    .choice-unsure {
-      background: var(--unsure-bg);
-      border-color: var(--unsure);
-    }
-
-
-    /* =========================================================
-       CATEGORY PANELS
-       ========================================================= */
-
-    .resource-section {
-      margin: 42px 0;
-      padding: 30px;
-
-      border: 1px solid var(--border);
-      border-radius: 14px;
-    }
-
-    .school-section {
-      background: var(--school-bg);
-      border-top: 6px solid var(--school);
-    }
-
-    .money-section {
-      background: var(--money-bg);
-      border-top: 6px solid var(--money);
-    }
-
-    .life-section {
-      background: var(--life-bg);
-      border-top: 6px solid var(--life);
-    }
-
-    .future-section {
-      background: var(--future-bg);
-      border-top: 6px solid var(--future);
-    }
-
-    .community-section {
-      background: var(--community-bg);
-      border-top: 6px solid var(--community);
-    }
-
-    .resource-heading {
-      margin: 0 0 7px;
-
-      color: var(--navy);
-
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.9rem;
-      line-height: 1.2;
-    }
-
-    .section-intro {
-      max-width: 720px;
-
-      margin: 0 0 24px;
-
-      color: #465463;
-
-      font-size: .98rem;
-      line-height: 1.55;
-    }
-
-
-    /* =========================================================
-       RESOURCE GRID
-       ========================================================= */
-
-    .resource-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
-      gap: 15px;
-    }
-
-
-    /* =========================================================
-       RESOURCE CARDS
-       ========================================================= */
-
-    .resource {
-      min-width: 0;
-      min-height: 100%;
-
-      padding: 19px 19px 17px;
-
-      display: flex;
-      flex-direction: column;
-
-      background: var(--white);
-
-      border: 1px solid rgba(30,60,90,.14);
-      border-radius: 9px;
-
-      box-shadow:
-        0 3px 10px rgba(20,43,67,.055);
-    }
-
-    .resource-type {
-      margin: 0 0 5px;
-
-      color: #5d6873;
-
-      font-size: .72rem;
-      font-weight: 700;
-      line-height: 1.35;
-      letter-spacing: .055em;
-
-      text-transform: uppercase;
-    }
-
-    .resource h3 {
-      margin: 0 0 8px;
-
-      color: var(--navy);
-
-      font-size: 1.04rem;
-      line-height: 1.35;
-    }
-
-    .resource p {
-      margin: 0 0 12px;
-
-      color: #3f4e5c;
-
-      font-size: .92rem;
-      line-height: 1.5;
-    }
-
-    .resource-description {
-      flex-grow: 1;
-    }
-
-    .resource-link {
-      min-height: 44px;
-
-      margin-top: auto;
-
-      display: inline-flex;
-      align-items: center;
-
-      color: #075fa5;
-
-      font-size: .92rem;
-      font-weight: 700;
-      line-height: 1.35;
-
-      text-underline-offset: 3px;
-    }
-
-    .resource-link:hover {
-      color: var(--navy);
-
-      text-decoration-thickness: 2px;
-    }
-
-
-    /* =========================================================
-       BACK TO CHOICES
-       ========================================================= */
-
-    .back-top {
-      margin: 22px 0 0;
-    }
-
-    .back-top a {
-      min-height: 44px;
-
-      padding: 8px 13px;
-
-      display: inline-flex;
-      align-items: center;
-
-      background: rgba(255,255,255,.72);
-      color: var(--navy);
-
-      border: 1px solid rgba(8,47,95,.2);
-      border-radius: 999px;
-
-      font-size: .84rem;
-      font-weight: 700;
-
-      text-decoration: none;
-    }
-
-    .back-top a:hover {
-      background: var(--white);
-
-      text-decoration: underline;
-    }
-
-
-
-    /* =========================================================
-       EMERGENCY DISCLOSURE
-       ========================================================= */
-
-    .emergency-box {
-      margin: 28px 0 38px;
-      background: #fff5f6;
-      border: 2px solid var(--community);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .emergency-box summary {
-      min-height: 54px;
-      padding: 15px 20px;
-      display: flex;
-      align-items: center;
-      color: var(--navy);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.28rem;
-      font-weight: 700;
-      line-height: 1.3;
-      cursor: pointer;
-    }
-
-    .emergency-box summary:hover {
-      background: rgba(155, 89, 103, .08);
-    }
-
-    .emergency-content {
-      padding: 2px 20px 20px;
-      border-top: 1px solid rgba(155, 89, 103, .25);
-    }
-
-    .emergency-content p {
-      margin: 12px 0 0;
-    }
-
-    .crisis-note {
-      margin: 14px 0 0;
-      padding: 14px 15px;
-      background: #ffffff;
-      border-left: 4px solid var(--life);
-      border-radius: 6px;
-    }
-
-    /* =========================================================
-       SAFETY
-       ========================================================= */
-
-    .safety-box {
-      margin: 45px 0;
-      padding: 25px;
-
-      background: var(--unsure-bg);
-
-      border: 2px solid var(--unsure);
-      border-radius: 10px;
-    }
-
-    .safety-box h2 {
-      margin: 0 0 9px;
-
-      color: var(--navy);
-
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.6rem;
-      line-height: 1.3;
-    }
-
-    .safety-box p {
-      margin: 0 0 12px;
-    }
-
-
-    /* =========================================================
-       NOT SURE
-       ========================================================= */
-
-    .not-sure {
-      margin: 45px 0 20px;
-      padding: 25px;
-
-      background: var(--cream);
-
-      border-left: 5px solid var(--gold);
-      border-radius: 9px;
-    }
-
-    .not-sure h2 {
-      margin: 0 0 9px;
-
-      color: var(--navy);
-
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.6rem;
-      line-height: 1.3;
-    }
-
-    .not-sure p {
-      margin: 0 0 12px;
-    }
-
-    .not-sure p:last-child {
-      margin-bottom: 0;
-    }
-
-
-
-    .human-links {
-      margin-top: 17px;
-
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .human-option {
-      min-height: 104px;
-      padding: 16px;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-
-      background: var(--white);
-      color: var(--navy);
-
-      border: 1px solid #dfd1a5;
-      border-radius: 8px;
-
-      text-decoration: none;
-    }
-
-    .human-option strong {
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-    }
-
-    .human-option span {
-      color: #465463;
-      font-size: .88rem;
-      line-height: 1.45;
-    }
-
-    .human-option:hover {
-      border-color: var(--gold);
-      box-shadow: 0 3px 10px rgba(20,43,67,.07);
-    }
-
-
-    /* =========================================================
-       FOOTER
-       ========================================================= */
-
-    footer {
-      background: var(--navy-dark);
-      color: var(--white);
-    }
-
-    .footer-inner {
-      width: min(1050px, 100%);
-      margin: 0 auto;
-
-      padding: 38px 24px;
-    }
-
-    footer h2 {
-      margin: 0 0 8px;
-
-      color: var(--white);
-
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.4rem;
-    }
-
-    footer p {
-      margin: 4px 0;
-
-      color: var(--white);
-    }
-
-    footer a {
-      color: var(--white);
-    }
-
-    .site-disclaimer {
-      width: min(1050px, 100%);
-      margin: 0 auto;
-
-      padding: 17px 24px 24px;
-
-      border-top: 1px solid rgba(255,255,255,.18);
-
-      color: #cbd6e0;
-
-      font-size: .75rem;
-      line-height: 1.55;
-    }
-
-    .site-disclaimer p {
-      max-width: 950px;
-
-      margin: 0;
-
-      color: #cbd6e0;
-    }
-
-    .site-disclaimer p + p {
-      margin-top: 7px;
-    }
-
-    .site-disclaimer strong,
-    .site-disclaimer a {
-      color: var(--white);
-    }
-
-
-    /* =========================================================
-       TABLET
-       ========================================================= */
-
-    @media (max-width: 850px) {
-
-      .resource-grid {
-        grid-template-columns: 1fr;
-      }
-
-    }
-
-
-    /* =========================================================
-       MOBILE
-       ========================================================= */
-
-    @media (max-width: 760px) {
-
-      .header-inner {
-        padding: 14px 17px 13px;
-
-        flex-direction: column;
-        align-items: stretch;
-
-        gap: 11px;
-      }
-
-      .college-name-main {
-        font-size: 1.38rem;
-      }
-
-      .department-name {
-        font-size: .72rem;
-      }
-
-      .top-nav {
-        padding-top: 10px;
-
-        border-top: 1px solid var(--border);
-      }
-
-      .top-nav ul {
-        width: 100%;
-
-        display: grid;
-
-        grid-template-columns:
-          repeat(2, minmax(0, 1fr));
-
-        gap: 9px;
-      }
-
-      .top-nav a {
-        width: 100%;
-        min-height: 48px;
-
-        padding: 9px 10px;
-
-        justify-content: center;
-
-        background: #f5f8fb;
-
-        border: 1px solid #d9e2ea;
-        border-radius: 6px;
-
-        font-size: .81rem;
-
-        text-align: center;
-      }
-
-
-      /* Hero */
-
-      .hero-inner {
-        padding: 42px 19px 46px;
-      }
-
-      .breadcrumb {
-        font-size: .85rem;
-      }
-
-      .eyebrow {
-        font-size: .77rem;
-      }
-
-      .hero h1 {
-        font-size: clamp(2.2rem, 11vw, 3rem);
-      }
-
-      .hero-description {
-        font-size: 1rem;
-        line-height: 1.55;
-      }
-
-
-      /* Main */
-
-      .content {
-        padding: 32px 16px 52px;
-      }
-
-
-      /* Navigator */
-
-      .navigator-callout {
-        padding: 20px 18px;
-
-        grid-template-columns: 1fr;
-
-        gap: 17px;
-      }
-
-      .navigator-callout h2 {
-        font-size: 1.35rem;
-      }
-
-      .navigator-button {
-        width: 100%;
-        min-height: 52px;
-      }
-
-
-      /* Quick navigation */
-
-      .choice-grid {
-        grid-template-columns: 1fr;
-
-        gap: 10px;
-      }
-
-      .choice-card {
-        min-height: 88px;
-
-        padding: 15px 16px;
-      }
-
-
-      /* Category panels */
-
-      .resource-section {
-        margin: 34px -2px;
-        padding: 22px 15px 20px;
-
-        border-radius: 10px;
-      }
-
-      .resource-heading {
-        font-size: 1.5rem;
-      }
-
-      .section-intro {
-        margin-bottom: 18px;
-
-        font-size: .94rem;
-      }
-
-      .resource-grid {
-        grid-template-columns: 1fr;
-
-        gap: 11px;
-      }
-
-      .resource {
-        padding: 16px;
-      }
-
-      .resource h3 {
-        font-size: 1rem;
-      }
-
-      .resource p {
-        font-size: .9rem;
-      }
-
-      .resource-link {
-        width: 100%;
-        min-height: 46px;
-      }
-
-
-      /* Emergency / Safety */
-
-      .emergency-box summary {
-        padding: 14px 16px;
-        font-size: 1.14rem;
-      }
-
-      .emergency-content {
-        padding: 2px 16px 17px;
-      }
-
-      .safety-box,
-      .not-sure {
-        padding: 21px 18px;
-      }
-
-
-      .guide-examples {
-        display: grid;
-        grid-template-columns: 1fr;
-      }
-
-      .human-links {
-        grid-template-columns: 1fr;
-      }
-
-
-      /* Footer */
-
-      .footer-inner {
-        padding: 30px 18px;
-      }
-
-      .site-disclaimer {
-        padding: 15px 18px 20px;
-
-        font-size: .7rem;
-      }
-
-    }
-
-
-    /* =========================================================
-       VERY SMALL PHONES
-       ========================================================= */
-
-    @media (max-width: 390px) {
-
-      .top-nav ul {
-        grid-template-columns: 1fr;
-      }
-
-    }
-
-  
-    /* Keep an odd final navigation item full-width on small screens. */
-    @media (max-width: 760px) {
-      .top-nav li:last-child:nth-child(odd) {
-        grid-column: 1 / -1;
-      }
-    }
-
-  </style>
+<link href="styles/student-resources.css" rel="stylesheet"/>
 <link href="ecj-accessibility.css" rel="stylesheet"/>
-</head>
+</meta></head>
 <body id="top">
 <a class="skip-link" href="#main-content">
     Skip to main content
@@ -1377,7 +164,7 @@
             available 24/7. You do not have to be suicidal to contact 988.
           </p>
 <p>
-<a class="resource-link" href="https://988lifeline.org/get-help/" rel="noopener" target="_blank">
+<a class="resource-link" href="https://988lifeline.org/get-help/" rel="noopener noreferrer">
               Call, Text, or Chat With the 988 Lifeline →
             </a>
 </p>
@@ -1417,15 +204,12 @@
 <!-- =====================================================
            INTERACTIVE SUPPORT GUIDE
            ===================================================== -->
-
 <!-- =====================================================
            EMERGENCY / CRISIS
            ===================================================== -->
-
 <!-- =====================================================
            QUICK NAVIGATION
            ===================================================== -->
-
 <!-- =====================================================
            SCHOOL
            ===================================================== -->
@@ -1450,7 +234,7 @@
               offers tutoring, writing support, academic help,
               and workshops.
             </p>
-<a class="resource-link" href="https://www.lamc.edu/academic-services/learning-center" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/academic-services/learning-center" rel="noopener noreferrer">
               Get Tutoring &amp; Writing Help →
             </a>
 </article>
@@ -1466,7 +250,7 @@
               databases, books, research support, study spaces,
               computers, and other resources.
             </p>
-<a class="resource-link" href="https://www.lamc.edu/academic-services/library" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/academic-services/library" rel="noopener noreferrer">
               Get Research Help →
             </a>
 </article>
@@ -1481,7 +265,7 @@
 <strong>Mission Online</strong> provides Canvas and
               online-learning help.
             </p>
-<a class="resource-link" href="https://www.lamc.edu/academics/online" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/academics/online" rel="noopener noreferrer">
               Get Canvas &amp; Online-Class Help →
             </a>
 </article>
@@ -1497,7 +281,7 @@
               multi-factor authentication, the Student Portal, enrollment
               questions, and other common technology problems.
             </p>
-<a class="resource-link" href="https://www.lamc.edu/student-services/welcome-center" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/student-services/welcome-center" rel="noopener noreferrer">
               Contact the Eagles Help Desk →
             </a>
 </article>
@@ -1532,7 +316,7 @@
               students with food, housing referrals, transportation,
               clothing, hygiene items, and other support.
             </p>
-<a class="resource-link" href="https://www.lamc.edu/student-services/spr/basic-needs-center" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/student-services/spr/basic-needs-center" rel="noopener noreferrer">
               Start With the Basic Needs Center →
             </a>
 </article>
@@ -1547,7 +331,7 @@
 <strong>CalFresh</strong> may help eligible students
               pay for groceries.
             </p>
-<a class="resource-link" href="https://www.getcalfresh.org/s/lamc" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.getcalfresh.org/s/lamc" rel="noopener noreferrer">
               Explore CalFresh →
             </a>
 </article>
@@ -1563,7 +347,7 @@
               with grants, scholarships, fee waivers, work-study,
               loans, and other financial aid.
             </p>
-<a class="resource-link" href="https://www.lamc.edu/financial-aid" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/financial-aid" rel="noopener noreferrer">
               Explore Financial Aid →
             </a>
 </article>
@@ -1578,7 +362,7 @@
               You don't have to complete the FAFSA or California
               Dream Act Application by yourself.
             </p>
-<a class="resource-link" href="https://www.lamc.edu/financial-aid/apply/" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/financial-aid/apply/" rel="noopener noreferrer">
               Get Financial Aid Application Help →
             </a>
 </article>
@@ -1594,7 +378,7 @@
               students facing educational, economic, social, or
               language barriers.
             </p>
-<a class="resource-link" href="https://www.lamc.edu/student-services/spr/EOPS" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/student-services/spr/EOPS" rel="noopener noreferrer">
               Explore EOPS →
             </a>
 </article>
@@ -1609,7 +393,7 @@
 <strong>LA College Promise</strong> provides tuition
               and other support to eligible students.
             </p>
-<a class="resource-link" href="https://www.lamc.edu/admissions/college-promise-program" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/admissions/college-promise-program" rel="noopener noreferrer">
               Explore LA College Promise →
             </a>
 </article>
@@ -1644,7 +428,7 @@
               about medical and behavioral health services available to
               eligible LAMC students.
             </p>
-<a class="resource-link" href="https://www.lamc.edu/student-services/spr/Student-Health-Center" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/student-services/spr/Student-Health-Center" rel="noopener noreferrer">
               Explore Student Health Services →
             </a>
 <div class="crisis-note">
@@ -1652,7 +436,7 @@
 <strong>Need to talk to someone right now?</strong>
                 Call or text <a href="tel:988"><strong>988</strong></a> for
                 free, confidential, 24/7 emotional and crisis support, or
-                <a href="https://988lifeline.org/get-help/" rel="noopener" target="_blank"><strong>chat with the 988 Suicide &amp; Crisis Lifeline</strong></a>.
+                <a href="https://988lifeline.org/get-help/" rel="noopener noreferrer"><strong>chat with the 988 Suicide &amp; Crisis Lifeline</strong></a>.
               </p>
 </div>
 </article>
@@ -1668,7 +452,7 @@
               can help eligible students access academic accommodations
               and other accessibility support.
             </p>
-<a class="resource-link" href="https://www.lamc.edu/student-services/spr/dsps" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/student-services/spr/dsps" rel="noopener noreferrer">
               Explore DSPS →
             </a>
 </article>
@@ -1684,11 +468,11 @@
               including childcare and other support.
             </p>
 <p>
-<a class="resource-link" href="https://www.lamc.edu/student-services/spr/child-development-center" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/student-services/spr/child-development-center" rel="noopener noreferrer">
                 Explore Childcare →
               </a>
 </p>
-<a class="resource-link" href="https://www.lamc.edu/student-services/ab-2881" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/student-services/ab-2881" rel="noopener noreferrer">
               Explore Support for Student Parents →
             </a>
 </article>
@@ -1703,7 +487,7 @@
 <strong>CalWORKs</strong> provides support to eligible
               student-parents receiving public assistance.
             </p>
-<a class="resource-link" href="https://www.lamc.edu/student-services/spr/calWORKS" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/student-services/spr/calWORKS" rel="noopener noreferrer">
               Explore CalWORKs →
             </a>
 </article>
@@ -1719,7 +503,7 @@
 <strong>Dream Resource Center</strong> connects students
               with information, community, and support.
             </p>
-<a class="resource-link" href="https://www.lamc.edu/student-services/spr/drc" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/student-services/spr/drc" rel="noopener noreferrer">
               Explore the Dream Resource Center →
             </a>
 </article>
@@ -1737,11 +521,11 @@
               connections to resources.
             </p>
 <p>
-<a class="resource-link" href="https://www.lamc.edu/student-services/spr/FKCE/guardian-scholars-program" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/student-services/spr/FKCE/guardian-scholars-program" rel="noopener noreferrer">
                 Explore Guardian Scholars →
               </a>
 </p>
-<a class="resource-link" href="https://www.lamc.edu/student-services/spr/EOPS/next-up" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/student-services/spr/EOPS/next-up" rel="noopener noreferrer">
               Explore NextUP →
             </a>
 </article>
@@ -1758,7 +542,7 @@
               children and youth in out-of-home care, including English-
               and Spanish-language training opportunities.
             </p>
-<a class="resource-link" href="https://www.lamc.edu/student-services/spr/FKCE" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/student-services/spr/FKCE" rel="noopener noreferrer">
               Explore Foster and Kinship Care Education →
             </a>
 </article>
@@ -1774,7 +558,7 @@
               community and support for formerly incarcerated and
               system-impacted students.
             </p>
-<a class="resource-link" href="https://www.lamc.edu/student-services/spr/CCRH/re-entry-program" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/student-services/spr/CCRH/re-entry-program" rel="noopener noreferrer">
               Explore Reentry Support →
             </a>
 </article>
@@ -1789,7 +573,7 @@
 <strong>Veterans Resource Center</strong> provides
               specialized support and resources.
             </p>
-<a class="resource-link" href="https://www.lamc.edu/student-services/spr/veterans" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/student-services/spr/veterans" rel="noopener noreferrer">
               Explore Veterans Resources →
             </a>
 </article>
@@ -1805,7 +589,7 @@
               specialized academic counseling and other support for
               international students.
             </p>
-<a class="resource-link" href="https://www.lamc.edu/student-services/spr/international-students" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/student-services/spr/international-students" rel="noopener noreferrer">
               Explore International Student Support →
             </a>
 </article>
@@ -1840,7 +624,7 @@
               education plan, choose classes, explore goals, and stay
               on track.
             </p>
-<a class="resource-link" href="https://www.lamc.edu/student-services/counseling" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/student-services/counseling" rel="noopener noreferrer">
               Get Help From LAMC Counseling →
             </a>
 </article>
@@ -1856,7 +640,7 @@
               requirements, applications, university choices, and
               transfer planning.
             </p>
-<a class="resource-link" href="https://www.lamc.edu/student-services/transfer-center" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/student-services/transfer-center" rel="noopener noreferrer">
               Plan My Transfer →
             </a>
 </article>
@@ -1872,7 +656,7 @@
               can help with career exploration, jobs, internships,
               resumes, interviews, and employment resources.
             </p>
-<a class="resource-link" href="https://www.lamc.edu/student-services/career-center" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/student-services/career-center" rel="noopener noreferrer">
               Explore Career &amp; Employment Support →
             </a>
 </article>
@@ -1908,7 +692,7 @@
 <strong>TRIO Student Support Services</strong> provides
               additional support to eligible students.
             </p>
-<a class="resource-link" href="https://www.lamc.edu/academic-services/trio-sss" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/academic-services/trio-sss" rel="noopener noreferrer">
               Explore TRIO Support →
             </a>
 </article>
@@ -1926,7 +710,7 @@
               and creates opportunities for mentoring, connection, belonging,
               leadership, and student success.
             </p>
-<a class="resource-link" href="https://www.lamc.edu/student-services/spr/bsp" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/student-services/spr/bsp" rel="noopener noreferrer">
               Explore Black Scholars | A²MEND | UMOJA →
             </a>
 </article>
@@ -1941,7 +725,7 @@
 <strong>Unity Pride Center</strong> connects LGBTQIA+ students
               and allies with community, events, resources, and support at LAMC.
             </p>
-<a class="resource-link" href="https://www.lamc.edu/student-services/unity-pride-center" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/student-services/unity-pride-center" rel="noopener noreferrer">
               Explore the Unity Pride Center →
             </a>
 </article>
@@ -1959,11 +743,11 @@
               requirements, and balancing academics with athletics.
             </p>
 <p>
-<a class="resource-link" href="https://www.lamc.edu/campus-life/athletics" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/campus-life/athletics" rel="noopener noreferrer">
                 Explore LAMC Athletics →
               </a>
 </p>
-<a class="resource-link" href="https://www.lamc.edu/student-services/counseling/athletic-counseling" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/student-services/counseling/athletic-counseling" rel="noopener noreferrer">
               Explore Athletic Counseling →
             </a>
 </article>
@@ -1979,7 +763,7 @@
               supports students through counseling, mentoring,
               and transfer preparation.
             </p>
-<a class="resource-link" href="https://www.lamc.edu/student-services/spr/puente" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/student-services/spr/puente" rel="noopener noreferrer">
               Explore the Puente Program →
             </a>
 </article>
@@ -1995,11 +779,11 @@
               build community and get involved at LAMC.
             </p>
 <p>
-<a class="resource-link" href="https://www.lamc.edu/campus-life/ASO" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/campus-life/ASO" rel="noopener noreferrer">
                 Explore Student Clubs →
               </a>
 </p>
-<a class="resource-link" href="https://www.lamc.edu/campus-life/ASO" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/campus-life/ASO" rel="noopener noreferrer">
               Explore Student Leadership →
             </a>
 </article>
@@ -2015,7 +799,7 @@
               opportunities for students seeking an enriched
               academic experience.
             </p>
-<a class="resource-link" href="https://www.lamc.edu/academics/honors-program" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.lamc.edu/academics/honors-program" rel="noopener noreferrer">
               Explore the LAMC Honors Program →
             </a>
 </article>
@@ -2040,7 +824,7 @@
           LACCD provides information about support, resources, and reporting
           options.
         </p>
-<a class="resource-link" href="https://www.laccd.edu/offices/diversity/title-ix" rel="noopener" target="_blank">
+<a class="resource-link" href="https://www.laccd.edu/offices/diversity/title-ix" rel="noopener noreferrer">
           Find Title IX Resources or File a Complaint / Report an Incident →
         </a>
 </section>
@@ -2058,11 +842,11 @@
           college offices directly.
         </p>
 <div class="human-links">
-<a class="human-option" href="https://www.lamc.edu/student-services/welcome-center" rel="noopener" target="_blank">
+<a class="human-option" href="https://www.lamc.edu/student-services/welcome-center" rel="noopener noreferrer">
 <strong>Ask the Eagles Help Desk →</strong>
 <span>General student questions and help finding the right campus office.</span>
 </a>
-<a class="human-option" href="https://www.lamc.edu/student-services" rel="noopener" target="_blank">
+<a class="human-option" href="https://www.lamc.edu/student-services" rel="noopener noreferrer">
 <strong>Browse Official LAMC Student Services →</strong>
 <span>View LAMC's official directory of student services, offices, and information.</span>
 </a>
@@ -2094,10 +878,10 @@
           Privacy
         </a>
 </p>
-<p><a href="accessibility.html">Accessibility</a></p>
+<p><a href="accessibility.html">Accessibility &amp; Report a Barrier</a></p>
 <p><a href="license.html">License &amp; Reuse</a></p>
 <p>
-<a href="https://www.lamc.edu/student-services" rel="noopener" target="_blank">
+<a href="https://www.lamc.edu/student-services" rel="noopener noreferrer">
           Official LAMC Student Services
         </a>
 </p>

@@ -38,3 +38,15 @@ If LACCD changes its public Class Search markup, the updater is designed to fail
 - `scripts/update_classes.py` is the single maintained class-data updater. Keep updater code in `scripts/` so the GitHub Action and local maintenance use the same file.
 - Featured-class links may use `classes.html?term=TERM_ID&class=CLASS_NUMBER` to open the finder on one exact section, regardless of whether the section is currently open or closed.
 - The ECJ feedback form is hosted in Microsoft Forms. The student-facing privacy explanation is maintained on both `connect.html` and `privacy.html`.
+
+## Privacy and Security Hardening
+
+- Every page uses a no-referrer policy.
+- A restrictive Content Security Policy limits executable scripts, styles, images, network requests, and frames to the sources each page actually needs; inline scripts/styles are not permitted.
+- PlayLab frames are created only after a visitor chooses to load them, use `referrerPolicy = "no-referrer"`, and are sandboxed.
+- External links use normal same-tab browser navigation rather than forcing a new browsing context, and the site-wide no-referrer policy limits referrer leakage.
+- The class updater renders scraped schedule text as text rather than executable HTML.
+- GitHub Actions used by the class updater are pinned to full commit SHAs, and Python dependencies are version-pinned in `scripts/requirements.txt`. The workflow does not persist repository credentials during scraping/dependency installation, installs only the explicitly listed binary packages, and exposes the write token only to the final push step.
+- Dependabot is configured for weekly GitHub Actions and Python dependency update pull requests.
+- Page-specific CSS lives in `styles/` instead of inline `<style>` blocks so the site can enforce a stricter style policy.
+- The Accessibility page provides a direct LAMC work-email route for reporting barriers, and the footer labels that route explicitly on every full site page; visitors are told they do not need to disclose disability or medical information.

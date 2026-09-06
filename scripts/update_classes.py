@@ -507,6 +507,17 @@ def english_course_key(section: dict) -> tuple:
     return (1, numeric, suffix, exact)
 
 
+def communication_course_key(section: dict) -> tuple:
+    exact = str(section.get("course", "")).upper().strip()
+    if exact == "COMM C1000":
+        return (0, 0, "")
+
+    number = str(section.get("course_number", "")).upper()
+    match = re.search(r"\d+", number)
+    numeric = int(match.group(0)) if match else 999999
+    return (1, numeric, number)
+
+
 def natural_course_key(section: dict) -> tuple:
     dept_order = {"English": 0, "Communication Studies": 1, "Journalism": 2}
     department = section.get("department", "")
@@ -514,6 +525,9 @@ def natural_course_key(section: dict) -> tuple:
 
     if department == "English":
         return (0, english_course_key(section), class_number)
+
+    if department == "Communication Studies":
+        return (1, communication_course_key(section), class_number)
 
     course = str(section.get("course_number", ""))
     pieces = re.split(r"(\d+)", course)

@@ -49,3 +49,19 @@ footer .site-disclaimer {
 .section-meta dt {
   font-size: .8125rem !important;
 }
+/* Security-friendly replacements for former inline style attributes. */
+.space-top-24 { margin-top: 24px; }
+.filter-reset-row { margin: 18px 0 0; }
+.registration-eyebrow { color: #6d3a78; }
+
+
+/* Hidden temporary input used only for legacy clipboard fallback. */
+.clipboard-fallback-input {
+  position: fixed;
+  left: -9999px;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
