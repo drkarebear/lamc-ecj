@@ -698,3 +698,31 @@ footer li + li { margin-top: 8px; }
     width: 100%;
   }
 }
+
+
+/* Literary journal issue covers */
+.journal-issue-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.journal-cover-link {
+  display: block;
+  width: min(100%, 360px);
+  margin: 0 auto 22px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(6, 36, 71, .12);
+  background: var(--white);
+}
+
+.journal-cover-link:focus-visible {
+  outline-offset: 5px;
+}
+
+.journal-cover {
+  display: block;
+  width: 100%;
+  height: auto;
+}
