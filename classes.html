@@ -257,6 +257,7 @@
 
     .source-note p + p { margin-top: 8px; }
 
+
     .filter-panel {
       margin-bottom: 34px;
       padding: 24px;
@@ -933,6 +934,27 @@
 </div>
 </section>
 <div class="main-wrap">
+<section aria-labelledby="how-heading" class="intro-grid">
+<h2 id="how-heading">Start With What You Need</h2>
+<p>Use <strong>Open ECJ Classes</strong> when you are looking for a section that may still have space. Switch to <strong>All ECJ Classes</strong> to see the full semester schedule, including wait-listed and closed sections.</p>
+<p><strong>Sections within each course display in order of when they start, with the earliest-starting section first.</strong></p>
+<p>Each course includes a short description to help you compare options. You can also filter by class format and textbook cost. <strong>ZTC means Zero Textbook Cost:</strong> all required textbooks and readings are free. <strong>Low Textbook Cost</strong> means required textbooks cost $50 or less. A ZTC class may use OER, library materials, or other free readings.</p>
+<div aria-label="Class format definitions" class="format-guide">
+<strong>Class formats:</strong>
+<span><strong>In Person</strong> = meets on campus</span>
+<span><strong>Online</strong> = no scheduled live meeting time listed</span>
+<span><strong>Zoom</strong> = scheduled live online meetings</span>
+<span><strong>In Person Hybrid</strong> = campus + online work</span>
+<span><strong>Zoom Hybrid</strong> = online work + scheduled live Zoom meetings</span>
+<span><strong>HyFlex</strong> = choose campus or live online for scheduled meetings</span>
+</div>
+<p>Availability can change quickly, so use <strong>Section Details</strong> before enrolling.</p>
+<aside aria-label="Class data information" class="source-note">
+<p><strong>Public schedule data</strong></p>
+<p id="last-updated">Checking the latest saved class-list update...</p>
+<p>This page reads a saved copy of public schedule information. It does not ask for or collect student login information.</p>
+</aside>
+</section>
 <section aria-labelledby="filter-heading" class="filter-panel">
 <h2 id="filter-heading">Choose Your Classes</h2>
 <form id="class-filters">
@@ -996,25 +1018,6 @@
 <div id="results">
 <p class="loading">Loading the saved ECJ class list...</p>
 </div>
-</section><section aria-labelledby="how-heading" class="intro-grid">
-<h2 id="how-heading">How the Class Labels Work</h2>
-<p>Need a label decoded? Use this quick guide. The filters above do the searching; this section explains what the schedule terms mean.</p>
-<p>Each course includes a short description to help you compare options. You can also filter by class format and textbook cost. <strong>ZTC means Zero Textbook Cost: all required textbooks and readings are free.</strong> <strong>Low Textbook Cost means required textbooks cost $50 or less.</strong> A ZTC class may use OER, library materials, or other free readings.</p>
-<div aria-label="Class format definitions" class="format-guide">
-<strong>Class formats:</strong>
-<span><strong>In Person</strong> = meets on campus</span>
-<span><strong>Online</strong> = no scheduled live meeting time listed</span>
-<span><strong>Zoom</strong> = scheduled live online meetings</span>
-<span><strong>In Person Hybrid</strong> = campus + online</span>
-<span><strong>Zoom Hybrid</strong> = online work + scheduled live Zoom meetings</span>
-<span><strong>HyFlex</strong> = choose campus or live online for scheduled meetings</span>
-</div>
-<p>Availability can change quickly, so use <strong>View Live Section Details</strong> before enrolling.</p>
-<aside aria-label="Class data information" class="source-note">
-<p><strong>Public schedule data</strong></p>
-<p id="last-updated">Checking the latest saved class-list update...</p>
-<p>This page reads a saved copy of public schedule information. It does not ask for or collect student login information.</p>
-</aside>
 </section>
 <section aria-labelledby="registration-heading" class="registration-help">
 <p class="eyebrow" style="color:#6d3a78;">Found a class?</p>
@@ -1044,12 +1047,12 @@
 </article>
 </div>
 <div class="registration-tip">
-<p><strong>Tip:</strong> If a section is open now, it can still fill. Copy the Class Number and confirm the live section details before you enroll.</p>
+<p><strong>Tip:</strong> If a section is open now, it can still fill. Copy the Class Number and confirm the section details before you enroll.</p>
 </div>
 </section>
 <section aria-labelledby="official-heading" class="official-strip">
 <h2 id="official-heading">Official Enrollment Information</h2>
-<p>The LACCD Student Information System is the official source for enrollment status, prerequisites, permission requirements, and final class details. Each <strong>View Live Section Details</strong> button opens the Mission College listing for that exact Class Number and semester.</p>
+<p>The LACCD Student Information System is the official source for enrollment status, prerequisites, permission requirements, and final class details. Each <strong>Section Details</strong> button opens the Mission College listing for that exact Class Number and semester.</p>
 <p><a href="https://mycollege-guest.laccd.edu/psc/classsearchguest/EMPLOYEE/HRMS/c/COMMUNITY_ACCESS.CLASS_SEARCH.GBL" rel="noopener" target="_blank">Open the official LACCD public Class Search</a></p>
 </section>
 <noscript>
@@ -1666,13 +1669,13 @@
           "Copy class number " + (section.class_number || "") + (courseLabel ? " for " + courseLabel : "")
         );
 
-        const link = element("a", "sis-link", "View Live Section Details");
+        const link = element("a", "sis-link", "Section Details");
         link.href = liveSectionUrl(section);
         link.target = "_blank";
         link.rel = "noopener";
         link.setAttribute(
           "aria-label",
-          "View live section details for " + (courseLabel || "this course") + ", class " + (section.class_number || "")
+          "Open section details for " + (courseLabel || "this course") + ", class " + (section.class_number || "")
         );
 
         actions.append(copy, link);

@@ -425,6 +425,68 @@ textarea:focus-visible {
   margin-top: 0;
 }
 
+
+.social-connect-section {
+  padding-top: 18px;
+}
+
+.social-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social-tabs li {
+  margin: 0;
+}
+
+.social-tab {
+  min-height: 54px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 16px;
+  color: var(--navy);
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-bottom-width: 5px;
+  border-radius: 9px 9px 5px 5px;
+  text-decoration: none;
+  line-height: 1.25;
+  box-shadow: 0 4px 10px rgba(6, 36, 71, .05);
+}
+
+.social-tab span {
+  color: var(--muted);
+  font-size: .86rem;
+  font-weight: 700;
+}
+
+.social-tab:hover {
+  background: #f8fafc;
+  transform: translateY(-1px);
+}
+
+.social-tab.comm-tab { border-bottom-color: var(--comm); }
+.social-tab.creative-tab { border-bottom-color: var(--creative); }
+.social-tab.speech-tab { border-bottom-color: var(--blue); }
+.social-tab.puente-tab { border-bottom-color: var(--social); }
+
+@media (max-width: 640px) {
+  .social-tabs {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .social-tab {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
