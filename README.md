@@ -1,6 +1,15 @@
-# lamc-certificates
+# LAMC ECJ
 
-Public certificate and program pages for English, Communication Studies, and Journalism at Los Angeles Mission College.
+Faculty-maintained student resource hub for the English, Communication Studies, and Journalism Department at Los Angeles Mission College.
+
+The site includes:
+
+- a department-wide homepage;
+- degree and certificate program pages;
+- a public ECJ Class Finder;
+- student resources and interactive guides;
+- a Connect page for department opportunities and future Faculty Spotlights; and
+- a developing ECJ Literary Journal page.
 
 Site policy pages include `privacy.html`, `accessibility.html`, and `license.html`.
 
