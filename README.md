@@ -9,7 +9,7 @@ The site includes:
 - a public ECJ Class Finder;
 - student resources and interactive guides;
 - a Connect page for department opportunities and future Faculty Spotlights; and
-- a developing ECJ Literary Journal page.
+- a dedicated page for *La Misión Review*, LAMC's student literary magazine.
 
 Site policy pages include `privacy.html`, `accessibility.html`, and `license.html`.
 
