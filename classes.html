@@ -921,7 +921,7 @@
         <div>
           <h2 id="how-heading">Start With What You Need</h2>
           <p>Use <strong>Open Classes</strong> when you are looking for a section that may still have space. Switch to <strong>All Classes</strong> to see the full semester schedule, including wait-listed and closed sections.</p>
-          <p>Each course includes a short plain-language description to help you compare options. You can also filter by class format and, when SIS provides the designation, <strong>ZTC, Low Cost Textbook, or OER</strong>. Availability can change quickly, so use <strong>View Live Section Details</strong> before enrolling.</p>
+          <p>Each course includes a short plain-language description to help you compare options. You can also filter by class format and textbook cost when SIS provides a <strong>ZTC</strong> or <strong>Low Textbook Cost</strong> designation. Availability can change quickly, so use <strong>View Live Section Details</strong> before enrolling.</p>
         </div>
 
         <aside class="source-note" aria-label="Class data information">
@@ -970,7 +970,7 @@
             </div>
 
             <div class="field">
-              <label for="materials-filter">Course materials</label>
+              <label for="materials-filter">Textbook cost</label>
               <select id="materials-filter" name="materials">
                 <option value="all">All materials</option>
               </select>
@@ -990,7 +990,7 @@
             </label>
           </div>
 
-          <p class="filter-note"><strong>Format labels:</strong> Online = asynchronous; Zoom = scheduled live online meetings; In Person Hybrid = campus + online; Zoom Hybrid = campus + live Zoom; HyFlex = choose campus or live online for scheduled meetings. <strong>Materials:</strong> ZTC = Zero Textbook Cost; Low Cost = the LACCD low-textbook-cost designation; OER = Open Educational Resources when SIS identifies the section that way.</p>
+          <p class="filter-note"><strong>Format labels:</strong> Online = asynchronous; Zoom = scheduled live online meetings; In Person Hybrid = campus + online; Zoom Hybrid = campus + live Zoom; HyFlex = choose campus or live online for scheduled meetings. <strong>Textbook cost:</strong> ZTC = Zero Textbook Cost; Low Cost = required textbooks are under the LACCD low-cost threshold. A ZTC section may use OER, library materials, or other free readings.</p>
 
           <p style="margin:18px 0 0;">
             <button class="clear-button" id="clear-filters" type="button">Reset Filters</button>
@@ -1087,7 +1087,7 @@
       const SIS_URL = "https://mycollege-guest.laccd.edu/psc/classsearchguest/EMPLOYEE/HRMS/c/COMMUNITY_ACCESS.CLASS_SEARCH.GBL";
       const departmentOrder = ["English", "Communication Studies", "Journalism"];
       const formatOrder = ["In Person", "Online", "Zoom", "In Person Hybrid", "Zoom Hybrid", "HyFlex"];
-      const materialOrder = ["ZTC", "Low Cost", "OER"];
+      const materialOrder = ["ZTC", "Low Cost"];
 
       // Concise, student-friendly descriptions based on the LAMC 2026–2027 catalog.
       const courseDescriptions = {
@@ -1268,12 +1268,10 @@
           const value = String(item).toLowerCase();
           if (value === "ztc" || value.includes("zero textbook")) flags.add("ZTC");
           if (value === "low cost" || value.includes("low textbook")) flags.add("Low Cost");
-          if (value === "oer" || value.includes("open educational")) flags.add("OER");
         });
 
         if (/\bZTC\b|Zero\s+Textbook\s+Cost/i.test(haystack)) flags.add("ZTC");
         if (/\b(?:LCT|LTC)\b|Low\s+Textbook\s+Cost|Low\s+Cost\s+Textbook/i.test(haystack)) flags.add("Low Cost");
-        if (/\bOER\b|Open\s+Educational\s+Resources?/i.test(haystack)) flags.add("OER");
 
         return materialOrder.filter((item) => flags.has(item));
       }
@@ -1284,8 +1282,7 @@
 
       function materialBadgeClass(material) {
         if (material === "ZTC") return "material-ztc";
-        if (material === "Low Cost") return "material-low-cost";
-        return "material-oer";
+        return "material-low-cost";
       }
 
       function displayLocation(section, format) {
@@ -1526,7 +1523,7 @@
 
         materialsFilter.disabled = available.size === 0;
         materialsFilter.title = available.size === 0
-          ? "No ZTC, low-cost, or OER flags were detected in the current SIS feed."
+          ? "No ZTC or low-cost textbook flags were detected in the current SIS feed."
           : "";
 
         materialsFilter.value = [...materialsFilter.options].some((option) => option.value === previous) ? previous : "all";
@@ -1621,7 +1618,6 @@
         materialFlags(section).forEach((flag) => {
           const badge = element("span", "material-badge " + materialBadgeClass(flag), flag);
           if (flag === "ZTC") badge.setAttribute("aria-label", "Zero Textbook Cost");
-          if (flag === "OER") badge.setAttribute("aria-label", "Open Educational Resources");
           if (flag === "Low Cost") badge.setAttribute("aria-label", "Low Textbook Cost");
           badges.appendChild(badge);
         });

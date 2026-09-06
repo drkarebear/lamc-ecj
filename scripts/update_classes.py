@@ -86,7 +86,7 @@ def element_signals(element) -> str:
     """Collect visible and accessible text without using a huge page-level scope."""
     values = [clean(element.get_text(" ", strip=True))]
     for node in element.find_all(True):
-        for attr in ("alt", "title", "aria-label", "data-original-title"):
+        for attr in ("alt", "title", "aria-label", "data-original-title", "src"):
             value = clean(node.get(attr, ""))
             if value:
                 values.append(value)
@@ -94,13 +94,28 @@ def element_signals(element) -> str:
 
 
 def infer_materials(signals: str) -> tuple[list[str], str]:
+    """Detect student-facing textbook-cost labels already present in a row.
+
+    LACCD's PeopleSoft backend uses the internal attribute value ``OER`` for the
+    public "Zero Textbook Cost (ZTC)" class-search type. Because that backend
+    code does not prove that a section uses openly licensed OER, it is mapped to
+    ZTC rather than exposed as a separate OER badge.
+    """
     flags: list[str] = []
     matched: list[str] = []
 
     patterns = (
-        ("ZTC", r"\bZTC\b|Zero\s+Textbook\s+Cost"),
-        ("Low Cost", r"\bLCT\b|\bLTC\b|Low\s+Textbook\s+Cost|Low\s+Cost\s+Textbook"),
-        ("OER", r"\bOER\b|Open\s+Educational\s+Resources?"),
+        (
+            "ZTC",
+            r"\bZTC\b|Zero\s+Textbook\s+Cost|"
+            r"All\s+textbooks/readings\s+will\s+be\s+provided\s+free\s+of\s+cost|"
+            r"LAC_OER_ICON",
+        ),
+        (
+            "Low Cost",
+            r"\bLCT\b|\bLTC\b|Low\s+Textbook\s+Cost|Low\s+Cost\s+Textbook|"
+            r"LAC_[A-Z0-9_]*(?:LCT|LOW[_-]?COST)[A-Z0-9_]*",
+        ),
     )
     for label, pattern in patterns:
         found = re.search(pattern, signals, re.I)
@@ -193,6 +208,30 @@ def date_bounds(signals: str) -> tuple[str, str]:
     return (min(starts) if starts else "", max(ends) if ends else "")
 
 
+def merge_material_note(section: dict, signals: str) -> bool:
+    """Attach a textbook-cost note row to the section that immediately precedes it."""
+    flags, matched_text = infer_materials(signals)
+    if not flags:
+        return False
+
+    existing = list(section.get("materials") or [])
+    section["materials"] = list(dict.fromkeys(existing + flags))
+
+    note_text = clean(signals)
+    friendly_notes: list[str] = []
+    if "ZTC" in flags:
+        friendly_notes.append("All textbooks/readings will be provided free of cost.")
+    if "Low Cost" in flags:
+        friendly_notes.append("Low Textbook Cost")
+
+    current_text = clean(section.get("materials_text", ""))
+    additions = friendly_notes or ([matched_text] if matched_text else [])
+    section["materials_text"] = "; ".join(
+        dict.fromkeys([part for part in [current_text, *additions] if part])
+    )
+    return True
+
+
 def parse_results(
     html: str,
     subject_display: str,
@@ -203,18 +242,23 @@ def parse_results(
     soup = BeautifulSoup(html, "html.parser")
     sections: list[dict] = []
     current_course: CourseContext | None = None
+    last_section: dict | None = None
 
     for row in soup.find_all("tr"):
         row_text = clean(row.get_text(" ", strip=True))
-        if not row_text:
-            continue
+        signals = element_signals(row)
 
+        # Course heading rows reset the "previous section" pointer so that a
+        # course-level note can never leak backward onto the prior course.
         maybe_course = course_from_text(row_text)
         if maybe_course and not CLASS_RE.search(row_text[:40]):
             current_course = maybe_course
+            last_section = None
 
         cells = direct_cells(row)
         if not cells:
+            if last_section is not None and signals:
+                merge_material_note(last_section, signals)
             continue
 
         class_idx = find_index(cells, lambda value: bool(re.fullmatch(r"\d{5}", value)))
@@ -227,6 +271,11 @@ def parse_results(
                     combined_match = match
                     break
         if class_idx is None:
+            # LACCD renders ZTC/LCT as a separate row immediately after the
+            # section row. Keep the previous section active until another class
+            # row or course heading appears, and attach the note here.
+            if last_section is not None and signals:
+                merge_material_note(last_section, signals)
             continue
 
         if combined_match:
@@ -235,7 +284,6 @@ def parse_results(
         else:
             class_number = cells[class_idx]
 
-        signals = element_signals(row)
         row_status = status_from_row(row, signals)
         if row_status == "Unknown":
             continue
@@ -282,8 +330,7 @@ def parse_results(
                 href = urljoin(source_url, anchor["href"])
                 break
 
-        sections.append(
-            {
+        section_record = {
                 "term_id": term_id,
                 "term": term_label,
                 "department": subject_display,
@@ -306,7 +353,8 @@ def parse_results(
                 "details": fallback_details,
                 "sis_url": href or source_url,
             }
-        )
+        sections.append(section_record)
+        last_section = section_record
 
     unique: dict[str, dict] = {}
     for section in sections:
@@ -368,6 +416,8 @@ def fetch_html(session: requests.Session, url: str, attempts: int = 3) -> str:
     raise RuntimeError(f"Could not fetch {url}: {last_error}")
 
 
+
+
 def html_looks_like_results(html: str) -> bool:
     text = clean(BeautifulSoup(html, "html.parser").get_text(" ", strip=True)).lower()
     return (
@@ -388,7 +438,12 @@ def fetch_subject(
     broad_html = fetch_html(session, broad_url)
     broad_sections = parse_results(broad_html, subject_display, term_id, term_label, broad_url)
     if broad_sections:
-        print(f"{term_label}: {subject_code}: {len(broad_sections)} sections from one broad search")
+        ztc_count = sum("ZTC" in (section.get("materials") or []) for section in broad_sections)
+        low_count = sum("Low Cost" in (section.get("materials") or []) for section in broad_sections)
+        print(
+            f"{term_label}: {subject_code}: {len(broad_sections)} sections from one broad search "
+            f"({ztc_count} ZTC; {low_count} low cost)"
+        )
         return broad_sections
 
     print(f"{term_label}: {subject_code}: broad search returned no sections; trying digit sweep")
@@ -464,7 +519,6 @@ def count_materials(sections: Iterable[dict]) -> dict:
     return {
         "ztc": sum("ZTC" in (section.get("materials") or []) for section in items),
         "low_cost": sum("Low Cost" in (section.get("materials") or []) for section in items),
-        "oer": sum("OER" in (section.get("materials") or []) for section in items),
     }
 
 
@@ -501,7 +555,7 @@ def main() -> int:
     session.headers.update(
         {
             "User-Agent": (
-                "Mozilla/5.0 (compatible; LAMC-ECJ-Class-List/1.1; "
+                "Mozilla/5.0 (compatible; LAMC-ECJ-Class-List/1.2; "
                 "+https://www.lamc.edu/)"
             ),
             "Accept-Language": "en-US,en;q=0.9",
@@ -572,10 +626,9 @@ def main() -> int:
     open_total = sum(term["counts"]["open"] for term in term_payloads)
     ztc_total = sum(term["material_counts"]["ztc"] for term in term_payloads)
     low_total = sum(term["material_counts"]["low_cost"] for term in term_payloads)
-    oer_total = sum(term["material_counts"]["oer"] for term in term_payloads)
     print(
         f"Wrote {total} ECJ sections ({open_total} open; "
-        f"{ztc_total} ZTC; {low_total} low cost; {oer_total} OER) to {output_path}"
+        f"{ztc_total} ZTC; {low_total} low cost) to {output_path}"
     )
     return 0
 
