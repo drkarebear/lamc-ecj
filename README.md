@@ -35,5 +35,6 @@ If LACCD changes its public Class Search markup, the updater is designed to fail
 
 - `ecj-accessibility.css` is loaded last on every HTML page and contains shared focus, reduced-motion, small-label, and footer-readability safeguards. Put cross-site accessibility fixes there when possible.
 - `classes.html` is the single maintained Class Finder. `classes_ztc_fixed.html` remains only as a compatibility redirect for any older links.
+- `scripts/update_classes.py` is the single maintained class-data updater. Keep updater code in `scripts/` so the GitHub Action and local maintenance use the same file.
 - Featured-class links may use `classes.html?term=TERM_ID&class=CLASS_NUMBER` to open the finder on one exact section, regardless of whether the section is currently open or closed.
 - The ECJ feedback form is hosted in Microsoft Forms. The student-facing privacy explanation is maintained on both `connect.html` and `privacy.html`.

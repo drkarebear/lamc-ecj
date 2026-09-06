@@ -627,7 +627,7 @@ def main() -> int:
         )
 
     payload = {
-        "schema_version": 2,
+        "schema_version": 3,
         "campus": CAMPUS_NAME,
         "campus_code": CAMPUS_CODE,
         "generated_at": datetime.now(timezone.utc)
