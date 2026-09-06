@@ -5,6 +5,7 @@ Faculty-maintained student resource hub for the English, Communication Studies, 
 The site includes:
 
 - a department-wide homepage;
+- a current announcement page for featured new classes;
 - degree and certificate program pages;
 - a public ECJ Class Finder;
 - student resources and interactive guides;
