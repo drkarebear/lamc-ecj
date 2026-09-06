@@ -884,13 +884,13 @@
           <article class="registration-option">
             <h3>Current Students</h3>
             <p>Already have an LACCD student account? Go directly to the Student Portal to search and enroll.</p>
-            <a class="help-button" href="https://mycollege.laccd.edu/" target="_blank" rel="noopener">Open the LACCD Student Portal</a>
+            <a class="help-button" href="https://sso.laccd.edu/adfs/ls/idpinitiatedsignon.aspx?loginToRp=csprd.laccd.edu" target="_blank" rel="noopener">Open the LACCD Student Portal</a>
           </article>
 
           <article class="registration-option">
             <h3>New to Mission College?</h3>
             <p>Start with the Mission College application. After you receive your student ID, you can use the Student Portal to register.</p>
-            <a class="help-button" href="https://www.lamc.edu/admissions/how-to-apply" target="_blank" rel="noopener">View Steps for New Students</a>
+            <a class="help-button" href="https://www.lamc.edu/apply" target="_blank" rel="noopener">Apply to Mission College</a>
           </article>
 
           <article class="registration-option">
@@ -907,7 +907,7 @@
 
       <section class="official-strip" aria-labelledby="official-heading">
         <h2 id="official-heading">Official Enrollment Information</h2>
-        <p>The LACCD Student Information System is the official source for enrollment status, prerequisites, permission requirements, and final class details.</p>
+        <p>The LACCD Student Information System is the official source for enrollment status, prerequisites, permission requirements, and final class details. Each <strong>View Live Section Details</strong> button opens the Mission College listing for that exact Class Number and semester.</p>
         <p><a href="https://mycollege-guest.laccd.edu/psc/classsearchguest/EMPLOYEE/HRMS/c/COMMUNITY_ACCESS.CLASS_SEARCH.GBL" target="_blank" rel="noopener">Open the official LACCD public Class Search</a></p>
       </section>
 
@@ -1136,6 +1136,16 @@
         }
       }
 
+      function liveSectionUrl(section) {
+        const term = selectedTerm();
+        if (!section || !section.class_number || !term || !term.id) return SIS_URL;
+        return SIS_URL +
+          "?Campus=LAMC" +
+          "&strm=" + encodeURIComponent(term.id) +
+          "&classnum=" + encodeURIComponent(section.class_number) +
+          "&";
+      }
+
       function renderSectionCard(section, courseLabel) {
         const card = element("article", "section-card");
         card.dataset.department = section.department || "";
@@ -1182,7 +1192,7 @@
         );
 
         const link = element("a", "sis-link", "View Live Section Details");
-        link.href = section.sis_url || SIS_URL;
+        link.href = liveSectionUrl(section);
         link.target = "_blank";
         link.rel = "noopener";
         link.setAttribute(
