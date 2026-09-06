@@ -18,7 +18,7 @@ Site policy pages include `privacy.html`, `accessibility.html`, and `license.htm
 
 `classes.html` displays a static copy of public LACCD schedule data from `data/classes.json`.
 
-The GitHub Action in `.github/workflows/update-classes.yml` refreshes that file twice each day and can also be run manually from the repository's **Actions** tab. The browser never contacts SIS directly, so the page does not require a student login and does not send student-entered information to LACCD.
+The GitHub Action in `.github/workflows/update-classes.yml` refreshes that file twice each day and can also be run manually from the repository's **Actions** tab. The browser reads the saved JSON rather than querying SIS while students filter classes. It contacts an official LACCD page only when a student follows a live-section or enrollment link.
 
 Current semester IDs live in `scripts/class_terms.json`. To add a new semester, add its verified LACCD `strm` value and label, then run the **Refresh ECJ class listings** workflow.
 
@@ -29,3 +29,11 @@ The updater checks these LACCD subject codes:
 - `JOURNAL` for Journalism
 
 If LACCD changes its public Class Search markup, the updater is designed to fail without replacing the most recent working `data/classes.json` file.
+
+
+## Maintenance Notes
+
+- `ecj-accessibility.css` is loaded last on every HTML page and contains shared focus, reduced-motion, small-label, and footer-readability safeguards. Put cross-site accessibility fixes there when possible.
+- `classes.html` is the single maintained Class Finder. `classes_ztc_fixed.html` remains only as a compatibility redirect for any older links.
+- Featured-class links may use `classes.html?term=TERM_ID&class=CLASS_NUMBER` to open the finder on one exact section, regardless of whether the section is currently open or closed.
+- The ECJ feedback form is hosted in Microsoft Forms. The student-facing privacy explanation is maintained on both `connect.html` and `privacy.html`.

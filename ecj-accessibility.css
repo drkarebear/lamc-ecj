@@ -1,0 +1,51 @@
+/* Shared cross-site accessibility and readability safeguards. */
+:where(a, button, input, select, textarea, summary):focus-visible {
+  outline: 3px solid #ffffff !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 6px #082f5f !important;
+}
+
+:target { scroll-margin-top: 1rem; }
+summary { cursor: pointer; }
+
+.site-disclaimer,
+footer .site-disclaimer {
+  font-size: .875rem !important;
+  line-height: 1.6 !important;
+}
+
+@media (max-width: 760px) {
+  .site-disclaimer,
+  footer .site-disclaimer { font-size: .825rem !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+@media (forced-colors: active) {
+  :where(a, button, input, select, textarea, summary):focus-visible {
+    outline: 3px solid CanvasText !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Keep small utility labels readable on phones and high-density screens. */
+.department-name,
+.eyebrow,
+.credential-type,
+.guide-badge,
+.resource-type,
+.department-kicker,
+.class-id-label,
+.format-badge,
+.material-badge,
+.status,
+.section-meta dt {
+  font-size: .8125rem !important;
+}

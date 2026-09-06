@@ -40,7 +40,7 @@ COURSE_RE = re.compile(
     r"\b(ENGLISH|ENGL|COMM|JOURNAL)\s+([A-Z]*\d+[A-Z]*)\s*-\s*(.+)", re.I
 )
 CLASS_RE = re.compile(r"\b(\d{5})\b")
-SECTION_RE = re.compile(r"^[A-Z]\w*-[A-Z]+$", re.I)
+SECTION_RE = re.compile(r"^[A-Z]\d{1,3}[A-Z0-9]*-[A-Z]{2,}$", re.I)
 DATE_RANGE_RE = re.compile(
     r"\b(\d{2}/\d{2}/\d{4})\s*-\s*(\d{2}/\d{2}/\d{4})\b"
 )
@@ -59,6 +59,27 @@ def clean(value: str | None) -> str:
         return ""
     return re.sub(r"\s+", " ", value).strip()
 
+
+
+
+def dedupe_repeated_phrase(value: str) -> str:
+    """Collapse scraper repetitions such as 'Frank Williams Frank Williams'."""
+    value = clean(value)
+    if not value:
+        return ""
+
+    comma_parts = [clean(part) for part in value.split(",") if clean(part)]
+    if len(comma_parts) > 1 and all(part == comma_parts[0] for part in comma_parts):
+        return comma_parts[0]
+
+    words = value.split()
+    for size in range(1, len(words) // 2 + 1):
+        if len(words) % size:
+            continue
+        phrase = words[:size]
+        if all(words[index:index + size] == phrase for index in range(0, len(words), size)):
+            return " ".join(phrase)
+    return value
 
 def normalize_title(raw: str) -> str:
     title = clean(raw)
@@ -317,7 +338,7 @@ def parse_results(
 
         instructor = ""
         if room_idx is not None and date_idx is not None and date_idx > room_idx + 1:
-            instructor = clean(" ".join(cells[room_idx + 1 : date_idx]))
+            instructor = dedupe_repeated_phrase(" ".join(cells[room_idx + 1 : date_idx]))
 
         fallback_details = "" if schedule and room and dates else row_text
         start_date, end_date = date_bounds(signals)
