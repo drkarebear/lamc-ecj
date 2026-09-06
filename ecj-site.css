@@ -291,6 +291,50 @@ textarea:focus-visible {
 .card.creative { border-top-color: var(--creative); background: var(--creative-bg); }
 .card.social { border-top-color: var(--social); background: var(--social-bg); }
 
+.faculty-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.faculty-photo,
+.faculty-photo-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+}
+
+.faculty-photo {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.faculty-photo-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: #e8eef4;
+  color: var(--navy);
+  border-bottom: 1px solid var(--border);
+  font-size: 1rem;
+  text-align: center;
+}
+
+.faculty-photo-placeholder strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.35rem;
+}
+
+.faculty-card-content {
+  padding: 24px;
+}
+
+.faculty-role {
+  color: var(--muted);
+  font-weight: 800;
+}
+
 .badge {
   width: fit-content;
   margin: 0 0 12px !important;
