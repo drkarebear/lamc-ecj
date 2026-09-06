@@ -474,6 +474,38 @@
       line-height: 1.5;
     }
 
+    .program-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin: 11px 0 2px;
+    }
+
+    .program-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 4px 9px;
+      border: 1px solid #7c93aa;
+      border-radius: 999px;
+      background: #f2f6fa;
+      color: var(--navy);
+      font-size: .78rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .program-tag-note {
+      margin: 0 0 18px;
+      padding: 13px 16px;
+      border-left: 4px solid var(--blue);
+      border-radius: 6px;
+      background: #f3f7fa;
+      color: var(--text);
+      font-size: .92rem;
+      line-height: 1.5;
+    }
+
     .course-count {
       margin: 4px 0 0;
       color: var(--muted);
@@ -1011,6 +1043,7 @@
 </form>
 </section>
 <section aria-labelledby="results-heading">
+<p class="program-tag-note"><strong>Program tags:</strong> These show courses listed in one or more of ECJ’s five degrees and certificates. A tagged course can count toward that program, but it may be an elective rather than a required class. Confirm your individual education plan with Counseling.</p>
 <div class="results-toolbar">
 <h2 id="results-heading">Class Results</h2>
 <p aria-live="polite" class="result-summary" id="result-summary">Loading class information...</p>
@@ -1088,6 +1121,61 @@
       const departmentOrder = ["English", "Communication Studies", "Journalism"];
       const formatOrder = ["In Person", "Online", "Zoom", "In Person Hybrid", "Zoom Hybrid", "HyFlex"];
       const materialOrder = ["ZTC", "Low Cost"];
+
+      const ecjPrograms = [
+        {
+          label: "English AA-T",
+          courses: [
+            "ENGL C1000", "ENGL C1000E", "ENGLISH 101Z", "ENGL C1001", "ENGLISH 102",
+            "ENGLISH 203", "ENGLISH 205", "ENGLISH 206", "ENGLISH 208", "ENGLISH 127",
+            "ENGLISH 218", "ENGLISH 78", "ENGLISH 124", "ENGLISH 223", "ENGLISH 32",
+            "ENGLISH 109", "ENGLISH 239", "ENGLISH 240", "ENGLISH 241", "JOURNAL 101", "COMM 130"
+          ]
+        },
+        {
+          label: "Communication Studies AA-T",
+          courses: [
+            "COMM C1000", "COMM 121", "COMM 104", "COMM 151", "COMM 122", "COMM 100",
+            "COMM 190", "COMM 130", "COMM 102", "COMM 109", "ENGLISH 102", "ENGL C1001", "JOURNAL 101"
+          ]
+        },
+        {
+          label: "Creative Writing Certificate",
+          courses: [
+            "ENGLISH 127", "ENGLISH 223", "ENGLISH 78", "ENGLISH 32", "ENGLISH 124",
+            "JOURNAL 101", "ENGLISH 109"
+          ]
+        },
+        {
+          label: "Journalism Certificate",
+          courses: ["JOURNAL 100", "JOURNAL 101", "JOURNAL 43", "JOURNAL 202", "ENGLISH 223"]
+        },
+        {
+          label: "Social Media Strategist Certificate",
+          courses: ["COMM 122", "ENGLISH 109", "JOURNAL 43", "COMM 109", "COMM 190"]
+        }
+      ];
+
+      function normalizedCourseCode(value) {
+        return String(value || "")
+          .toUpperCase()
+          .trim()
+          .replace(/\s+/g, " ")
+          .replace(/\b(ENGLISH|JOURNAL|COMM) 0+(\d+)\b/g, "$1 $2");
+      }
+
+      const ecjProgramCourseSets = ecjPrograms.map((program) => ({
+        label: program.label,
+        courses: new Set(program.courses.map(normalizedCourseCode))
+      }));
+
+      function programsForCourse(section) {
+        const courseCode = normalizedCourseCode(section && section.course);
+        if (!courseCode) return [];
+        return ecjProgramCourseSets
+          .filter((program) => program.courses.has(courseCode))
+          .map((program) => program.label);
+      }
 
       // Concise, student-friendly descriptions based on the LAMC 2026–2027 catalog.
       const courseDescriptions = {
@@ -1798,6 +1886,19 @@
             if (description) {
               panelHeader.appendChild(element("p", "course-description", description));
             }
+
+            const programLabels = programsForCourse(first);
+            if (programLabels.length) {
+              const tagWrap = element("div", "program-tags");
+              tagWrap.setAttribute("aria-label", "ECJ programs this course can count toward");
+              programLabels.forEach((label) => {
+                const tag = element("span", "program-tag", label);
+                tag.setAttribute("title", "Can count toward " + label);
+                tagWrap.appendChild(tag);
+              });
+              panelHeader.appendChild(tagWrap);
+            }
+
             panelHeader.appendChild(
               element(
                 "p",
