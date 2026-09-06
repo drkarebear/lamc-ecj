@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <title>Find ECJ Classes | Los Angeles Mission College</title>
+  <meta name="description" content="Browse English, Communication Studies, and Journalism classes at Los Angeles Mission College, including current open-class status from the public LACCD class search.">
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <style>
+    :root {
+      --navy: #082f5f;
+      --navy-dark: #062447;
+      --blue: #145da0;
+      --gold: #e5ad27;
+      --white: #ffffff;
+      --cream: #f8f6f1;
+      --text: #263442;
+      --muted: #566574;
+      --border: #dce2e8;
+      --focus: #ffbf00;
+      --english: #8a5b00;
+      --english-bg: #fff9ec;
+      --comm: #2467a9;
+      --comm-bg: #f2f7fc;
+      --journalism: #9a4310;
+      --journalism-bg: #fff6ef;
+      --open: #17633a;
+      --open-bg: #eef8f1;
+      --wait: #7a5700;
+      --wait-bg: #fff8dc;
+      --closed: #6c4b50;
+      --closed-bg: #faf1f2;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--white);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      overflow-wrap: break-word;
+    }
+
+    a { color: var(--blue); }
+    p { max-width: 75ch; }
+    button, input, select { font: inherit; }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 9999;
+      padding: 12px 18px;
+      background: var(--gold);
+      color: #132a3d;
+      border-radius: 0 0 5px 5px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .skip-link:focus { left: 12px; }
+
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    .site-header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      width: min(1200px, 100%);
+      margin: 0 auto;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .college-name {
+      display: inline-block;
+      color: var(--navy);
+      text-decoration: none;
+    }
+
+    .college-name-main {
+      display: block;
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.65rem;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .department-name {
+      display: block;
+      margin-top: 5px;
+      color: var(--navy);
+      font-size: .86rem;
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: .045em;
+      text-transform: uppercase;
+    }
+
+    .top-nav ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px 22px;
+      list-style: none;
+    }
+
+    .top-nav a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      color: var(--navy);
+      font-size: .95rem;
+      font-weight: 700;
+      line-height: 1.25;
+      text-decoration: none;
+      border-bottom: 3px solid transparent;
+    }
+
+    .top-nav a:hover,
+    .top-nav a[aria-current="page"] {
+      border-bottom-color: var(--gold);
+    }
+
+    .hero {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .hero-inner {
+      width: min(1050px, 100%);
+      margin: 0 auto;
+      padding: 62px 24px 58px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: #ffdf86;
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 760px;
+      margin: 0 0 16px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      line-height: 1.08;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0;
+      color: #eef4fa;
+      font-size: 1.1rem;
+    }
+
+    .main-wrap {
+      width: min(1100px, 100%);
+      margin: 0 auto;
+      padding: 44px 24px 72px;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+      gap: 28px;
+      align-items: start;
+      margin-bottom: 30px;
+    }
+
+    .intro-grid h2 {
+      margin: 0 0 10px;
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .intro-grid p { margin: 0 0 12px; }
+
+    .source-note {
+      padding: 18px;
+      background: #f3f7fa;
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--blue);
+      border-radius: 8px;
+    }
+
+    .source-note p {
+      margin: 0;
+      font-size: .92rem;
+      line-height: 1.5;
+    }
+
+    .source-note p + p { margin-top: 8px; }
+
+    .filter-panel {
+      margin-bottom: 30px;
+      padding: 24px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    .filter-panel h2 {
+      margin: 0 0 18px;
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.55rem;
+    }
+
+    .availability-fieldset {
+      margin: 0 0 22px;
+      padding: 0;
+      border: 0;
+    }
+
+    .availability-fieldset legend {
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .choice-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .choice-row input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .choice-row label {
+      min-height: 48px;
+      padding: 10px 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--white);
+      color: var(--navy);
+      border: 2px solid var(--navy);
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .choice-row input:checked + label {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .choice-row input:focus-visible + label {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    .filters-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      align-items: end;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .field select,
+    .field input[type="search"] {
+      width: 100%;
+      min-height: 48px;
+      padding: 9px 11px;
+      background: var(--white);
+      color: var(--text);
+      border: 2px solid #9ba8b4;
+      border-radius: 5px;
+    }
+
+    .clear-button {
+      min-height: 48px;
+      padding: 9px 14px;
+      background: var(--white);
+      color: var(--navy);
+      border: 2px solid var(--navy);
+      border-radius: 5px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .clear-button:hover {
+      background: #edf3f8;
+    }
+
+    .results-toolbar {
+      margin: 0 0 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .results-toolbar h2 {
+      margin: 0;
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.8rem;
+    }
+
+    .result-summary {
+      margin: 0;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .loading,
+    .empty-state,
+    .error-state {
+      padding: 26px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: #f7f9fb;
+    }
+
+    .empty-state h3,
+    .error-state h3 {
+      margin-top: 0;
+      color: var(--navy);
+    }
+
+    .department-group + .department-group { margin-top: 46px; }
+
+    .department-heading {
+      margin: 0 0 20px;
+      padding-bottom: 8px;
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.8rem;
+      border-bottom: 3px solid var(--gold);
+    }
+
+    .course-group + .course-group { margin-top: 30px; }
+
+    .course-heading {
+      margin: 0 0 13px;
+      color: var(--navy);
+      font-size: 1.18rem;
+      line-height: 1.35;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .section-card {
+      min-width: 0;
+      padding: 19px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-top: 5px solid var(--navy);
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(20, 43, 67, .06);
+    }
+
+    .section-card[data-department="English"] {
+      background: var(--english-bg);
+      border-top-color: var(--english);
+    }
+
+    .section-card[data-department="Communication Studies"] {
+      background: var(--comm-bg);
+      border-top-color: var(--comm);
+    }
+
+    .section-card[data-department="Journalism"] {
+      background: var(--journalism-bg);
+      border-top-color: var(--journalism);
+    }
+
+    .section-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .section-card h5 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    .status {
+      flex: 0 0 auto;
+      padding: 4px 9px;
+      border: 1px solid currentColor;
+      border-radius: 999px;
+      font-size: .78rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .status-open { color: var(--open); background: var(--open-bg); }
+    .status-wait-list { color: var(--wait); background: var(--wait-bg); }
+    .status-closed { color: var(--closed); background: var(--closed-bg); }
+    .status-unknown { color: #4d5965; background: #f1f3f5; }
+
+    .section-meta {
+      margin: 15px 0 0;
+      display: grid;
+      grid-template-columns: minmax(110px, .7fr) minmax(0, 1.7fr);
+      gap: 6px 12px;
+      font-size: .92rem;
+    }
+
+    .section-meta dt {
+      margin: 0;
+      color: #4c5966;
+      font-weight: 700;
+    }
+
+    .section-meta dd {
+      margin: 0;
+      min-width: 0;
+    }
+
+    .fallback-details {
+      margin: 13px 0 0;
+      color: #465463;
+      font-size: .88rem;
+    }
+
+    .sis-link {
+      margin-top: 16px;
+      min-height: 44px;
+      padding: 8px 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 5px;
+      font-size: .9rem;
+      font-weight: 700;
+      line-height: 1.35;
+      text-decoration: none;
+    }
+
+    .sis-link:hover {
+      background: var(--blue);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .official-strip {
+      margin-top: 46px;
+      padding: 24px;
+      background: #f3f7fa;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+    }
+
+    .official-strip h2 {
+      margin: 0 0 7px;
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.45rem;
+    }
+
+    .official-strip p { margin: 0 0 11px; }
+
+    .official-strip a { font-weight: 700; }
+
+    footer {
+      background: var(--navy-dark);
+      color: var(--white);
+    }
+
+    .footer-inner {
+      width: min(1050px, 100%);
+      margin: 0 auto;
+      padding: 38px 24px;
+    }
+
+    footer h2 {
+      margin: 0 0 8px;
+      color: var(--white);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.4rem;
+    }
+
+    footer p { margin: 4px 0; color: var(--white); }
+    footer a { color: var(--white); }
+
+    .site-disclaimer {
+      width: min(1050px, 100%);
+      margin: 0 auto;
+      padding: 17px 24px 24px;
+      border-top: 1px solid rgba(255,255,255,.18);
+      color: #cbd6e0;
+      font-size: .75rem;
+      line-height: 1.55;
+    }
+
+    .site-disclaimer p {
+      max-width: 950px;
+      margin: 0;
+      color: #cbd6e0;
+    }
+
+    .site-disclaimer p + p { margin-top: 7px; }
+    .site-disclaimer strong, .site-disclaimer a { color: var(--white); }
+
+    @media (max-width: 900px) {
+      .header-inner { align-items: flex-start; flex-direction: column; gap: 14px; }
+      .top-nav { width: 100%; }
+      .top-nav ul { justify-content: flex-start; }
+      .intro-grid { grid-template-columns: 1fr; }
+      .filters-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 680px) {
+      .header-inner { padding: 17px 18px; }
+      .college-name-main { font-size: 1.42rem; }
+      .top-nav ul {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 4px 10px;
+      }
+      .top-nav a {
+        width: 100%;
+        min-height: 46px;
+        padding: 6px 0;
+      }
+      .hero-inner { padding: 44px 18px 42px; }
+      .main-wrap { padding: 34px 18px 58px; }
+      .filter-panel { padding: 20px 16px; }
+      .filters-grid { grid-template-columns: 1fr; }
+      .choice-row { display: grid; grid-template-columns: 1fr; }
+      .choice-row label { width: 100%; }
+      .section-grid { grid-template-columns: 1fr; }
+      .section-meta { grid-template-columns: 1fr; gap: 2px; }
+      .section-meta dd + dt { margin-top: 7px; }
+      .footer-inner { padding: 30px 18px; }
+      .site-disclaimer { padding: 15px 18px 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body id="top">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="college-name" href="https://www.lamc.edu/" aria-label="Los Angeles Mission College homepage">
+        <span class="college-name-main">Los Angeles Mission College</span>
+        <span class="department-name">English, Communication Studies &amp; Journalism</span>
+      </a>
+
+      <nav class="top-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#programs">Degrees &amp; Certificates</a></li>
+          <li><a href="classes.html" aria-current="page">Find Classes</a></li>
+          <li><a href="student-resources.html">Student Resources</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-inner">
+        <p class="eyebrow">ECJ Class Finder</p>
+        <h1 id="page-title">Find an ECJ Class</h1>
+        <p>Browse English, Communication Studies, and Journalism sections at Los Angeles Mission College. Choose all classes or narrow the list to sections currently marked open in the public LACCD class search.</p>
+      </div>
+    </section>
+
+    <div class="main-wrap">
+      <section class="intro-grid" aria-labelledby="how-heading">
+        <div>
+          <h2 id="how-heading">Start With What You Need</h2>
+          <p>Use <strong>Open Classes</strong> when you are looking for a section that may still have space. Switch to <strong>All Classes</strong> when you want to see the full semester schedule, including wait-listed and closed sections.</p>
+          <p>Class availability can change quickly. Always use the official LACCD Student Information System before making an enrollment decision.</p>
+        </div>
+
+        <aside class="source-note" aria-label="Class data information">
+          <p><strong>Public schedule data</strong></p>
+          <p id="last-updated">Checking the latest saved class-list update...</p>
+          <p>This page reads a saved copy of public schedule information. It does not ask for or collect student login information.</p>
+        </aside>
+      </section>
+
+      <section class="filter-panel" aria-labelledby="filter-heading">
+        <h2 id="filter-heading">Choose Your Classes</h2>
+
+        <form id="class-filters">
+          <fieldset class="availability-fieldset">
+            <legend>What would you like to see?</legend>
+            <div class="choice-row">
+              <input type="radio" id="view-open" name="availability" value="open" checked>
+              <label for="view-open">Open ECJ Classes</label>
+
+              <input type="radio" id="view-all" name="availability" value="all">
+              <label for="view-all">All ECJ Classes</label>
+            </div>
+          </fieldset>
+
+          <div class="filters-grid">
+            <div class="field">
+              <label for="term-filter">Semester</label>
+              <select id="term-filter" name="term"></select>
+            </div>
+
+            <div class="field">
+              <label for="subject-filter">Subject</label>
+              <select id="subject-filter" name="subject">
+                <option value="all">All ECJ subjects</option>
+                <option value="English">English</option>
+                <option value="Communication Studies">Communication Studies</option>
+                <option value="Journalism">Journalism</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="format-filter">Class format</label>
+              <select id="format-filter" name="format">
+                <option value="all">All formats</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="search-filter">Search classes</label>
+              <input id="search-filter" name="search" type="search" placeholder="Course, title, instructor...">
+            </div>
+          </div>
+
+          <p style="margin:18px 0 0;">
+            <button class="clear-button" id="clear-filters" type="button">Reset Filters</button>
+          </p>
+        </form>
+      </section>
+
+      <section aria-labelledby="results-heading">
+        <div class="results-toolbar">
+          <h2 id="results-heading">Class Results</h2>
+          <p class="result-summary" id="result-summary" aria-live="polite">Loading class information...</p>
+        </div>
+
+        <div id="results">
+          <p class="loading">Loading the saved ECJ class list...</p>
+        </div>
+      </section>
+
+      <section class="official-strip" aria-labelledby="official-heading">
+        <h2 id="official-heading">Before You Enroll</h2>
+        <p>The LACCD Student Information System is the official source for enrollment status, prerequisites, permission requirements, and final class details.</p>
+        <p><a href="https://mycollege-guest.laccd.edu/psc/classsearchguest/EMPLOYEE/HRMS/c/COMMUNITY_ACCESS.CLASS_SEARCH.GBL" target="_blank" rel="noopener">Open the official LACCD public Class Search</a></p>
+      </section>
+
+      <noscript>
+        <section class="error-state" aria-labelledby="javascript-heading">
+          <h2 id="javascript-heading">JavaScript Is Needed for the Class Filters</h2>
+          <p>You can still use the <a href="https://mycollege-guest.laccd.edu/psc/classsearchguest/EMPLOYEE/HRMS/c/COMMUNITY_ACCESS.CLASS_SEARCH.GBL">official LACCD public Class Search</a>.</p>
+        </section>
+      </noscript>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <h2>Los Angeles Mission College</h2>
+      <p>English, Communication Studies &amp; Journalism</p>
+      <p>13356 Eldridge Avenue · Sylmar, CA 91342</p>
+      <p><a href="https://www.lamc.edu/">Visit the Los Angeles Mission College website</a></p>
+      <p><a href="privacy.html">Privacy</a></p>
+      <p><a href="accessibility.html">Accessibility</a></p>
+      <p><a href="license.html">License &amp; Reuse</a></p>
+      <p><a href="https://www.lamc.edu/student-services" target="_blank" rel="noopener">Official LAMC Student Services</a></p>
+    </div>
+
+    <div class="site-disclaimer">
+      <p><strong>About This Site:</strong> This website is maintained by faculty in the Los Angeles Mission College English, Communication Studies &amp; Journalism Department as a resource for students and the community. It is not an official Los Angeles Mission College or Los Angeles Community College District website. Class information may change. For official enrollment information, consult the LACCD Student Information System.</p>
+      <p><strong>See something that needs updating?</strong> <a href="https://www.lamc.edu/academics/pathways/scc/english-dept">Contact the ECJ Department.</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      "use strict";
+
+      const DATA_URL = "data/classes.json";
+      const SIS_URL = "https://mycollege-guest.laccd.edu/psc/classsearchguest/EMPLOYEE/HRMS/c/COMMUNITY_ACCESS.CLASS_SEARCH.GBL";
+      const departmentOrder = ["English", "Communication Studies", "Journalism"];
+      const state = { data: null };
+
+      const termFilter = document.getElementById("term-filter");
+      const subjectFilter = document.getElementById("subject-filter");
+      const formatFilter = document.getElementById("format-filter");
+      const searchFilter = document.getElementById("search-filter");
+      const results = document.getElementById("results");
+      const summary = document.getElementById("result-summary");
+      const lastUpdated = document.getElementById("last-updated");
+      const clearButton = document.getElementById("clear-filters");
+      const filterForm = document.getElementById("class-filters");
+
+      function element(tag, className, text) {
+        const node = document.createElement(tag);
+        if (className) node.className = className;
+        if (typeof text === "string") node.textContent = text;
+        return node;
+      }
+
+      function availability() {
+        const checked = filterForm.querySelector('input[name="availability"]:checked');
+        return checked ? checked.value : "open";
+      }
+
+      function selectedTerm() {
+        if (!state.data || !Array.isArray(state.data.terms)) return null;
+        return state.data.terms.find((term) => term.id === termFilter.value) || state.data.terms[0] || null;
+      }
+
+      function formatDate(value) {
+        if (!value) return "The automated refresh has not run yet.";
+        const date = new Date(value);
+        if (Number.isNaN(date.getTime())) return value;
+        return "Last refreshed " + new Intl.DateTimeFormat("en-US", {
+          timeZone: "America/Los_Angeles",
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+          hour: "numeric",
+          minute: "2-digit",
+          timeZoneName: "short"
+        }).format(date) + ".";
+      }
+
+      function naturalCompare(a, b) {
+        return String(a).localeCompare(String(b), undefined, { numeric: true, sensitivity: "base" });
+      }
+
+      function currentSections() {
+        const term = selectedTerm();
+        if (!term || !Array.isArray(term.sections)) return [];
+
+        const view = availability();
+        const subject = subjectFilter.value;
+        const format = formatFilter.value;
+        const query = searchFilter.value.trim().toLowerCase();
+
+        return term.sections.filter((section) => {
+          if (view === "open" && section.status !== "Open") return false;
+          if (subject !== "all" && section.department !== subject) return false;
+          if (format !== "all" && section.format !== format) return false;
+
+          if (query) {
+            const haystack = [
+              section.course,
+              section.course_number,
+              section.title,
+              section.class_number,
+              section.section,
+              section.instructor,
+              section.schedule,
+              section.room,
+              section.format
+            ].filter(Boolean).join(" ").toLowerCase();
+            if (!haystack.includes(query)) return false;
+          }
+          return true;
+        }).sort((a, b) => {
+          const dept = departmentOrder.indexOf(a.department) - departmentOrder.indexOf(b.department);
+          if (dept) return dept;
+          const course = naturalCompare(a.course_number, b.course_number);
+          if (course) return course;
+          return naturalCompare(a.class_number, b.class_number);
+        });
+      }
+
+      function populateTerms() {
+        termFilter.replaceChildren();
+        const terms = state.data && Array.isArray(state.data.terms) ? state.data.terms : [];
+        terms.forEach((term) => {
+          const option = document.createElement("option");
+          option.value = term.id;
+          option.textContent = term.label;
+          termFilter.appendChild(option);
+        });
+      }
+
+      function populateFormats() {
+        const previous = formatFilter.value || "all";
+        const term = selectedTerm();
+        const formats = term && Array.isArray(term.sections)
+          ? Array.from(new Set(term.sections.map((section) => section.format).filter(Boolean))).sort(naturalCompare)
+          : [];
+
+        formatFilter.replaceChildren();
+        const all = document.createElement("option");
+        all.value = "all";
+        all.textContent = "All formats";
+        formatFilter.appendChild(all);
+
+        formats.forEach((format) => {
+          const option = document.createElement("option");
+          option.value = format;
+          option.textContent = format;
+          formatFilter.appendChild(option);
+        });
+
+        if ([...formatFilter.options].some((option) => option.value === previous)) {
+          formatFilter.value = previous;
+        }
+      }
+
+      function addMeta(dl, label, value) {
+        if (!value) return;
+        dl.appendChild(element("dt", "", label));
+        dl.appendChild(element("dd", "", value));
+      }
+
+      function statusClass(status) {
+        return "status-" + String(status || "unknown").toLowerCase().replace(/\s+/g, "-");
+      }
+
+      function renderSectionCard(section) {
+        const card = element("article", "section-card");
+        card.dataset.department = section.department || "";
+
+        const header = element("div", "section-card-header");
+        const heading = element("h5", "", "Class " + (section.class_number || "See SIS") + (section.section ? " · " + section.section : ""));
+        const status = element("span", "status " + statusClass(section.status), section.status || "Status unknown");
+        header.append(heading, status);
+        card.appendChild(header);
+
+        const dl = element("dl", "section-meta");
+        addMeta(dl, "Format", section.format);
+        addMeta(dl, "Schedule", section.schedule);
+        addMeta(dl, "Location", section.room);
+        addMeta(dl, "Instructor", section.instructor);
+        addMeta(dl, "Dates", section.dates);
+        card.appendChild(dl);
+
+        if (section.details) {
+          const details = element("p", "fallback-details", section.details);
+          card.appendChild(details);
+        }
+
+        const link = element("a", "sis-link", "Check This Section in Official SIS");
+        link.href = section.sis_url || SIS_URL;
+        link.target = "_blank";
+        link.rel = "noopener";
+        card.appendChild(link);
+        return card;
+      }
+
+      function render() {
+        const term = selectedTerm();
+        const sections = currentSections();
+        results.replaceChildren();
+
+        if (!term) {
+          summary.textContent = "No semester data is available.";
+          const box = element("div", "error-state");
+          box.appendChild(element("h3", "", "Class data is not available yet"));
+          box.appendChild(element("p", "", "Use the official LACCD public Class Search while this page is being set up."));
+          const link = element("a", "", "Open the official LACCD public Class Search");
+          link.href = SIS_URL;
+          link.target = "_blank";
+          link.rel = "noopener";
+          box.appendChild(link);
+          results.appendChild(box);
+          return;
+        }
+
+        const viewLabel = availability() === "open" ? "open" : "matching";
+        summary.textContent = sections.length + " " + viewLabel + (sections.length === 1 ? " section" : " sections") + " found for " + term.label + ".";
+
+        if (!Array.isArray(term.sections) || term.sections.length === 0) {
+          const box = element("div", "error-state");
+          box.appendChild(element("h3", "", "The automated class feed has not populated yet"));
+          box.appendChild(element("p", "", "After the GitHub Action runs for the first time, this page will fill with ECJ sections automatically. Until then, use the official LACCD public Class Search."));
+          const link = element("a", "", "Open the official LACCD public Class Search");
+          link.href = SIS_URL;
+          link.target = "_blank";
+          link.rel = "noopener";
+          box.appendChild(link);
+          results.appendChild(box);
+          return;
+        }
+
+        if (sections.length === 0) {
+          const box = element("div", "empty-state");
+          box.appendChild(element("h3", "", "No classes match these filters"));
+          box.appendChild(element("p", "", availability() === "open"
+            ? "There may be wait-listed or closed sections. Try All ECJ Classes or clear one of the filters."
+            : "Try clearing a subject, format, or search filter."));
+          results.appendChild(box);
+          return;
+        }
+
+        departmentOrder.forEach((department) => {
+          const departmentSections = sections.filter((section) => section.department === department);
+          if (!departmentSections.length) return;
+
+          const departmentGroup = element("section", "department-group");
+          const deptHeading = element("h3", "department-heading", department);
+          departmentGroup.appendChild(deptHeading);
+
+          const courseKeys = [];
+          const courseMap = new Map();
+          departmentSections.forEach((section) => {
+            const key = (section.course || "Course") + "|" + (section.title || "");
+            if (!courseMap.has(key)) {
+              courseMap.set(key, []);
+              courseKeys.push(key);
+            }
+            courseMap.get(key).push(section);
+          });
+
+          courseKeys.forEach((key) => {
+            const courseSections = courseMap.get(key);
+            const first = courseSections[0];
+            const courseGroup = element("section", "course-group");
+            const headingText = (first.course || "Course") + (first.title ? ": " + first.title : "");
+            courseGroup.appendChild(element("h4", "course-heading", headingText));
+
+            const grid = element("div", "section-grid");
+            courseSections.forEach((section) => grid.appendChild(renderSectionCard(section)));
+            courseGroup.appendChild(grid);
+            departmentGroup.appendChild(courseGroup);
+          });
+
+          results.appendChild(departmentGroup);
+        });
+      }
+
+      function resetFilters() {
+        document.getElementById("view-open").checked = true;
+        subjectFilter.value = "all";
+        formatFilter.value = "all";
+        searchFilter.value = "";
+        render();
+      }
+
+      filterForm.addEventListener("change", (event) => {
+        if (event.target === termFilter) populateFormats();
+        render();
+      });
+      searchFilter.addEventListener("input", render);
+      clearButton.addEventListener("click", resetFilters);
+
+      fetch(DATA_URL, { cache: "no-store" })
+        .then((response) => {
+          if (!response.ok) throw new Error("Class data could not be loaded.");
+          return response.json();
+        })
+        .then((data) => {
+          state.data = data;
+          lastUpdated.textContent = formatDate(data.generated_at);
+          populateTerms();
+          populateFormats();
+          render();
+        })
+        .catch(() => {
+          summary.textContent = "Class data could not be loaded.";
+          lastUpdated.textContent = "The saved class list could not be loaded.";
+          results.replaceChildren();
+          const box = element("div", "error-state");
+          box.appendChild(element("h3", "", "Use the official class search for now"));
+          box.appendChild(element("p", "", "The ECJ class feed is temporarily unavailable. The official LACCD public Class Search remains available."));
+          const link = element("a", "", "Open the official LACCD public Class Search");
+          link.href = SIS_URL;
+          link.target = "_blank";
+          link.rel = "noopener";
+          box.appendChild(link);
+          results.appendChild(box);
+        });
+    }());
+  </script>
+</body>
+</html>
