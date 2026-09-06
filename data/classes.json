@@ -2,7 +2,7 @@
   "schema_version": 2,
   "campus": "Los Angeles Mission College",
   "campus_code": "LAMC",
-  "generated_at": "2026-09-06T01:28:42Z",
+  "generated_at": "2026-09-06T01:37:55Z",
   "source": {
     "name": "LACCD Public Class Search",
     "url": "https://mycollege-guest.laccd.edu/psc/classsearchguest/EMPLOYEE/HRMS/c/COMMUNITY_ACCESS.CLASS_SEARCH.GBL"
@@ -53,8 +53,10 @@
           "end_date": "2026-10-25",
           "status": "Closed",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "12481 M15-LEC 8 Week A 6Hr 30Min /Wk TBA Mission-Online Adam Largaespada 08/31/2026 - 10/25/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$14');"
         },
@@ -76,8 +78,10 @@
           "end_date": "2026-12-20",
           "status": "Closed",
           "format": "In Person",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "12486 M03-LEC Regular MoWe 10:35AM - 12:00PM Mission-CSB 111 Andzhela Keshishyan 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$2');"
         },
@@ -99,8 +103,10 @@
           "end_date": "2026-12-20",
           "status": "Closed",
           "format": "In Person",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "12487 M04-LEC Regular TuTh 10:35AM - 12:00PM Mission-INST 1013 Margaret Purnell 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$3');"
         },
@@ -122,8 +128,10 @@
           "end_date": "2026-12-20",
           "status": "Closed",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "12503 M13-LEC Regular 3Hr 10Min /Wk TBA Mission-Online David Selsby 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$12');"
         },
@@ -191,8 +199,10 @@
           "end_date": "2026-12-20",
           "status": "Closed",
           "format": "In Person",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "13917 M05-LEC Regular MoWe 12:15PM - 1:40PM Mission-INST 2001 Maria Turnmeyer 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$4');"
         },
@@ -306,8 +316,10 @@
           "end_date": "2026-12-20",
           "status": "Open",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "13922 M14-LEC Regular 3Hr 10Min /Wk TBA Mission-Online Carolyn Daly 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$13');"
         },
@@ -352,8 +364,10 @@
           "end_date": "2026-12-20",
           "status": "Open",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "14225 M25-LEC 10th Week 7Hr 25Min /Wk TBA Mission-Online Aquil Yorke 11/02/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$24');"
         },
@@ -398,8 +412,10 @@
           "end_date": "2026-12-20",
           "status": "Wait List",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "14361 M21-LEC 3rd Week 3Hr 35Min /Wk TBA Mission-Online Carolyn Daly 09/14/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$20');"
         },
@@ -444,8 +460,10 @@
           "end_date": "2026-12-20",
           "status": "Open",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "15015 M26-LEC 11th Week 8Hr 50Min /Wk TBA Mission-Online Ryan Ritchie 11/09/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$25');"
         },
@@ -513,8 +531,10 @@
           "end_date": "2026-12-20",
           "status": "Wait List",
           "format": "In Person",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "16771 M24-LEC 8 Week B MoWe 8:00AM - 11:10AM Mission-INST 2004 Maria Turnmeyer 10/26/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$23');"
         },
@@ -559,8 +579,10 @@
           "end_date": "2026-12-20",
           "status": "Open",
           "format": "In Person",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "17451 M02-LEC Regular Mo 3:30PM - 6:40PM Mission-AMP 309 Joseph Camhi 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$1');"
         },
@@ -582,8 +604,10 @@
           "end_date": "2026-12-20",
           "status": "Closed",
           "format": "In Person",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "18789 M16-LEC Regular MoWe 8:55AM - 10:20AM Mission-INST 1003 Jonathan Berliner 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$15');"
         },
@@ -605,8 +629,10 @@
           "end_date": "2026-12-20",
           "status": "Wait List",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "18933 M20-LEC 8 Week B 6Hr 30Min /Wk TBA Mission-Online Alfredo Raygoza 10/26/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$19');"
         },
@@ -628,8 +654,10 @@
           "end_date": "2026-12-20",
           "status": "Open",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "18938 M27-LEC 8 Week B 6Hr 30Min /Wk TBA Mission-Online Tatevik Mirakyan 10/26/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$26');"
         },
@@ -697,8 +725,10 @@
           "end_date": "2026-10-25",
           "status": "Open",
           "format": "In Person Hybrid",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "16563 M03-LEC 8 Week A TuTh 9:00AM - 10:30AM 1Hr 50Min /Wk TBA Mission-INST 2021 Mission-Online Sarah Daugherty Sarah Daugherty 08/31/2026 - 10/25/2026 08/31/2026 - 10/25/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$33');"
         },
@@ -720,8 +750,10 @@
           "end_date": "2026-10-25",
           "status": "Open",
           "format": "In Person",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "16564 M03A-LAB 8 Week A TuTh 10:40AM - 12:05PM Mission-INST 2021 Sarah Daugherty 08/31/2026 - 10/25/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$34');"
         },
@@ -743,8 +775,10 @@
           "end_date": "2026-12-20",
           "status": "Open",
           "format": "In Person",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "17930 M01-LEC Regular MoWe 10:35AM - 11:45AM Mission-INST 2021 Tatevik Mirakyan 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$29');"
         },
@@ -766,8 +800,10 @@
           "end_date": "2026-12-20",
           "status": "Open",
           "format": "In Person",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "17931 M01A-LAB Regular Mo 11:55AM - 1:20PM Mission-INST 2021 Tatevik Mirakyan 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$30');"
         },
@@ -789,8 +825,10 @@
           "end_date": "2026-12-20",
           "status": "Closed",
           "format": "In Person",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "17932 M02-LEC Regular TuTh 12:15PM - 1:25PM Mission-INST 2021 Sarah Daugherty 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$31');"
         },
@@ -812,8 +850,10 @@
           "end_date": "2026-12-20",
           "status": "Closed",
           "format": "In Person",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "17933 M02A-LAB Regular Th 1:35PM - 3:00PM Mission-INST 2021 Sarah Daugherty 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$32');"
         },
@@ -835,8 +875,10 @@
           "end_date": "2026-12-20",
           "status": "Open",
           "format": "In Person",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "20206 M04-LEC 8 Week B TuTh 8:00AM - 10:50AM Mission-INST 2006 Celeste McAlpin-Levitt 10/26/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$35');"
         },
@@ -858,8 +900,10 @@
           "end_date": "2026-12-20",
           "status": "Open",
           "format": "In Person Hybrid",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "20207 M04A-LAB 8 Week B TuTh 11:00AM - 12:00PM 1Hr 15Min /Wk TBA Mission-INST 2006 Mission-Online Celeste McAlpin-Levitt Celeste McAlpin-Levitt 10/26/2026 - 12/20/2026 10/26/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$36');"
         },
@@ -881,8 +925,10 @@
           "end_date": "2026-12-20",
           "status": "Closed",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "20595 M05-LEC Regular 2Hr 30Min /Wk TBA Mission-Online Meghmik Mardian 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$37');"
         },
@@ -904,8 +950,10 @@
           "end_date": "2026-12-20",
           "status": "Closed",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "20596 M05A-LAB Regular 1Hr 25Min /Wk TBA Mission-Online Meghmik Mardian 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$38');"
         },
@@ -1295,8 +1343,10 @@
           "end_date": "2026-12-20",
           "status": "Closed",
           "format": "In Person",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "12928 M01-LEC Regular MoWe 10:35AM - 12:00PM Mission-INST 1003 Trevor Westmoreland 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$8');"
         },
@@ -1318,8 +1368,10 @@
           "end_date": "2026-12-20",
           "status": "Closed",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "12929 M02-LEC Regular 3Hr 10Min /Wk TBA Mission-Online Carolyn Daly 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$9');"
         },
@@ -1341,8 +1393,10 @@
           "end_date": "2026-12-20",
           "status": "Open",
           "format": "In Person",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "12930 M05-LEC 8 Week B TuTh 11:30AM - 2:50PM Mission-CSB 101 Laura Hogan 10/26/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$12');"
         },
@@ -1364,8 +1418,10 @@
           "end_date": "2026-12-20",
           "status": "Open",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "12931 M06-LEC 8 Week B 6Hr 30Min /Wk TBA Mission-Online Cassandra Gonzalez 10/26/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$13');"
         },
@@ -1410,8 +1466,10 @@
           "end_date": "2026-12-20",
           "status": "Open",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "16025 M07-LEC 11th Week 8Hr 50Min /Wk TBA Mission-Online Adam Largaespada 11/09/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$14');"
         },
@@ -1456,8 +1514,10 @@
           "end_date": "2026-10-25",
           "status": "Closed",
           "format": "In Person Hybrid",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "27528 M01-LEC 8 Week A MoWe 10:00AM - 11:20AM 3Hr 30Min /Wk TBA Mission-ARLETA HIGH SCHOOL Mission-Online DUAL ENROLLMENT Madison Trujillo Madison Trujillo 08/31/2026 - 10/25/2026 08/31/2026 - 10/25/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$0');"
         },
@@ -1594,8 +1654,10 @@
           "end_date": "2026-12-20",
           "status": "Closed",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "16568 M01-LEC Regular 3Hr 10Min /Wk TBA Mission-Online Andzhela Keshishyan 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$6');"
         },
@@ -1617,8 +1679,10 @@
           "end_date": "2026-12-20",
           "status": "Closed",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "16569 M01A-LAB Regular 3Hr 10Min /Wk TBA Mission-Online Andzhela Keshishyan 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$7');"
         },
@@ -1640,8 +1704,10 @@
           "end_date": "2026-12-20",
           "status": "Open",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "24316 M01-LEC Regular 3Hr 10Min /Wk TBA Mission-Online Karen Crozer, Karen Crozer 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$15');"
         },
@@ -1686,8 +1752,10 @@
           "end_date": "2026-12-20",
           "status": "Open",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "16078 M01-LEC Regular 3Hr 10Min /Wk TBA Mission-Online Jose Cadena 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$17');"
         },
@@ -1709,8 +1777,10 @@
           "end_date": "2026-12-20",
           "status": "Open",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "15523 M01-LEC Regular 3Hr 10Min /Wk TBA Mission-Online Margaret Purnell 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$18');"
         },
@@ -1755,8 +1825,10 @@
           "end_date": "2026-12-20",
           "status": "Open",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "19041 M01-LEC Regular 3Hr 10Min /Wk TBA Mission-Online Karen Crozer 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$20');"
         },
@@ -1824,8 +1896,10 @@
           "end_date": "2026-12-20",
           "status": "Closed",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "24313 M01-LEC Regular 3Hr 10Min /Wk TBA Mission-Online Jessica Kwack 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$0');"
         },
@@ -1893,8 +1967,10 @@
           "end_date": "2026-12-20",
           "status": "Open",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "14662 M01-LEC Regular 3Hr 10Min /Wk TBA Mission-Online Jessica Kwack 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$3');"
         },
@@ -1916,8 +1992,10 @@
           "end_date": "2026-12-20",
           "status": "Open",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "19044 M01-LEC Regular 3Hr 10Min /Wk TBA Mission-Online Jessica Kwack 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$4');"
         },
@@ -1962,8 +2040,10 @@
           "end_date": "2026-10-25",
           "status": "Open",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "16105 M02-LEC 8 Week A 6Hr 30Min /Wk TBA Mission-Online Regina Avakian 08/31/2026 - 10/25/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$6');"
         },
@@ -1985,8 +2065,10 @@
           "end_date": "2026-12-20",
           "status": "Open",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "16572 M03-LEC 3rd Week 3Hr 35Min /Wk TBA Mission-Online Regina Avakian 09/14/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$7');"
         },
@@ -2008,8 +2090,10 @@
           "end_date": "2026-12-20",
           "status": "Closed",
           "format": "In Person",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "12388 M01-LEC Regular TuTh 8:55AM - 10:20AM Mission-INST 2004 Jessica Kwack 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$8');"
         },
@@ -2031,8 +2115,10 @@
           "end_date": "2026-12-20",
           "status": "Open",
           "format": "In Person",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "12390 M02-LEC Regular MoWe 10:35AM - 12:00PM Mission-INST 1001 Rodolfo Casarez 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$9');"
         },
@@ -2054,8 +2140,10 @@
           "end_date": "2026-12-20",
           "status": "Closed",
           "format": "In Person",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "12393 M04-LEC Regular Tu 3:30PM - 6:40PM Mission-INST 1003 Beville Constantine 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$11');"
         },
@@ -2077,8 +2165,10 @@
           "end_date": "2026-12-20",
           "status": "Open",
           "format": "Zoom",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "12398 M05-LEC Regular We 6:50PM - 10:00PM Mission-Online Live Juliet Wallace 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$12');"
         },
@@ -2146,8 +2236,10 @@
           "end_date": "2026-12-20",
           "status": "Closed",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "13466 M10-LEC Regular 3Hr 10Min /Wk TBA Mission-Online Michael Shanley 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$17');"
         },
@@ -2169,8 +2261,10 @@
           "end_date": "2026-12-20",
           "status": "Closed",
           "format": "In Person",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "13827 M03-LEC Regular TuTh 10:35AM - 12:00PM Mission-INST 2004 Jessica Kwack 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$10');"
         },
@@ -2192,8 +2286,10 @@
           "end_date": "2026-12-20",
           "status": "Open",
           "format": "In Person",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "14224 M11-LEC Regular Th 6:50PM - 10:00PM Mission-INST 2004 Beville Constantine 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$18');"
         },
@@ -2215,8 +2311,10 @@
           "end_date": "2026-12-20",
           "status": "Closed",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "14417 M09-LEC Regular 3Hr 10Min /Wk TBA Mission-Online Donte Newman 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$16');"
         },
@@ -2238,8 +2336,10 @@
           "end_date": "2026-10-25",
           "status": "Closed",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "15824 M12-LEC 8 Week A 6Hr 30Min /Wk TBA Mission-Online Melanie Myers 08/31/2026 - 10/25/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$19');"
         },
@@ -2261,8 +2361,10 @@
           "end_date": "2026-12-20",
           "status": "Wait List",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "16029 M13-LEC 8 Week B 6Hr 30Min /Wk TBA Mission-Online Paige White 10/26/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$20');"
         },
@@ -2284,8 +2386,10 @@
           "end_date": "2026-12-20",
           "status": "Closed",
           "format": "In Person",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "16571 M14-LEC Regular MoWe 8:55AM - 10:20AM Mission-INST 1010 Rodolfo Casarez 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$21');"
         },
@@ -2307,8 +2411,10 @@
           "end_date": "2026-12-20",
           "status": "Wait List",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "17471 M15-LEC 8 Week B 6Hr 30Min /Wk TBA Mission-Online Melanie Myers 10/26/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$22');"
         },
@@ -2330,8 +2436,10 @@
           "end_date": "2026-12-20",
           "status": "Wait List",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "18934 M18-LEC 8 Week B 6Hr 30Min /Wk TBA Mission-Online Nune Dervishian 10/26/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$25');"
         },
@@ -2353,8 +2461,10 @@
           "end_date": "2026-12-20",
           "status": "Wait List",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "18936 M06-LEC 8 Week B 6Hr 30Min /Wk TBA Mission-Online Nune Dervishian 10/26/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$13');"
         },
@@ -2376,8 +2486,10 @@
           "end_date": "2026-12-20",
           "status": "Wait List",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "18937 M16-LEC 8 Week B 6Hr 30Min /Wk TBA Mission-Online Michael Shanley 10/26/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$23');"
         },
@@ -2399,8 +2511,10 @@
           "end_date": "2026-12-20",
           "status": "Wait List",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "18944 M17-LEC 8 Week B 6Hr 30Min /Wk TBA Mission-Online Julia Raz 10/26/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$24');"
         },
@@ -2422,8 +2536,10 @@
           "end_date": "2026-12-20",
           "status": "Closed",
           "format": "In Person",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "27892 M19-LEC Regular MoWe 12:35PM - 2:00PM Mission-ARLETA HIGH SCHOOL Rodolfo Casarez 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$26');"
         },
@@ -2560,8 +2676,10 @@
           "end_date": "2026-10-25",
           "status": "Open",
           "format": "Online",
-          "materials": [],
-          "materials_text": "",
+          "materials": [
+            "ZTC"
+          ],
+          "materials_text": "All textbooks/readings will be provided free of cost.",
           "details": "15524 M01-LEC 8 Week A 6Hr 30Min /Wk TBA Mission-Online Ryan Ritchie 08/31/2026 - 10/25/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$1');"
         },
@@ -2642,9 +2760,8 @@
         "closed": 52
       },
       "material_counts": {
-        "ztc": 0,
-        "low_cost": 0,
-        "oer": 0
+        "ztc": 59,
+        "low_cost": 0
       }
     }
   ]
