@@ -44,10 +44,10 @@
       --format-person: #7a4d00;
       --format-person-bg: #fff8e8;
 
-      --ztc: #6d3a78;
-      --ztc-bg: #f7f0f8;
-      --oer: #5a3a83;
-      --oer-bg: #f4f0fa;
+      --ztc: #17633a;
+      --ztc-bg: #eef8f1;
+      --lowcost: #5a3a83;
+      --lowcost-bg: #f4f0fa;
     }
 
     * { box-sizing: border-box; }
@@ -596,7 +596,7 @@
     .format-in-person { color: var(--format-person); background: var(--format-person-bg); }
 
     .material-ztc { color: var(--ztc); background: var(--ztc-bg); }
-    .material-oer { color: var(--oer); background: var(--oer-bg); }
+    .material-low-cost { color: var(--lowcost); background: var(--lowcost-bg); }
 
     .started-badge {
       color: #5d4b13;
@@ -966,7 +966,7 @@
 <h2 id="how-heading">Start With What You Need</h2>
 <p>Use <strong>Open ECJ Classes</strong> when you are looking for a section that may still have space. Switch to <strong>All ECJ Classes</strong> to see the full semester schedule, including wait-listed and closed sections.</p>
 <p><strong>Sections within each course display in order of when they start, with the earliest-starting section first.</strong></p>
-<p>Each course includes a short description to help you compare options. You can also filter by class format and textbook cost. <strong>ZTC means Zero Textbook Cost:</strong> all required textbooks and readings are free.</p>
+<p>Each course includes a short description to help you compare options. You can also filter by class format and textbook cost. <strong>ZTC means Zero Textbook Cost:</strong> all required textbooks and readings are free. <strong>Low Cost</strong> means required materials are available for a reduced price rather than free.</p>
 <div aria-label="Class format definitions" class="format-guide">
 <strong>Class formats:</strong>
 <span><strong>In Person</strong> = meets on campus</span>
@@ -1115,7 +1115,7 @@
       const SIS_URL = "https://mycollege-guest.laccd.edu/psc/classsearchguest/EMPLOYEE/HRMS/c/COMMUNITY_ACCESS.CLASS_SEARCH.GBL";
       const departmentOrder = ["English", "Communication Studies", "Journalism"];
       const formatOrder = ["In Person", "Online", "Zoom", "In Person Hybrid", "Zoom Hybrid"];
-      const materialOrder = ["ZTC"];
+      const materialOrder = ["ZTC", "Low Cost"];
 
       const ecjPrograms = [
         {
@@ -1369,9 +1369,11 @@
         provided.forEach((item) => {
           const value = String(item).toLowerCase();
           if (value === "ztc" || value.includes("zero textbook")) flags.add("ZTC");
+          if (value === "low cost" || value.includes("low textbook") || value.includes("low cost textbook")) flags.add("Low Cost");
         });
 
         if (/\bZTC\b|Zero\s+Textbook\s+Cost/i.test(haystack)) flags.add("ZTC");
+        if (/\bLCT\b|\bLTC\b|Low\s+Textbook\s+Cost|Low\s+Cost\s+Textbook/i.test(haystack)) flags.add("Low Cost");
 
         return materialOrder.filter((item) => flags.has(item));
       }
@@ -1380,8 +1382,8 @@
         return "format-" + String(format).toLowerCase().replace(/\s+/g, "-");
       }
 
-      function materialBadgeClass() {
-        return "material-ztc";
+      function materialBadgeClass(flag) {
+        return flag === "Low Cost" ? "material-low-cost" : "material-ztc";
       }
 
       function displayLocation(section, format) {
@@ -1621,7 +1623,7 @@
 
         materialsFilter.disabled = available.size === 0;
         materialsFilter.title = available.size === 0
-          ? "No ZTC flags were detected in the current SIS feed."
+          ? "No ZTC or Low Cost flags were detected in the current SIS feed."
           : "";
 
         materialsFilter.value = [...materialsFilter.options].some((option) => option.value === previous) ? previous : "all";
@@ -1716,6 +1718,7 @@
         materialFlags(section).forEach((flag) => {
           const badge = element("span", "material-badge " + materialBadgeClass(flag), flag);
           if (flag === "ZTC") badge.setAttribute("aria-label", "Zero Textbook Cost");
+          if (flag === "Low Cost") badge.setAttribute("aria-label", "Low Textbook Cost");
           badges.appendChild(badge);
         });
 
