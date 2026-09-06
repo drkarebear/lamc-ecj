@@ -350,13 +350,22 @@ def fetch_subject(
 
 def natural_course_key(section: dict) -> tuple:
     dept_order = {"English": 0, "Communication Studies": 1, "Journalism": 2}
-    course = section.get("course_number", "")
+    course = str(section.get("course_number", ""))
     pieces = re.split(r"(\d+)", course)
-    normalized = tuple(int(piece) if piece.isdigit() else piece.lower() for piece in pieces if piece != "")
+
+    # Every part uses the same comparable shape so Python never has to compare
+    # an int directly with a str (for example, legacy 101 vs CCN C1000).
+    normalized = tuple(
+        (0, int(piece)) if piece.isdigit() else (1, piece.lower())
+        for piece in pieces
+        if piece != ""
+    )
+
+    class_number = str(section.get("class_number", ""))
     return (
         dept_order.get(section.get("department", ""), 9),
         normalized,
-        section.get("class_number", ""),
+        class_number,
     )
 
 
