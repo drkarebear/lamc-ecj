@@ -205,10 +205,7 @@
     }
 
     .intro-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
-      gap: 28px;
-      align-items: start;
+      display: block;
       margin-bottom: 30px;
     }
 
@@ -223,8 +220,29 @@
 
     .intro-grid p { margin: 0 0 12px; }
 
+    .format-guide {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      width: 100%;
+      margin: 18px 0 16px;
+      padding: 16px 18px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      line-height: 1.5;
+    }
+
+    .format-guide > strong {
+      flex-basis: 100%;
+      color: var(--navy);
+    }
+
+    .format-guide span { white-space: normal; }
+
     .source-note {
-      padding: 18px;
+      margin-top: 18px;
+      padding: 16px 18px;
       background: #f3f7fa;
       border: 1px solid var(--border);
       border-left: 5px solid var(--blue);
@@ -838,7 +856,6 @@
       .header-inner { align-items: flex-start; flex-direction: column; gap: 14px; }
       .top-nav { width: 100%; }
       .top-nav ul { justify-content: flex-start; }
-      .intro-grid { grid-template-columns: 1fr; }
       .filters-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .registration-options { grid-template-columns: 1fr; }
     }
@@ -859,6 +876,7 @@
       .hero-inner { padding: 44px 18px 42px; }
       .main-wrap { padding: 34px 18px 58px; }
       .filter-panel { padding: 20px 16px; }
+      .format-guide { display: grid; gap: 7px; padding: 14px 15px; }
       .filters-grid { grid-template-columns: 1fr; }
       .choice-row { display: grid; grid-template-columns: 1fr; }
       .choice-row label { width: 100%; }
@@ -918,11 +936,21 @@
 
     <div class="main-wrap">
       <section class="intro-grid" aria-labelledby="how-heading">
-        <div>
-          <h2 id="how-heading">Start With What You Need</h2>
-          <p>Use <strong>Open Classes</strong> when you are looking for a section that may still have space. Switch to <strong>All Classes</strong> to see the full semester schedule, including wait-listed and closed sections.</p>
-          <p>Each course includes a short plain-language description to help you compare options. You can also filter by class format and textbook cost when SIS provides a <strong>ZTC</strong> or <strong>Low Textbook Cost</strong> designation. Availability can change quickly, so use <strong>View Live Section Details</strong> before enrolling.</p>
+        <h2 id="how-heading">Start With What You Need</h2>
+        <p>Use <strong>Open Classes</strong> when you are looking for a section that may still have space. Switch to <strong>All Classes</strong> to see the full semester schedule, including wait-listed and closed sections.</p>
+        <p>Each course includes a short description to help you compare options. You can also filter by class format and textbook cost. <strong>ZTC means Zero Textbook Cost: all required textbooks and readings are free.</strong> <strong>Low Textbook Cost means required textbooks cost $50 or less.</strong> A ZTC class may use OER, library materials, or other free readings.</p>
+
+        <div class="format-guide" aria-label="Class format definitions">
+          <strong>Class formats:</strong>
+          <span><strong>In Person</strong> = meets on campus</span>
+          <span><strong>Online</strong> = asynchronous</span>
+          <span><strong>Zoom</strong> = scheduled live online meetings</span>
+          <span><strong>In Person Hybrid</strong> = campus + online</span>
+          <span><strong>Zoom Hybrid</strong> = campus + live Zoom</span>
+          <span><strong>HyFlex</strong> = choose campus or live online for scheduled meetings</span>
         </div>
+
+        <p>Availability can change quickly, so use <strong>View Live Section Details</strong> before enrolling.</p>
 
         <aside class="source-note" aria-label="Class data information">
           <p><strong>Public schedule data</strong></p>
@@ -990,7 +1018,6 @@
             </label>
           </div>
 
-          <p class="filter-note"><strong>Format labels:</strong> Online = asynchronous; Zoom = scheduled live online meetings; In Person Hybrid = campus + online; Zoom Hybrid = campus + live Zoom; HyFlex = choose campus or live online for scheduled meetings. <strong>Textbook cost:</strong> ZTC = Zero Textbook Cost; Low Cost = required textbooks are under the LACCD low-cost threshold. A ZTC section may use OER, library materials, or other free readings.</p>
 
           <p style="margin:18px 0 0;">
             <button class="clear-button" id="clear-filters" type="button">Reset Filters</button>
@@ -1211,6 +1238,22 @@
         const start = sectionStartDate(section);
         if (!start) return false;
         return start < todayLocal();
+      }
+
+      function compareSectionStartDate(a, b) {
+        const aStart = sectionStartDate(a);
+        const bStart = sectionStartDate(b);
+
+        if (aStart && bStart) {
+          const difference = aStart.getTime() - bStart.getTime();
+          if (difference) return difference;
+        } else if (aStart) {
+          return -1;
+        } else if (bStart) {
+          return 1;
+        }
+
+        return naturalCompare(a.class_number, b.class_number);
       }
 
       function dedupeRepeatedPhrase(value) {
@@ -1459,7 +1502,7 @@
           if (dept) return dept;
           const course = compareCourseSections(a, b);
           if (course) return course;
-          return naturalCompare(a.class_number, b.class_number);
+          return compareSectionStartDate(a, b);
         });
       }
 
@@ -1697,7 +1740,7 @@
 
         groups.sort((a, b) => compareCourseSections(a.sections[0], b.sections[0]));
         groups.forEach((group) => {
-          group.sections.sort((a, b) => naturalCompare(a.class_number, b.class_number));
+          group.sections.sort(compareSectionStartDate);
         });
         return groups;
       }
