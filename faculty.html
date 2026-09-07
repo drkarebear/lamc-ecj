@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Faculty Commons | LACCD English DDC</title>
+<meta name="description" content="An opt-in public directory for LACCD English faculty across the nine colleges, organized around teaching, interests, expertise, and connection.">
+<link rel="icon" type="image/png" href="Englishfavicon.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Fraunces:opsz,wght@9..144,400..900&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=UnifrakturCook:wght@700&display=swap');
+:root {
+  --vellum:#fbfaf6; --paper:#fff; --ink:#202a30; --muted:#58656d; --blue:#174c72; --blue-dark:#10364f;
+  --green:#60745a; --green-soft:#edf2e9; --rust:#9e513a; --gold:#aa813d; --line:#d9d6cc; --focus:#005fcc;
+  --body:"Atkinson Hyperlegible","Aptos","Segoe UI",Arial,sans-serif;
+  --literary:"Fraunces","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --oldbook:"IM FELL English","Iowan Old Style",Georgia,serif;
+  --oldbook-sc:"IM FELL English SC",Georgia,serif;
+  --medieval:"UnifrakturCook","Old English Text MT",Georgia,serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);background:radial-gradient(circle at 12% 10%,rgb(170 129 61/.025),transparent 25rem),var(--vellum);font-family:var(--body);font-size:1.0625rem;line-height:1.65}
+a{color:var(--blue);text-decoration-thickness:.11em;text-underline-offset:.18em}a:hover{color:var(--blue-dark)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--focus);outline-offset:4px;border-radius:5px}
+.skip-link{position:absolute;left:1rem;top:-5rem;z-index:1000;padding:.75rem 1rem;color:#fff;background:var(--blue-dark)}.skip-link:focus{top:0}
+.wrap{width:min(1180px,calc(100% - 2rem));margin-inline:auto}.site-header{background:rgb(255 255 255/.96);border-bottom:1px solid var(--line)}
+.header-inner{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:2rem}.brand{color:var(--ink);text-decoration:none}.brand-main{display:block;font-family:var(--literary);font-size:1.45rem;font-weight:750}.brand-main span{color:var(--blue)}.brand-small{display:block;color:var(--muted);font-family:var(--oldbook-sc);font-size:.9rem;letter-spacing:.035em}
+nav ul{display:flex;flex-wrap:wrap;gap:.2rem;margin:0;padding:0;list-style:none}nav a{display:block;padding:.65rem .72rem;color:var(--ink);border-radius:7px;font-weight:750;text-decoration:none}nav a:hover,nav a[aria-current="page"]{background:var(--green-soft)}
+.page-hero{display:grid;grid-template-columns:minmax(0,1.5fr) 190px;gap:2rem;align-items:center;padding-block:clamp(3.5rem,7vw,5.5rem) 2rem}.eyebrow{margin:0 0 .65rem;color:var(--green);font-family:var(--oldbook-sc);font-size:1rem;letter-spacing:.035em}h1,h2,h3{font-family:var(--literary);line-height:1.08;text-wrap:balance}h1{max-width:16ch;margin:0;font-size:clamp(2.7rem,6vw,4.9rem);letter-spacing:-.03em}.page-lead{max-width:68ch;color:var(--muted);font-size:1.18rem}.reader{width:175px;max-width:100%;opacity:.84;filter:saturate(.78) contrast(.96)}
+.marginal-note{margin:.4rem 0 0;color:var(--rust);font-family:var(--oldbook);font-style:italic}.button{min-height:48px;display:inline-flex;align-items:center;justify-content:center;padding:.72rem 1rem;border:2px solid var(--blue);border-radius:9px;font-weight:800;text-decoration:none}.button.primary{color:#fff;background:var(--blue)}.button.primary:hover{color:#fff;background:var(--blue-dark)}.button.secondary{background:#fff}.button.is-disabled{opacity:.65;pointer-events:none}.hero-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.2rem}
+.directory-wrap{padding-block:1rem 4rem}.directory-heading{display:flex;justify-content:space-between;align-items:end;gap:1.25rem}.directory-heading h2{margin:0;font-size:clamp(2rem,4vw,3rem)}.directory-heading p{max-width:70ch;margin:.55rem 0 0;color:var(--muted)}
+footer{margin-top:4rem;background:#fff;border-top:1px solid var(--line)}.footer-inner{padding-block:2.5rem}.footer-joke{color:var(--muted);font-family:var(--oldbook);font-style:italic}.footer-notes{margin-top:1.5rem;padding-top:1.35rem;border-top:1px solid var(--line);max-width:78ch}.footer-notes h2{margin:0 0 .55rem;font-size:1.2rem}.footer-notes p{margin:.45rem 0 0;color:var(--muted);font-size:.92rem}
+@media(max-width:820px){.header-inner{align-items:flex-start;flex-direction:column;padding-block:1rem}.page-hero{grid-template-columns:1fr}.reader{width:135px}.directory-heading{align-items:flex-start;flex-direction:column}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+<link rel="stylesheet" href="assets/css/faculty.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-main">LACCD <span>English</span></span>
+      <span class="brand-small">District Discipline Committee</span>
+    </a>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html#start">Start Here</a></li>
+        <li><a href="index.html#the-nine">The 9</a></li>
+        <li><a href="faculty.html" aria-current="page">Faculty Commons</a></li>
+        <li><a href="index.html#teaching">Teaching</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="index.html#district">DDC Work</a></li>
+        <li><a href="index.html#share">Share Something</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="page-hero" aria-labelledby="page-title">
+    <div>
+      <p class="eyebrow">The English commons</p>
+      <h1 id="page-title">Find your people.</h1>
+      <p class="page-lead">There are English faculty across nine colleges doing things you care about. You should not have to meet them entirely by accident. Search by college, course, interest, or the thing you need another human to understand.</p>
+      <div class="hero-actions">
+        <a class="button primary" data-faculty-join-link href="#join">Join the Faculty Commons</a>
+        <a class="button secondary" data-faculty-change-link href="#join">Update or remove my profile</a>
+      </div>
+      <p class="marginal-note">Someone else has thoughts about the curtains. We promise.</p>
+    </div>
+    <div aria-hidden="true"><img class="reader" src="assets/marginalia/reader-fox-flipped.png" alt=""></div>
+  </section>
+
+  <aside class="faculty-intro-note" aria-label="How the Faculty Commons works">
+    <p><strong>A public commons, built with consent.</strong> Faculty choose whether to appear here and what they would like colleagues and visitors to see.</p>
+    <p>Adjunct and full-time faculty appear together. A faculty role may be included if someone chooses to share it, but employment status is not used to rank or separate people.</p>
+    <p>Verification information stays in the private moderation Sheet. Public profiles do not appear until they are reviewed.</p>
+  </aside>
+
+  <section class="directory-wrap" aria-labelledby="directory-title">
+    <div class="directory-heading">
+      <div>
+        <p class="eyebrow">Who can I talk to?</p>
+        <h2 id="directory-title">The Faculty Commons Directory</h2>
+        <p>Profiles are opt-in and faculty-controlled. Search broadly or simply wander around and discover what colleagues across the district are doing.</p>
+      </div>
+    </div>
+
+    <form class="faculty-controls" data-faculty-controls hidden aria-label="Filter faculty profiles" onsubmit="return false;">
+      <div class="faculty-controls-grid">
+        <div class="faculty-field">
+          <label for="faculty-search">Search</label>
+          <input id="faculty-search" data-faculty-filter type="search" placeholder="Name, course, topic, interest...">
+        </div>
+        <div class="faculty-field">
+          <label for="faculty-college-filter">College</label>
+          <select id="faculty-college-filter" data-faculty-filter><option value="">All colleges</option></select>
+        </div>
+        <div class="faculty-field">
+          <label for="faculty-interest-filter">Interest</label>
+          <select id="faculty-interest-filter" data-faculty-filter><option value="">All interests</option></select>
+        </div>
+        <div class="faculty-field">
+          <label for="faculty-connection-filter">Connection</label>
+          <select id="faculty-connection-filter" data-faculty-filter>
+            <option value="">All profiles</option>
+            <option value="connect">Open to connecting</option>
+            <option value="collaborate">Open to collaboration</option>
+            <option value="newer">Happy to talk with newer faculty</option>
+          </select>
+        </div>
+      </div>
+      <p><button class="faculty-reset" data-faculty-reset type="button">Clear filters</button></p>
+    </form>
+
+    <p class="faculty-count" data-faculty-count aria-live="polite">Loading faculty profiles...</p>
+    <div class="faculty-grid" data-faculty-list aria-live="polite">
+      <div class="faculty-empty">
+        <h3>Loading the Commons...</h3>
+        <p>The fox is checking who has pulled up a chair.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="join" class="faculty-join-panel" aria-labelledby="join-title">
+    <p class="eyebrow">Pull up a chair</p>
+    <h2 id="join-title">If you teach English anywhere in LACCD, you belong in this directory.</h2>
+    <p>Joining is optional. No photo is required. Your verification email stays private unless you explicitly choose to display it. You can request an update or removal at any time.</p>
+    <p><strong>Adjunct and full-time faculty are equally welcome.</strong> Part-time describes a load, not the seriousness of someone's work.</p>
+    <div class="faculty-join-actions">
+      <a class="button primary" data-faculty-join-link href="#">Join the Faculty Commons</a>
+      <a class="button secondary" data-faculty-change-link href="#">Update or remove my profile</a>
+    </div>
+    <p class="marginal-note">No CV required. We are trying to meet you, not tenure you.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <p><strong>LACCD English District Discipline Committee</strong></p>
+    <p class="footer-joke">Nine colleges. One district. Several hundred opinions about commas.</p>
+    <section class="footer-notes" aria-labelledby="about-site-heading">
+      <h2 id="about-site-heading">About This Site</h2>
+      <p><strong>Maintained by Karen Crozer, Ph.D., on a volunteer basis.</strong> This is an independent faculty-created resource. It is not an official LACCD website and is not sponsored, endorsed, or maintained by the Los Angeles Community College District or its colleges.</p>
+      <p><strong>Accessibility matters here.</strong> This site aims to follow WCAG 2.2 AA guidance. If you encounter an accessibility barrier, please <a href="mailto:crozerkj@laccd.edu">email Karen Crozer about the accessibility issue</a>.</p>
+    </section>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script src="assets/js/faculty.js"></script>
+</body>
+</html>

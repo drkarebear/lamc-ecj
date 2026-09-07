@@ -1,52 +1,70 @@
-# LAMC ECJ
+# LACCD English DDC faculty commons
 
-Faculty-maintained student resource hub for the English, Communication Studies, and Journalism Department at Los Angeles Mission College.
+This prototype includes the eight manuscript marginalia animals in both original and horizontally flipped orientations, the `Englishfavicon.png` favicon, the belonging-focused homepage, and a new "Nine Colleges" castle map.
 
-The site includes:
+## The map works in two modes
 
-- a department-wide homepage;
-- a current announcement page for featured new classes;
-- degree and certificate program pages;
-- a public ECJ Class Finder;
-- student resources and interactive guides;
-- a Connect page for department opportunities and future Faculty Spotlights; and
-- a dedicated page for *La Misión Review*, LAMC's student literary magazine.
+1. **No API key:** The site displays its own accessible illustrated Los Angeles map with nine clickable castle markers. Each college card also links directly to Google Maps.
+2. **Optional Google Maps enhancement:** Add a Google Maps JavaScript API key to `config.js`. The same section will switch to a real pannable Google map with the manuscript castle markers on top.
 
-Site policy pages include `privacy.html`, `accessibility.html`, and `license.html`.
+If you use a Google Maps API key on GitHub Pages, restrict the key by HTTP referrer in Google Cloud Console. For this site, the allowed referrer can be:
 
-## ECJ Class Finder
+`https://drkarebear.github.io/laccd-english-ddc/*`
 
-`classes.html` displays a static copy of public LACCD schedule data from `data/classes.json`.
+Do not commit an unrestricted key.
 
-The GitHub Action in `.github/workflows/update-classes.yml` refreshes that file twice each day and can also be run manually from the repository's **Actions** tab. The browser reads the saved JSON rather than querying SIS while students filter classes. It contacts an official LACCD page only when a student follows a live-section or enrollment link.
+## Accessibility
 
-Current semester IDs live in `scripts/class_terms.json`. To add a new semester, add its verified LACCD `strm` value and label, then run the **Refresh ECJ class listings** workflow.
-
-The updater checks these LACCD subject codes:
-
-- `ENGL` and `ENGLISH` for English
-- `COMM` for Communication Studies
-- `JOURNAL` for Journalism
-
-If LACCD changes its public Class Search markup, the updater is designed to fail without replacing the most recent working `data/classes.json` file.
+The interactive map is optional. All nine colleges, DDC representatives, email links, and Google Maps links are also available in a standard HTML directory below the map. The map uses cooperative scrolling so it is less likely to trap page scrolling.
 
 
-## Maintenance Notes
+Navigation note: the district college map is labeled **The 9** in the primary navigation.
 
-- `ecj-accessibility.css` is loaded last on every HTML page and contains shared focus, reduced-motion, small-label, and footer-readability safeguards. Put cross-site accessibility fixes there when possible.
-- `classes.html` is the single maintained Class Finder. `classes_ztc_fixed.html` remains only as a compatibility redirect for any older links.
-- `scripts/update_classes.py` is the single maintained class-data updater. Keep updater code in `scripts/` so the GitHub Action and local maintenance use the same file.
-- Featured-class links may use `classes.html?term=TERM_ID&class=CLASS_NUMBER` to open the finder on one exact section, regardless of whether the section is currently open or closed.
-- The ECJ feedback form is hosted in Microsoft Forms. The student-facing privacy explanation is maintained on both `connect.html` and `privacy.html`.
+## Site status and accessibility
 
-## Privacy and Security Hardening
+This independent faculty-created resource is maintained by Karen Crozer, Ph.D., on a volunteer basis. It is not an official LACCD website and is not sponsored, endorsed, or maintained by the Los Angeles Community College District or its colleges.
 
-- Every page uses a no-referrer policy.
-- A restrictive Content Security Policy limits executable scripts, styles, images, network requests, and frames to the sources each page actually needs; inline scripts/styles are not permitted.
-- PlayLab frames are created only after a visitor chooses to load them, use `referrerPolicy = "no-referrer"`, and are sandboxed.
-- External links use normal same-tab browser navigation rather than forcing a new browsing context, and the site-wide no-referrer policy limits referrer leakage.
-- The class updater renders scraped schedule text as text rather than executable HTML.
-- GitHub Actions used by the class updater are pinned to full commit SHAs, and Python dependencies are version-pinned in `scripts/requirements.txt`. The workflow does not persist repository credentials during scraping/dependency installation, installs only the explicitly listed binary packages, and exposes the write token only to the final push step.
-- Dependabot is configured for weekly GitHub Actions and Python dependency update pull requests.
-- Page-specific CSS lives in `styles/` instead of inline `<style>` blocks so the site can enforce a stricter style policy.
-- The Accessibility page provides a direct LAMC work-email route for reporting barriers, and the footer labels that route explicitly on every full site page; visitors are told they do not need to disclose disability or medical information.
+Accessibility is a core design priority. The site aims to follow WCAG 2.2 AA guidance, including keyboard access, readable text, strong contrast, responsive reflow, descriptive links, and reduced-motion support.
+
+## Around the District events
+
+This version also includes the first dynamic participation system: a moderated public event feed.
+
+Files:
+
+- `events.html` is the full public upcoming-events page.
+- `assets/js/events.js` loads approved future events and builds accessible event cards.
+- `assets/css/events.css` contains the shared event-card and filter styles.
+- `apps-script/Code.gs` creates the Google Form, private response Sheet, moderation columns, and public read-only event feed.
+- `apps-script/SETUP.md` has the setup steps.
+- `config.js` is connected to the deployed public event feed and the public Share an Event form.
+
+The homepage shows the next three approved events. `events.html` shows all upcoming approved events and includes college, event-type, and keyword filters.
+
+Past events do not need to be deleted. The feed automatically stops returning them after their end date, while the private Sheet keeps the historical row.
+
+### Moderation and privacy
+
+Nothing submitted through the Google Form publishes automatically. Karen reviews each row and sets `Approved` to `Yes` before it appears publicly.
+
+The public feed does not return the submitter name, verification email, timestamp, consent response, approval status, or moderator notes. The public `featured` flag may be returned because it controls public display behavior. The response Sheet should remain private.
+
+
+## Marginalia sprite orientations
+
+Both orientations are included under `assets/marginalia/`. Files ending in `-flipped.png` are horizontal mirrors of the originals. The current layouts generally use the flipped versions when an animal sits to the right of text so the creature faces inward toward the content. Both versions remain available for later pages and responsive layouts.
+
+
+## Faculty Commons
+
+This build adds `faculty.html`, an opt-in public faculty directory with accessible search and filters. The directory is powered by a separate Google Apps Script project in `faculty-apps-script/`.
+
+The privacy model is deliberate:
+
+- profiles do not publish until `Approved = Yes` in the private Sheet
+- verification emails are not returned by the public feed unless the faculty member explicitly opts to display that email
+- timestamps, consent records, moderator notes, and update/remove requests remain private
+- no photo is required
+- adjunct and full-time faculty appear together rather than in separate directory sections
+
+See `FACULTY-COMMONS-QUICK-START.md` for setup.

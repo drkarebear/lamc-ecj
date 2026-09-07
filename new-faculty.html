@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>I'm New Here | LACCD English DDC</title>
+<meta name="description" content="A plain-language guide for new and adjunct English faculty navigating LACCD: accounts, Canvas, SIS, census, FLEX, accessibility, payroll, curriculum, and who to ask.">
+<link rel="icon" type="image/png" href="Englishfavicon.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Fraunces:opsz,wght@9..144,400..900&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=UnifrakturCook:wght@700&display=swap');
+:root {
+  --vellum: #fbfaf6;
+  --paper: #ffffff;
+  --ink: #202a30;
+  --muted: #58656d;
+  --blue: #174c72;
+  --blue-dark: #10364f;
+  --green: #60745a;
+  --green-soft: #edf2e9;
+  --rust: #9e513a;
+  --rust-soft: #f8eee9;
+  --gold: #aa813d;
+  --line: #d9d6cc;
+  --focus: #005fcc;
+  --body: "Atkinson Hyperlegible", "Aptos", "Segoe UI", Arial, sans-serif;
+  --literary: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --oldbook: "IM FELL English", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --oldbook-sc: "IM FELL English SC", "Iowan Old Style", Georgia, serif;
+  --medieval: "UnifrakturCook", "Old English Text MT", Georgia, serif;
+  --welcome-initial: "IM Fell English SC", Georgia, serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 12% 10%, rgb(170 129 61 / .025), transparent 25rem),
+    radial-gradient(circle at 87% 45%, rgb(96 116 90 / .025), transparent 30rem),
+    var(--vellum);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+a { color: var(--blue); text-decoration-thickness: .11em; text-underline-offset: .18em; }
+a:hover { color: var(--blue-dark); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; border-radius: 5px; }
+.skip-link { position: absolute; left: 1rem; top: -5rem; z-index: 1000; padding: .75rem 1rem; color: white; background: var(--blue-dark); }
+.skip-link:focus { top: 0; }
+.wrap { width: min(1180px, calc(100% - 2rem)); margin-inline: auto; }
+
+.site-header { background: rgb(255 255 255 / .96); border-bottom: 1px solid var(--line); }
+.header-inner { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+.brand { color: var(--ink); text-decoration: none; }
+.brand-main { display: block; font-family: var(--literary); font-size: 1.45rem; font-weight: 750; }
+.brand-main span { color: var(--blue); }
+.brand-small { display: block; margin-top: .05rem; color: var(--muted); font-family: var(--oldbook-sc); font-size: .9rem; font-weight: 400; letter-spacing: .035em; }
+nav ul { display: flex; flex-wrap: wrap; gap: .2rem; margin: 0; padding: 0; list-style: none; }
+nav a { display: block; padding: .65rem .72rem; color: var(--ink); border-radius: 7px; font-weight: 750; text-decoration: none; }
+nav a:hover { background: var(--green-soft); }
+
+.hero { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(235px, .65fr); gap: clamp(2rem, 6vw, 5rem); align-items: center; padding-block: clamp(4rem, 9vw, 7rem); }
+.eyebrow { margin: 0 0 .65rem; color: var(--green); font-family: var(--oldbook-sc); font-size: 1rem; font-weight: 400; letter-spacing: .035em; }
+h1,h2,h3 { font-family: var(--literary); line-height: 1.08; text-wrap: balance; }
+.section-intro h2::after { content: "  ❦"; color: var(--gold); font-family: var(--oldbook); font-size: .52em; font-weight: 400; vertical-align: .18em; }
+.hero h1 em { color: var(--blue); font-family: var(--oldbook); font-style: normal; font-weight: 400; }
+h1 { max-width: 12ch; margin: 0; font-size: clamp(3rem, 7vw, 5.7rem); letter-spacing: -.035em; }
+.hero-lead { max-width: 63ch; margin-block: 1.4rem; color: var(--muted); font-size: clamp(1.1rem, 2vw, 1.28rem); }
+.hero-belong { max-width: 62ch; font-weight: 800; }
+.actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.7rem; }
+.button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; padding: .72rem 1rem; border: 2px solid var(--blue); border-radius: 9px; font-weight: 800; text-decoration: none; }
+.button.primary { color: white; background: var(--blue); }
+.button.primary:hover { color: white; background: var(--blue-dark); }
+.button.secondary { background: white; }
+.marginal-note { margin-top: 1.2rem; color: var(--rust); font-family: var(--oldbook); font-size: 1.02rem; font-style: italic; line-height: 1.5; }
+.hero-art { display: grid; place-items: center; min-height: 290px; }
+.hero-art img { width: min(260px, 90%); height: auto; filter: saturate(.88) contrast(.96); }
+
+.manuscript-rule { display: flex; align-items: center; gap: .85rem; margin-block: 0 3rem; color: var(--rust); }
+.manuscript-rule::before,.manuscript-rule::after { content: ""; height: 1px; flex: 1; background: var(--line); }
+.manuscript-rule span { font-family: var(--medieval); font-size: 1.35rem; }
+
+.section { padding-block: 2.5rem 5rem; }
+.section-intro { max-width: 740px; margin-bottom: 2rem; }
+.section-intro h2 { margin: 0 0 .65rem; font-size: clamp(2rem, 4vw, 3rem); }
+.section-intro p { color: var(--muted); }
+
+.need-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.need-card { position: relative; min-height: 260px; padding: 1.4rem 1.4rem 1.25rem; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 2px 7px rgb(32 42 48 / .05), 0 12px 30px rgb(32 42 48 / .035); overflow: hidden; }
+.need-card::before { content: ""; position: absolute; top: 0; left: 1.35rem; width: 46px; height: 4px; background: var(--green); }
+.need-card:nth-child(3n+2)::before { background: var(--rust); }
+.need-card:nth-child(3n+3)::before { background: var(--blue); }
+.need-card h3 { min-height: 78px; display: flex; align-items: center; margin: .1rem 0 .65rem; padding-right: 92px; font-size: 1.42rem; }
+.need-card p { color: var(--muted); }
+.card-art { position: absolute; top: .9rem; right: .8rem; width: 78px; height: 78px; object-fit: contain; opacity: .9; filter: saturate(.82) contrast(.96); }
+.card-note { margin-top: .9rem; color: var(--rust) !important; font-family: var(--oldbook); font-size: .98rem; font-style: italic; line-height: 1.45; }
+
+.belonging-panel { position: relative; margin-block: 1rem 5rem; padding: clamp(1.7rem, 5vw, 3.3rem); background: var(--green-soft); border: 1px solid #ccd6c7; border-radius: 16px; overflow: hidden; }
+.belonging-panel h2 { max-width: 18ch; margin: 0 0 1rem; font-size: clamp(2.05rem, 4vw, 3.25rem); }
+.belonging-panel p { max-width: 70ch; }
+.belonging-panel .warm-line { font-weight: 800; }
+.belonging-panel .panel-art { position: absolute; right: clamp(1rem, 4vw, 3rem); bottom: -12px; width: clamp(125px, 18vw, 210px); opacity: .78; filter: saturate(.74) contrast(.95); }
+.belonging-panel .text-wrap { padding-right: clamp(0px, 22vw, 250px); }
+
+.illuminated::first-letter { float: left; margin: .08em .12em 0 0; color: var(--blue); font-family: var(--medieval); font-size: 3.2em; line-height: .72; text-shadow: 1px 1px 0 rgb(170 129 61 / .22); }
+.welcome-initial::first-letter { font-family: var(--welcome-initial); font-size: 3.35em; font-weight: 400; margin-right: .10em; color: var(--rust); text-shadow: 1px 1px 0 rgb(170 129 61 / .16); }
+.medieval-label { display: inline-block; margin-bottom: .25rem; color: var(--rust); font-family: var(--medieval); font-size: 1.18rem; letter-spacing: .01em; }
+
+.feature-row { display: grid; grid-template-columns: minmax(0, 1fr) 170px; gap: 2rem; align-items: center; padding: 1.4rem; background: white; border: 1px solid var(--line); border-radius: 14px; }
+.feature-row + .feature-row { margin-top: 1rem; }
+.feature-row img { width: 150px; max-height: 150px; object-fit: contain; opacity: .9; filter: saturate(.8) contrast(.96); }
+.feature-row h3 { margin: 0 0 .5rem; font-size: 1.55rem; }
+.feature-row p { color: var(--muted); }
+
+.nota { display: flex; gap: 1rem; align-items: flex-start; margin-block: 3rem; padding: 1.2rem 1.4rem; background: white; border-left: 4px solid var(--gold); }
+.nota-mark { flex: 0 0 auto; color: var(--rust); font-family: var(--medieval); font-size: 2rem; line-height: 1; }
+.nota p { margin: 0; }
+
+footer { margin-top: 5rem; background: white; border-top: 1px solid var(--line); }
+.footer-inner { padding-block: 2.5rem; }
+.footer-joke { color: var(--muted); font-family: var(--oldbook); font-size: 1.02rem; font-style: italic; }
+.footer-notes { margin-top: 1.5rem; padding-top: 1.35rem; border-top: 1px solid var(--line); max-width: 78ch; }
+.footer-notes h2 { margin: 0 0 .55rem; color: var(--ink); font-family: var(--literary); font-size: 1.2rem; }
+.footer-notes p { margin: .45rem 0 0; color: var(--muted); font-size: .92rem; line-height: 1.6; }
+.footer-notes strong { color: var(--ink); }
+
+
+
+/* The Nine Colleges map and representative directory */
+.map-section { padding-block: 1rem 5rem; }
+.map-shell { position: relative; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: #fbfaf6; box-shadow: 0 12px 34px rgb(32 42 48 / .07); }
+.map-stage { position: relative; min-height: 610px; background: #fbfaf6 url("assets/map/la-old-map.svg") center / cover no-repeat; }
+.google-map { position: absolute; inset: 0; z-index: 1; display: none; }
+.google-map.is-ready { display: block; }
+.story-map { position: absolute; inset: 0; z-index: 2; }
+.google-map.is-ready + .story-map { pointer-events: none; }
+.google-map.is-ready + .story-map .castle-point { display: none; }
+.map-frame { position: absolute; inset: 16px; z-index: 3; pointer-events: none; border: 1px solid rgb(170 129 61 / .32); border-radius: 12px; box-shadow: inset 0 0 0 5px rgb(251 250 246 / .55); }
+.map-frame::before,.map-frame::after { content: "❦"; position: absolute; color: var(--gold); font-family: var(--oldbook); font-size: 1.3rem; opacity: .72; }
+.map-frame::before { top: 6px; left: 10px; }
+.map-frame::after { right: 10px; bottom: 6px; transform: rotate(180deg); }
+.map-note { position: absolute; z-index: 4; left: 1.1rem; bottom: 1rem; max-width: min(580px, calc(100% - 2.2rem)); margin: 0; padding: .6rem .8rem; color: #4f5a60; background: rgb(255 255 255 / .92); border: 1px solid var(--line); border-radius: 10px; font-size: .88rem; box-shadow: 0 3px 10px rgb(32 42 48 / .08); }
+.castle-point { position: absolute; transform: translate(-50%, -50%); width: 84px; min-height: 98px; padding: 0; border: 0; background: transparent; color: var(--ink); cursor: pointer; text-align: center; }
+.castle-point img { display: block; width: 58px; height: 68px; margin: 0 auto -2px; filter: drop-shadow(0 2px 2px rgb(32 42 48 / .16)) saturate(.82); transition: transform .16s ease; }
+.castle-point span { display: inline-block; padding: .06rem .34rem; color: var(--blue-dark); background: rgb(255 255 255 / .92); border: 1px solid rgb(217 214 204 / .9); border-radius: 6px; font-family: var(--oldbook-sc); font-size: .78rem; line-height: 1.25; box-shadow: 0 1px 4px rgb(32 42 48 / .08); }
+.castle-point:hover img,.castle-point:focus-visible img { transform: translateY(-4px) scale(1.05); }
+.castle-point:focus-visible { outline: 3px solid var(--focus); outline-offset: 5px; border-radius: 9px; }
+.map-popover { position: absolute; z-index: 6; width: min(330px, calc(100% - 2rem)); padding: 1rem; background: white; border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 14px 34px rgb(32 42 48 / .18); }
+.map-popover[hidden] { display: none; }
+.map-popover h3 { margin: 0 0 .35rem; font-size: 1.2rem; }
+.map-popover p { margin: .25rem 0; color: var(--muted); }
+.map-popover .close-popover { position: absolute; top: .45rem; right: .5rem; width: 36px; height: 36px; border: 0; border-radius: 50%; background: #f3f3ef; color: var(--ink); font: inherit; font-size: 1.2rem; cursor: pointer; }
+.map-popover .close-popover:hover { background: var(--green-soft); }
+
+.rep-intro { margin-top: 1.35rem; display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+.rep-intro p { max-width: 760px; margin: 0; color: var(--muted); }
+.rep-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.2rem; }
+.rep-card { position: relative; padding: 1.25rem; background: white; border: 1px solid var(--line); border-radius: 14px; }
+.rep-card::before { content: ""; position: absolute; top: 0; left: 1.2rem; width: 42px; height: 4px; background: var(--gold); }
+.rep-card h3 { margin: .15rem 0 .25rem; font-size: 1.3rem; }
+.rep-card .college-short { margin: 0 0 .65rem; color: var(--green); font-family: var(--oldbook-sc); font-size: .9rem; }
+.rep-card .rep-name { margin: 0; color: var(--ink); font-weight: 800; }
+.rep-card .rep-role { margin: .1rem 0 .35rem; color: var(--muted); font-size: .92rem; }
+.rep-card .rep-address { margin: 0 0 .75rem; color: var(--muted); font-size: .88rem; line-height: 1.45; }
+.rep-card .rep-actions { display: flex; flex-wrap: wrap; gap: .55rem .8rem; align-items: center; }
+.rep-card button { padding: 0; border: 0; background: none; color: var(--blue); font: inherit; font-weight: 700; text-decoration: underline; text-decoration-thickness: .11em; text-underline-offset: .18em; cursor: pointer; }
+.rep-card button:hover { color: var(--blue-dark); }
+.rep-card .no-email { color: var(--muted); font-size: .9rem; }
+.map-joke { margin-top: .9rem; color: var(--rust); font-family: var(--oldbook); font-style: italic; }
+
+@media (max-width: 900px) {
+  .map-stage { min-height: 560px; }
+  .rep-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .map-stage { min-height: 720px; }
+  .castle-point { width: 72px; }
+  .castle-point img { width: 50px; height: 59px; }
+  .castle-point span { font-size: .7rem; }
+  .rep-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 850px) {
+  .header-inner { align-items: flex-start; flex-direction: column; padding-block: 1rem; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-art { min-height: 190px; }
+  .need-grid { grid-template-columns: 1fr; }
+  .belonging-panel .panel-art { position: static; display: block; width: 135px; margin: 1rem auto 0; }
+  .belonging-panel .text-wrap { padding-right: 0; }
+  .feature-row { grid-template-columns: 1fr; }
+  .feature-row img { width: 125px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Decorative type is never used for navigation, buttons, instructions, or long passages. */
+.oldbook { font-family: var(--oldbook); }
+.oldbook-sc { font-family: var(--oldbook-sc); letter-spacing: .02em; }
+.medieval-word { font-family: var(--medieval); font-weight: 700; }
+
+
+.guide-hero { display:grid; grid-template-columns:minmax(0,1.45fr) minmax(190px,.55fr); gap:clamp(2rem,6vw,4.5rem); align-items:center; padding-block:clamp(3rem,7vw,5rem); }
+.guide-hero h1 { max-width: 14ch; }
+.guide-hero .hero-art { min-height:220px; }
+.guide-hero .hero-art img { width:min(210px,88%); }
+.breadcrumb { margin-top:1.2rem; font-size:.95rem; }
+.breadcrumb a { font-weight:700; }
+.guide-nav { margin:0 0 2rem; padding:1rem 1.1rem; background:white; border:1px solid var(--line); border-radius:12px; }
+.guide-nav strong { display:block; margin-bottom:.4rem; }
+.guide-nav ul { display:flex; flex-wrap:wrap; gap:.45rem .9rem; margin:.25rem 0 0; padding-left:1.15rem; }
+.guide-section { scroll-margin-top:1rem; padding-block:2.4rem; border-top:1px solid var(--line); }
+.guide-section h2 { margin:0 0 .7rem; font-size:clamp(2rem,4vw,3rem); }
+.guide-section h3 { margin:1.55rem 0 .45rem; font-size:1.45rem; }
+.guide-section > p, .guide-section .section-lead { max-width:76ch; color:var(--muted); }
+.priority-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; margin-top:1.3rem; }
+.priority-card { padding:1.25rem; background:white; border:1px solid var(--line); border-radius:14px; }
+.priority-card h3 { margin:.1rem 0 .45rem; }
+.priority-card p { margin:.4rem 0; color:var(--muted); }
+.priority-num { display:inline-grid; place-items:center; width:2rem; height:2rem; border-radius:50%; background:var(--green-soft); color:var(--blue-dark); font-weight:800; }
+.checklist { max-width:82ch; padding-left:1.25rem; }
+.checklist li { margin:.55rem 0; padding-left:.2rem; }
+.callout { margin:1.4rem 0; padding:1.15rem 1.25rem; background:var(--rust-soft); border-left:4px solid var(--rust); border-radius:0 10px 10px 0; max-width:84ch; }
+.callout.green { background:var(--green-soft); border-left-color:var(--green); }
+.callout h3 { margin:.05rem 0 .45rem; }
+.callout p:last-child { margin-bottom:0; }
+.ownership { width:100%; border-collapse:collapse; margin-top:1.2rem; background:white; }
+.ownership caption { text-align:left; font-weight:800; margin-bottom:.55rem; }
+.ownership th,.ownership td { padding:.85rem; border:1px solid var(--line); vertical-align:top; text-align:left; }
+.ownership th { background:var(--green-soft); }
+.decoder { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.75rem 1rem; margin-top:1.2rem; }
+.decoder div { padding:1rem; background:white; border:1px solid var(--line); border-radius:10px; }
+.decoder dt { font-weight:800; color:var(--blue-dark); }
+.decoder dd { margin:.25rem 0 0; color:var(--muted); }
+.help-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin-top:1.2rem; }
+.help-card { padding:1.2rem; background:white; border:1px solid var(--line); border-radius:12px; }
+.help-card h3 { margin:.05rem 0 .4rem; }
+.help-card p { color:var(--muted); }
+.link-list { max-width:84ch; }
+.link-list li { margin:.7rem 0; }
+.campus-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.75rem; margin-top:1rem; }
+.campus-grid a { display:block; min-height:54px; padding:.8rem .9rem; background:white; border:1px solid var(--line); border-radius:10px; font-weight:800; text-decoration:none; }
+.campus-grid a:hover { background:var(--green-soft); }
+.question-list { max-width:82ch; }
+.question-list li { margin:.75rem 0; }
+.source-note { font-size:.92rem; color:var(--muted); }
+.updated-note { display:inline-block; margin-top:.5rem; padding:.25rem .55rem; border:1px solid var(--line); border-radius:999px; background:white; font-size:.88rem; color:var(--muted); }
+@media (max-width:850px){ .guide-hero{grid-template-columns:1fr}.priority-grid,.campus-grid{grid-template-columns:1fr 1fr}.decoder,.help-grid{grid-template-columns:1fr}.guide-hero .hero-art{min-height:150px} }
+@media (max-width:560px){ .priority-grid,.campus-grid{grid-template-columns:1fr}.ownership{display:block; overflow-x:auto} }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-main">LACCD <span>English</span></span>
+      <span class="brand-small">District Discipline Committee</span>
+    </a>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html#start">Start Here</a></li>
+        <li><a href="index.html#the-nine">The 9</a></li>
+        <li><a href="faculty.html">Faculty Commons</a></li>
+        <li><a href="index.html#teaching">Teaching</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="index.html#district">DDC Work</a></li>
+        <li><a href="index.html#share">Share Something</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <p class="breadcrumb"><a href="index.html">English DDC Commons</a> → I'm New Here</p>
+
+  <section class="guide-hero" aria-labelledby="guide-title">
+    <div>
+      <p class="eyebrow">A field guide to the district</p>
+      <h1 id="guide-title">I'm New Here</h1>
+      <p class="hero-lead illuminated welcome-initial">LACCD is nine colleges, several major systems, a district office, local campus offices, and enough acronyms to make a perfectly competent person wonder whether everyone else received a secret handbook.</p>
+      <p class="hero-belong">You did not miss the secret handbook. This is the closest thing.</p>
+      <p class="marginal-note">Yes, you can ask that question. Someone else is also pretending they already know.</p>
+      <span class="updated-note">Links reviewed September 6, 2026</span>
+    </div>
+    <div class="hero-art" aria-hidden="true"><img src="assets/marginalia/scholar-mouse.png" alt=""></div>
+  </section>
+
+  <nav class="guide-nav" aria-label="New faculty guide sections">
+    <strong>Jump to what you need</strong>
+    <ul>
+      <li><a href="#first">Start with these five things</a></li>
+      <li><a href="#systems">Know the systems</a></li>
+      <li><a href="#timeline">Your first-semester timeline</a></li>
+      <li><a href="#who">Who owns what?</a></li>
+      <li><a href="#decoder">Decode the acronyms</a></li>
+      <li><a href="#adjunct">Adjunct things worth knowing</a></li>
+      <li><a href="#college">Your college</a></li>
+      <li><a href="#help">When something goes sideways</a></li>
+      <li><a href="#official">Official links</a></li>
+    </ul>
+  </nav>
+
+  <section id="first" class="guide-section" aria-labelledby="first-title">
+    <p class="eyebrow">Do not learn the whole district tonight</p>
+    <h2 id="first-title">Start with these five things</h2>
+    <p class="section-lead">If you were handed a class and very little else, these are the things that matter first. The rest can wait.</p>
+    <div class="priority-grid">
+      <article class="priority-card"><span class="priority-num">1</span><h3>Find your chair and department contact</h3><p>Your chair or department office is usually the fastest route to local answers: room access, textbooks, copying, absence procedures, course materials, and who does what on your campus.</p><p><a href="index.html#the-nine">Find your English DDC contact among The 9</a></p></article>
+      <article class="priority-card"><span class="priority-num">2</span><h3>Make sure your LACCD login works</h3><p>Your LACCD credentials open the doors to PeopleSoft/SIS, Office 365 email, Canvas and other employee tools. If the login itself fails, start with your college IT office.</p><p><a href="https://www.laccd.edu/students/sis-faqs">Open the LACCD SIS login help page</a></p></article>
+      <article class="priority-card"><span class="priority-num">3</span><h3>Confirm the class in SIS and Canvas</h3><p>PeopleSoft/SIS is the official student-record system. Canvas is the teaching space. Make sure the section, roster, dates, modality, meeting pattern and Canvas shell are the ones you expected.</p><p><a href="https://mycollege.laccd.edu/">Open MyCollege / PeopleSoft SIS</a></p></article>
+      <article class="priority-card"><span class="priority-num">4</span><h3>Get the current course outline</h3><p>The Course Outline of Record (COR) is the approved course: catalog description, objectives/outcomes, content, methods and other required elements. Ask your department for the current COR; LACCD uses eLumen for curriculum management.</p><p><a href="https://www.laccd.edu/offices/epie/curriculum-info">See LACCD curriculum support and eLumen</a></p></article>
+      <article class="priority-card"><span class="priority-num">5</span><h3>Ask the boring logistical questions now</h3><p>Parking. ID. Keys. Classroom technology. Copying/printing. Mailbox. Campus emergency number. What to do if you are absent. None of this is self-evident, and much of it is college-specific.</p></article>
+    </div>
+    <div class="callout green"><h3>If you only remember one thing</h3><p><strong>Districtwide systems and college procedures are not the same thing.</strong> Your SIS login may follow you across LACCD; your parking permit, copy code, room key, local Canvas support, payroll contact, FLEX process, and absence procedure may not.</p></div>
+  </section>
+
+  <section id="systems" class="guide-section" aria-labelledby="systems-title">
+    <p class="eyebrow">Four doors you will open a lot</p>
+    <h2 id="systems-title">Know the systems</h2>
+    <div class="help-grid">
+      <article class="help-card"><h3>PeopleSoft / SIS</h3><p><strong>Think: official records.</strong> Your class assignment, roster, add authorizations, census/attendance-related roster work, and grade rosters live here. It is the system of record for LACCD student administration.</p><p><a href="https://mycollege.laccd.edu/">Open MyCollege / SIS</a></p></article>
+      <article class="help-card"><h3>Canvas</h3><p><strong>Think: teaching.</strong> Course pages, assignments, announcements, grades students see, and online course activity. District faculty accessibility resources also live around the Canvas ecosystem.</p><p><a href="https://www.laccd.edu/offices/diversity/accessibility/faculty-resources">Open LACCD faculty accessibility resources</a></p></article>
+      <article class="help-card"><h3>Office 365 / LACCD email</h3><p><strong>Think: official communication.</strong> Check this account regularly. District and college notices, DSPS accommodation notifications, HR messages, and department communication may land there.</p><p><a href="https://www.laccd.edu/students/sis-faqs">Use LACCD's Office 365 / portal help</a></p></article>
+      <article class="help-card"><h3>Vision Resource Center (VRC)</h3><p><strong>Think: professional learning and FLEX.</strong> Colleges use the VRC for training and professional-development activity. Your exact FLEX obligation depends on assignment and current rules, so verify it with your college.</p><p><a href="https://visionresourcecenter.cccco.edu/">Open the Vision Resource Center</a></p></article>
+    </div>
+    <div class="callout"><h3>Why do I have two places with grades?</h3><p>Canvas is the classroom gradebook you manage during the term. <strong>SIS is the official record.</strong> At the end of the course, do not assume Canvas has submitted final grades for you.</p></div>
+  </section>
+
+  <section id="timeline" class="guide-section" aria-labelledby="timeline-title">
+    <p class="eyebrow">The semester has pressure points</p>
+    <h2 id="timeline-title">Your first-semester timeline</h2>
+
+    <h3>Before the first class</h3>
+    <ul class="checklist">
+      <li>Confirm the official section number, dates, modality, meeting days/times, room or online format, and enrollment in SIS.</li>
+      <li>Confirm you can access the correct Canvas shell and that students will be able to find what they need when the course opens.</li>
+      <li>Get the current COR and any department syllabus template or required course-specific language.</li>
+      <li>Confirm the textbook/OER/ZTC plan and whether anything must be ordered or placed on reserve.</li>
+      <li>Find your college's process for parking, employee ID, keys/card access, copying, classroom technology and urgent IT support.</li>
+      <li>Ask who to contact if illness or an emergency prevents you from teaching. Do not independently hire or arrange a substitute.</li>
+    </ul>
+
+    <h3>First class and first week</h3>
+    <ul class="checklist">
+      <li>Keep attendance/participation records from the beginning. For standard census courses, early attendance matters for the official roster process.</li>
+      <li>Know how add authorizations work in SIS before promising a seat to a student.</li>
+      <li>Check that students who believe they added the course actually appear on the official roster.</li>
+      <li>Read your LACCD email. Accommodation notices and other time-sensitive messages may arrive there.</li>
+      <li>Tell students how to reach you and where they can find current course information. You do not need a private office to be an accessible instructor.</li>
+    </ul>
+
+    <h3>Before census</h3>
+    <ul class="checklist">
+      <li><strong>Do not guess the deadline.</strong> Census and other important dates depend on the class. Check the section's Important Class Dates / roster information in SIS.</li>
+      <li>Complete the required census/roster process and deal with no-shows or nonparticipation according to current college/district procedure.</li>
+      <li>Keep documentation that supports roster decisions. Enrollment and attendance reporting affect both students and state apportionment.</li>
+    </ul>
+
+    <h3>During the term</h3>
+    <ul class="checklist">
+      <li>Acknowledge and provide approved DSPS accommodations. If an accommodation is unclear, contact the student's campus DSPS office rather than asking the student to disclose a diagnosis.</li>
+      <li>Use your campus student-support ecosystem: tutoring, library, basic needs, counseling, DSPS, EOPS, Veterans, Dream/undocumented-student support, and other programs. You do not have to personally solve every problem a student brings you.</li>
+      <li>Keep your own grade and participation records, especially for decisions that may later need explanation.</li>
+      <li>Complete required professional-development/FLEX activity and reporting for your assignment; ask your local professional-development office how your college handles it.</li>
+    </ul>
+
+    <h3>End of the course</h3>
+    <ul class="checklist">
+      <li>Submit official final grades in SIS by the deadline supplied for your section/college.</li>
+      <li>Do not rely on the Canvas gradebook as the official submission.</li>
+      <li>Keep the records required by your college and current contract/policy in case a grade question or evaluation arises.</li>
+      <li>If you hope to teach again, stay in contact with your department and learn how adjunct seniority/reemployment works under the current Faculty Guild agreement.</li>
+    </ul>
+  </section>
+
+  <section id="who" class="guide-section" aria-labelledby="who-title">
+    <p class="eyebrow">Who do I ask?</p>
+    <h2 id="who-title">Who owns what?</h2>
+    <p class="section-lead">This is the mental map that makes LACCD less mysterious.</p>
+    <table class="ownership">
+      <caption>Common questions and the best place to start</caption>
+      <thead><tr><th scope="col">If the question is about…</th><th scope="col">Start here</th><th scope="col">Why</th></tr></thead>
+      <tbody>
+        <tr><td>Your class, course materials, local procedures, room, textbook, absence</td><td><strong>Department chair / department office</strong></td><td>These are often discipline- or college-specific.</td></tr>
+        <tr><td>Login, Wi-Fi, classroom computer, account access</td><td><strong>Your college IT</strong></td><td>LACCD's sign-on is districtwide, but faculty/staff tech support is routed through college IT.</td></tr>
+        <tr><td>Roster, add authorization, census, official grades</td><td><strong>SIS + local Admissions & Records / Academic Affairs</strong></td><td>SIS is the official student-record system; local offices administer many deadlines and exceptions.</td></tr>
+        <tr><td>Canvas shell or online-teaching support</td><td><strong>College Distance Education / online-learning support</strong></td><td>Canvas is districtwide, but campus support and certification practices can differ.</td></tr>
+        <tr><td>Paycheck, assignment record, personnel paperwork</td><td><strong>Campus HR / Payroll</strong></td><td>LACCD HR explicitly directs college employees to their campus HR/pay contacts for many problems.</td></tr>
+        <tr><td>Health benefits</td><td><strong>LACCD Health Benefits Unit</strong></td><td>The District maintains a dedicated benefits unit with adjunct information.</td></tr>
+        <tr><td>Working conditions, adjunct rights, seniority, grievance</td><td><strong>AFT Local 1521 / campus Guild chapter</strong></td><td>The Faculty Guild is the bargaining representative for LACCD faculty.</td></tr>
+        <tr><td>Academic/professional policy, curriculum, faculty governance</td><td><strong>Local Academic Senate</strong></td><td>Academic senates address the faculty's academic and professional “10+1” areas.</td></tr>
+        <tr><td>English issues across all nine colleges</td><td><strong>English DDC</strong></td><td>District Discipline Committees connect discipline faculty across the colleges and contribute to district curriculum/equivalency work.</td></tr>
+        <tr><td>Student disability accommodation</td><td><strong>Campus DSPS</strong></td><td>DSPS determines approved student accommodations; faculty implement them.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="decoder" class="guide-section" aria-labelledby="decoder-title">
+    <p class="eyebrow">The acronym fog</p>
+    <h2 id="decoder-title">Decode the things people say as if you were born knowing them</h2>
+    <dl class="decoder">
+      <div><dt>LACCD</dt><dd>Los Angeles Community College District: the district connecting all nine colleges.</dd></div>
+      <div><dt>SIS / PeopleSoft</dt><dd>The Student Information System. Official rosters, enrollment and grade records live here.</dd></div>
+      <div><dt>SSO</dt><dd>Single sign-on: your district credentials used to reach multiple LACCD systems.</dd></div>
+      <div><dt>SAP</dt><dd>The district's enterprise system for employee/human-capital and other administrative data. You may hear HR refer to something being “in SAP.”</dd></div>
+      <div><dt>ESC</dt><dd>Educational Services Center: the LACCD district office at 770 Wilshire Boulevard.</dd></div>
+      <div><dt>COR</dt><dd>Course Outline of Record: the officially approved academic blueprint for a course.</dd></div>
+      <div><dt>eLumen</dt><dd>LACCD's curriculum management system.</dd></div>
+      <div><dt>SLO</dt><dd>Student Learning Outcome. Course outcomes are part of assessment and program improvement work.</dd></div>
+      <div><dt>VRC</dt><dd>Vision Resource Center: professional learning and, at many colleges, FLEX tracking.</dd></div>
+      <div><dt>FLEX</dt><dd>Professional-development activity tied to the flexible academic calendar. Adjunct obligations depend on teaching load/current rules; verify locally.</dd></div>
+      <div><dt>DSPS</dt><dd>Disabled Student Programs and Services: the campus office that determines and coordinates approved student accommodations.</dd></div>
+      <div><dt>OER / ZTC</dt><dd>Open Educational Resources / Zero Textbook Cost.</dd></div>
+      <div><dt>DDC</dt><dd>District Discipline Committee: faculty from the nine colleges discussing discipline-level district matters.</dd></div>
+      <div><dt>DAS</dt><dd>District Academic Senate: districtwide faculty voice on academic and professional matters.</dd></div>
+      <div><dt>DCC</dt><dd>District Curriculum Committee.</dd></div>
+      <div><dt>CCN</dt><dd>Common Course Numbering. California is changing many high-enrollment course numbers/titles in phases; ENGL C1000 is one result.</dd></div>
+      <div><dt>DE</dt><dd>Usually <strong>Distance Education</strong> in faculty conversations. “DE certification” normally means authorization/training to teach online. For dual enrollment, it is clearer to say <strong>dual enrollment</strong>.</dd></div>
+      <div><dt>AFT 1521 / Faculty Guild</dt><dd>Los Angeles College Faculty Guild, the union representing LACCD faculty.</dd></div>
+    </dl>
+  </section>
+
+  <section id="adjunct" class="guide-section" aria-labelledby="adjunct-title">
+    <p class="eyebrow">You are faculty, full stop</p>
+    <h2 id="adjunct-title">Adjunct things worth knowing early</h2>
+    <div class="callout green"><h3>Belonging is not the same as unlimited unpaid labor</h3><p>You are welcome at department, college and district spaces. You also get to ask whether an activity is <strong>paid, carries FLEX credit, has a stipend, or is purely voluntary</strong>. Participation should not be a secret test of whether you “care enough.”</p></div>
+    <ul class="checklist">
+      <li><strong>You are covered by the faculty collective-bargaining agreement.</strong> The contract covers matters such as assignments, pay, evaluations, working conditions, leaves, distance education and adjunct seniority/reemployment.</li>
+      <li><strong>Check current contract information rather than an old PDF.</strong> As of this guide's September 2026 review, the public District and Guild pages still point to the July 2023 to June 2026 agreement while successor bargaining is underway. Use the Guild's current bargaining page or ask your campus chapter for the latest status.</li>
+      <li><strong>Adjunct health benefits exist, but eligibility rules matter.</strong> LACCD's Health Benefits Unit has a specific adjunct pathway. Do not assume “part-time means no benefits”; check your current load and eligibility directly with the Benefits Unit.</li>
+      <li><strong>Learn seniority/reemployment before you need it.</strong> The posted agreement contains detailed adjunct seniority provisions. Ask the Guild or your chair how your discipline list, qualifying semesters and assignment history are being recorded under the current agreement.</li>
+      <li><strong>Evaluation is normal.</strong> Adjunct faculty are part of the faculty evaluation system. Ask your chair when you should expect evaluation and what materials/process your college uses.</li>
+      <li><strong>Teaching at more than one LACCD college is normal.</strong> Some district systems follow you; local processes do not. Keep a tiny campus-specific note for each college: chair, HR/payroll, IT, parking/keys, DE support, FLEX contact and absence procedure.</li>
+    </ul>
+    <p class="marginal-note">Freeway flying is already enough logistics. The bureaucracy does not also get to be a personality test.</p>
+  </section>
+
+  <section id="college" class="guide-section" aria-labelledby="college-title">
+    <p class="eyebrow">Nine colleges, nine local ecosystems</p>
+    <h2 id="college-title">Find your college</h2>
+    <p class="section-lead">Use your college site for local HR/payroll, IT, parking, maps, professional development, DSPS and campus-specific faculty procedures. Then come back to the Commons for the districtwide English people.</p>
+    <div class="campus-grid">
+      <a href="https://www.lacc.edu/">Los Angeles City College</a>
+      <a href="https://www.elac.edu/">East Los Angeles College</a>
+      <a href="https://www.lahc.edu/">Los Angeles Harbor College</a>
+      <a href="https://www.lamission.edu/">Los Angeles Mission College</a>
+      <a href="https://www.lapc.edu/">Los Angeles Pierce College</a>
+      <a href="https://www.lasc.edu/">Los Angeles Southwest College</a>
+      <a href="https://www.lattc.edu/">Los Angeles Trade-Technical College</a>
+      <a href="https://www.lavc.edu/">Los Angeles Valley College</a>
+      <a href="https://www.wlac.edu/">West Los Angeles College</a>
+    </div>
+    <h3>Make yourself a six-line campus cheat sheet</h3>
+    <ul class="checklist">
+      <li><strong>Chair / department contact:</strong> who answers ordinary teaching questions?</li>
+      <li><strong>HR / payroll:</strong> who fixes an assignment or paycheck problem?</li>
+      <li><strong>IT / online learning:</strong> who fixes login, room tech or Canvas problems?</li>
+      <li><strong>Access:</strong> where do you get parking, ID, keys/card access and printing?</li>
+      <li><strong>Professional development:</strong> who explains your FLEX obligation and reporting?</li>
+      <li><strong>Absence:</strong> who must you contact if you cannot teach?</li>
+    </ul>
+  </section>
+
+  <section id="help" class="guide-section" aria-labelledby="help-title">
+    <p class="eyebrow">The humane troubleshooting tree</p>
+    <h2 id="help-title">When something goes sideways</h2>
+    <div class="help-grid">
+      <article class="help-card"><h3>I cannot log in</h3><p>Start with your college IT/help desk. LACCD's SSO page also tells faculty/staff with sign-in problems to contact College IT.</p></article>
+      <article class="help-card"><h3>My class is missing or wrong in Canvas</h3><p>First confirm the assignment in SIS. Then contact your college's Canvas/Distance Education support or IT. A Canvas problem may begin upstream with the official assignment.</p></article>
+      <article class="help-card"><h3>My paycheck or assignment looks wrong</h3><p>Start with campus HR/Payroll. If the issue is about contractual rights or is not getting resolved, contact your AFT 1521 campus chapter.</p></article>
+      <article class="help-card"><h3>A student gives me an accommodation letter</h3><p>Follow the approved accommodation. If you are uncertain how to implement it, contact campus DSPS. Do not ask the student to prove or explain the diagnosis to you.</p></article>
+      <article class="help-card"><h3>I do not know the census/drop deadline</h3><p>Look at the official dates for your exact section in SIS. Short-term and other sections can have different deadlines from the full-semester calendar.</p></article>
+      <article class="help-card"><h3>I am going to miss class</h3><p>Contact your chair/department using your college's absence procedure. Do not independently arrange a substitute unless the college directs you to do so.</p></article>
+      <article class="help-card"><h3>I need the official course requirements</h3><p>Ask for the current COR. For curriculum-system questions, LACCD's EPIE office identifies eLumen as the District curriculum management system.</p></article>
+      <article class="help-card"><h3>I do not know who the right person is</h3><p>Ask your chair, your English DDC representative, or another English colleague. “Who owns this?” is a completely legitimate LACCD question.</p></article>
+    </div>
+
+    <h3>Questions you are absolutely allowed to ask</h3>
+    <ul class="question-list">
+      <li>“Could you point me to the current COR for this course?”</li>
+      <li>“Where do I find the important dates for my exact section?”</li>
+      <li>“What is our campus procedure for parking, keys/card access, printing and classroom technology?”</li>
+      <li>“Who handles Canvas support here?”</li>
+      <li>“What is my FLEX obligation for this assignment, and where do I report it?”</li>
+      <li>“If I am sick and cannot teach, who do I contact and what is the substitute process?”</li>
+      <li>“Is this meeting paid, FLEX-eligible, stipend-supported, or voluntary?”</li>
+      <li>“I teach this course at another LACCD college too. Is this procedure districtwide or local?”</li>
+    </ul>
+  </section>
+
+  <section id="official" class="guide-section" aria-labelledby="official-title">
+    <p class="eyebrow">Bookmark the source, not the rumor</p>
+    <h2 id="official-title">Official and primary links worth keeping</h2>
+    <ul class="link-list">
+      <li><a href="https://www.laccd.edu/offices/hr/new-employees">LACCD New Employees</a>: onboarding forms, employee resources, calendars, parking/ID and links into HR.</li>
+      <li><a href="https://www.laccd.edu/offices/hr">LACCD Human Resources</a>: District HR plus campus HR/pay contacts.</li>
+      <li><a href="https://mycollege.laccd.edu/">MyCollege / PeopleSoft SIS</a>: official faculty/student information system.</li>
+      <li><a href="https://www.laccd.edu/students/sis-faqs">LACCD SIS FAQs and login help</a>: portal, Office 365 and PeopleSoft guidance.</li>
+      <li><a href="https://www.laccd.edu/offices/diversity/accessibility/faculty-resources">LACCD Faculty Accessibility Resources</a>: accessible Canvas/content guidance and support.</li>
+      <li><a href="https://www.laccd.edu/offices/hr/ada">LACCD ADA Accommodations</a>: employee ADA coordinators plus links to each campus DSPS program.</li>
+      <li><a href="https://www.laccd.edu/offices/health-benefits">LACCD Health Benefits Unit</a>: includes adjunct employee information.</li>
+      <li><a href="https://www.laccd.edu/offices/epie/curriculum-info">LACCD Curriculum Support</a>: eLumen and curriculum resources.</li>
+      <li><a href="https://www.laccd.edu/offices/epie/common-course-numbering">LACCD Common Course Numbering</a>: current CCN crosswalks and rollout information.</li>
+      <li><a href="https://www.laccd.edu/governance/das">District Academic Senate</a>: districtwide faculty academic/professional governance.</li>
+      <li><a href="https://www.laccd.edu/governance/das/ddc">LACCD District Discipline Committees</a>: official DDC role and district information.</li>
+      <li><a href="https://www.aft-1521.org/">AFT Local 1521 / Los Angeles College Faculty Guild</a>: faculty union, chapter contacts, current bargaining and member resources.</li>
+      <li><a href="https://www.aft-1521.org/collective-bargaining/">AFT 1521 Collective Bargaining & MOUs</a>: check here for the latest posted agreement and updates.</li>
+    </ul>
+    <p class="source-note"><strong>Why this page links outward so much:</strong> LACCD procedures, contacts, deadlines, contracts and systems can change. This guide explains the map; the linked District, college and Guild pages remain the source for current rules.</p>
+  </section>
+
+  <aside class="belonging-panel" aria-labelledby="belong-title">
+    <div class="text-wrap">
+      <p class="eyebrow">One more thing</p>
+      <h2 id="belong-title">You are not visiting.</h2>
+      <p>Adjunct does not mean peripheral. You teach LACCD students, which makes you part of the faculty community. You do not have to earn belonging by already knowing the systems, volunteering for everything, or being physically on campus all day.</p>
+      <p class="warm-line">Ask the question. Find the person. Take what helps. Share when you want to.</p>
+      <p><a class="button primary" href="faculty.html">Find your people in the Faculty Commons</a></p>
+    </div>
+    <img class="panel-art" src="assets/marginalia/herald-rabbit.png" alt="" aria-hidden="true">
+  </aside>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <p><strong>LACCD English District Discipline Committee</strong></p>
+    <p>Faculty · Teaching · Events · District Work · Community</p>
+    <p class="footer-joke">Nine colleges. One district. Several hundred opinions about commas.</p>
+    <section class="footer-notes" aria-labelledby="about-site-heading">
+      <h2 id="about-site-heading">About This Site</h2>
+      <p><strong>Maintained by Karen Crozer, Ph.D., on a volunteer basis.</strong> This is an independent faculty-created resource. It is not an official LACCD website and is not sponsored, endorsed, or maintained by the Los Angeles Community College District or its colleges. References to LACCD, its colleges, and the English DDC are provided for informational and collegial purposes.</p>
+      <p><strong>Accessibility matters here.</strong> This site is designed with accessibility as a core priority and aims to follow WCAG 2.2 AA guidance, including keyboard access, readable text, strong contrast, responsive reflow, descriptive links, and reduced-motion support. If you encounter an accessibility barrier, please <a href="mailto:crozerkj@laccd.edu">email Karen Crozer about the accessibility issue</a> so it can be corrected.</p>
+    </section>
+  </div>
+</footer>
+</body>
+</html>
