@@ -1,0 +1,28 @@
+name: Restore ECJ
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out full repository history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Restore last good ECJ snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          GOOD_COMMIT="593c146c58c37e3e5b517dc329ea2112b7e7c969"
+
+          git read-tree --reset -u "$GOOD_COMMIT"
+          git commit -m "Restore ECJ after accidental DDC upload"
+          git push origin HEAD:main
