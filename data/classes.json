@@ -2,7 +2,7 @@
   "schema_version": 3,
   "campus": "Los Angeles Mission College",
   "campus_code": "LAMC",
-  "generated_at": "2026-09-08T16:28:11Z",
+  "generated_at": "2026-09-09T00:35:29Z",
   "source": {
     "name": "LACCD Public Class Search",
     "url": "https://mycollege-guest.laccd.edu/psc/classsearchguest/EMPLOYEE/HRMS/c/COMMUNITY_ACCESS.CLASS_SEARCH.GBL"
@@ -101,7 +101,7 @@
           "dates": "08/31/2026 - 12/20/2026",
           "start_date": "2026-08-31",
           "end_date": "2026-12-20",
-          "status": "Closed",
+          "status": "Open",
           "format": "In Person",
           "materials": [
             "ZTC"
@@ -1914,7 +1914,7 @@
           "class_number": "12390",
           "section": "",
           "schedule": "",
-          "room": "Mission-INST 1001",
+          "room": "Mission-INST 1010",
           "instructor": "Rodolfo Casarez",
           "dates": "08/31/2026 - 12/20/2026",
           "start_date": "2026-08-31",
@@ -1925,7 +1925,7 @@
             "ZTC"
           ],
           "materials_text": "All textbooks/readings will be provided free of cost.",
-          "details": "12390 M02-LEC Regular MoWe 10:35AM - 12:00PM Mission-INST 1001 Rodolfo Casarez 08/31/2026 - 12/20/2026",
+          "details": "12390 M02-LEC Regular MoWe 10:35AM - 12:00PM Mission-INST 1010 Rodolfo Casarez 08/31/2026 - 12/20/2026",
           "sis_url": "javascript:submitAction_win0(document.win0,'MTG_CLASS_NBR$9');"
         },
         {
@@ -2215,7 +2215,7 @@
           "dates": "10/26/2026 - 12/20/2026",
           "start_date": "2026-10-26",
           "end_date": "2026-12-20",
-          "status": "Wait List",
+          "status": "Open",
           "format": "Online",
           "materials": [
             "ZTC"
@@ -2755,9 +2755,9 @@
       ],
       "counts": {
         "all": 114,
-        "open": 46,
-        "wait_list": 18,
-        "closed": 50
+        "open": 48,
+        "wait_list": 17,
+        "closed": 49
       },
       "material_counts": {
         "ztc": 59,
