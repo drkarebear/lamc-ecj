@@ -2,7 +2,7 @@
   "schema_version": 3,
   "campus": "Los Angeles Mission College",
   "campus_code": "LAMC",
-  "generated_at": "2026-09-10T16:24:33Z",
+  "generated_at": "2026-09-11T00:31:40Z",
   "source": {
     "name": "LACCD Public Class Search",
     "url": "https://mycollege-guest.laccd.edu/psc/classsearchguest/EMPLOYEE/HRMS/c/COMMUNITY_ACCESS.CLASS_SEARCH.GBL"
@@ -2215,7 +2215,7 @@
           "dates": "10/26/2026 - 12/20/2026",
           "start_date": "2026-10-26",
           "end_date": "2026-12-20",
-          "status": "Open",
+          "status": "Wait List",
           "format": "Online",
           "materials": [
             "ZTC"
@@ -2755,8 +2755,8 @@
       ],
       "counts": {
         "all": 114,
-        "open": 49,
-        "wait_list": 16,
+        "open": 48,
+        "wait_list": 17,
         "closed": 49
       },
       "material_counts": {
