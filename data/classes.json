@@ -2,7 +2,7 @@
   "schema_version": 3,
   "campus": "Los Angeles Mission College",
   "campus_code": "LAMC",
-  "generated_at": "2026-09-12T16:23:43Z",
+  "generated_at": "2026-09-13T00:32:06Z",
   "source": {
     "name": "LACCD Public Class Search",
     "url": "https://mycollege-guest.laccd.edu/psc/classsearchguest/EMPLOYEE/HRMS/c/COMMUNITY_ACCESS.CLASS_SEARCH.GBL"
